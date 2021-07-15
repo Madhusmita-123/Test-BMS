@@ -1,0 +1,1816 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="BMSModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="BudgetType">
+    <Key>
+      <PropertyRef Name="BugtTyp_Id" />
+    </Key>
+    <Property Name="BugtTyp_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="BgtTypNm" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="IsDelete" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="File">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FileID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="FileName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Data" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="path" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Financial_Year">
+    <Key>
+      <PropertyRef Name="Fin_Id" />
+    </Key>
+    <Property Name="Fin_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Fin_Yr" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="AddBy" Type="Int32" />
+    <Property Name="AddOn" Type="DateTime" Precision="3" />
+    <Property Name="ModBy" Type="Int32" />
+    <Property Name="ModOn" Type="DateTime" Precision="3" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="IsDelete" Type="Boolean" />
+    <NavigationProperty Name="Trans_Salary" Relationship="BMSModel.FK_Trans_Salary_Financial_Year" FromRole="Financial_Year" ToRole="Trans_Salary" />
+  </EntityType>
+  <EntityType Name="Head_Master">
+    <Key>
+      <PropertyRef Name="Head_Id" />
+    </Key>
+    <Property Name="Head_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="hdnm" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="hdcode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="BugtTyp_Id" Type="Int32" />
+    <Property Name="addon" Type="DateTime" Precision="3" />
+    <Property Name="addby" Type="Int32" />
+    <Property Name="modon" Type="DateTime" Precision="3" />
+    <Property Name="modby" Type="Int32" />
+    <Property Name="isdelete" Type="Boolean" Nullable="false" />
+    <Property Name="IsActive" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="Mst_ApproveType">
+    <Key>
+      <PropertyRef Name="Aprov_Type_ID" />
+    </Key>
+    <Property Name="Aprov_Type_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Mst_Assign_Designation">
+    <Key>
+      <PropertyRef Name="AssDeg_ID" />
+    </Key>
+    <Property Name="AssDeg_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Desg_ID" Type="Int32" />
+    <Property Name="Dept_ID" Type="Int32" />
+    <Property Name="Addon" Type="DateTime" Precision="3" />
+    <Property Name="Addby" Type="Int32" />
+    <Property Name="Modon" Type="DateTime" Precision="3" />
+    <Property Name="Modby" Type="Int32" />
+    <Property Name="isActive" Type="Boolean" />
+    <Property Name="isDelete" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="Mst_AssignCircleDivison">
+    <Key>
+      <PropertyRef Name="AssignCircleDivisonid" />
+    </Key>
+    <Property Name="AssignCircleDivisonid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="circleid" Type="Int32" />
+    <Property Name="divisonid" Type="Int32" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="IsDelete" Type="Boolean" />
+    <Property Name="AddBy" Type="Int32" />
+    <Property Name="AddOn" Type="DateTime" Precision="3" />
+    <Property Name="ModBy" Type="Int32" />
+    <Property Name="ModOn" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="Mst_AssignUnitToBank">
+    <Key>
+      <PropertyRef Name="Assg_unitbnkid" />
+    </Key>
+    <Property Name="Assg_unitbnkid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Unit_Id" Type="Int32" />
+    <Property Name="bnkid" Type="Int32" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="IsDelete" Type="Boolean" />
+    <Property Name="AddBy" Type="Int32" />
+    <Property Name="AddOn" Type="DateTime" Precision="3" />
+    <Property Name="ModBy" Type="Int32" />
+    <Property Name="ModOn" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Mst_Bank" Relationship="Self.FK_Mst_AssignUnitToBank_Mst_Bank" FromRole="Mst_AssignUnitToBank" ToRole="Mst_Bank" />
+    <NavigationProperty Name="Mst_Unit" Relationship="Self.FK_Mst_AssignUnitToBank_Mst_Unit" FromRole="Mst_AssignUnitToBank" ToRole="Mst_Unit" />
+  </EntityType>
+  <EntityType Name="Mst_AssignZoneCircle">
+    <Key>
+      <PropertyRef Name="AssignZoneCircleid" />
+    </Key>
+    <Property Name="AssignZoneCircleid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="circleid" Type="Int32" />
+    <Property Name="zoneid" Type="Int32" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="IsDelete" Type="Boolean" />
+    <Property Name="AddBy" Type="Int32" />
+    <Property Name="AddOn" Type="DateTime" Precision="3" />
+    <Property Name="ModBy" Type="Int32" />
+    <Property Name="ModOn" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="Mst_Bank">
+    <Key>
+      <PropertyRef Name="bnkid" />
+    </Key>
+    <Property Name="bnkid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Bank_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="IsDelete" Type="Boolean" />
+    <Property Name="AddBy" Type="Int32" />
+    <Property Name="AddOn" Type="DateTime" Precision="3" />
+    <Property Name="ModBy" Type="Int32" />
+    <Property Name="ModOn" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Mst_AssignUnitToBank" Relationship="Self.FK_Mst_AssignUnitToBank_Mst_Bank" FromRole="Mst_Bank" ToRole="Mst_AssignUnitToBank" />
+  </EntityType>
+  <EntityType Name="Mst_BnkDtls">
+    <Key>
+      <PropertyRef Name="Bnk_DtlsId" />
+    </Key>
+    <Property Name="Bnk_DtlsId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="bnkid" Type="Int32" />
+    <Property Name="Branch" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Acnt_holderName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="IFSC_Code" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="AccountType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Account_Number" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Address" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="IsDelete" Type="Boolean" />
+    <Property Name="AddBy" Type="Int32" />
+    <Property Name="AddOn" Type="DateTime" Precision="3" />
+    <Property Name="ModBy" Type="Int32" />
+    <Property Name="ModOn" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="Mst_Capital_Works_Detail">
+    <Key>
+      <PropertyRef Name="Cap_Wok_Head_Id" />
+    </Key>
+    <Property Name="Cap_Wok_Head_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Proj_Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Proj_Code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Aprov_No" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Aprov_Date" Type="DateTime" Precision="3" />
+    <Property Name="Aprov_Cost" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Cont_Value" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="IsDelete" Type="Boolean" />
+    <Property Name="Addon" Type="DateTime" Precision="3" />
+    <Property Name="Addby" Type="Int32" />
+    <Property Name="Modon" Type="DateTime" Precision="3" />
+    <Property Name="Modby" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Mst_Circle">
+    <Key>
+      <PropertyRef Name="circleid" />
+    </Key>
+    <Property Name="circleid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="circlename" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="IsDelete" Type="Boolean" />
+    <Property Name="AddBy" Type="Int32" />
+    <Property Name="AddOn" Type="DateTime" Precision="3" />
+    <Property Name="ModBy" Type="Int32" />
+    <Property Name="ModOn" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="Mst_Country">
+    <Key>
+      <PropertyRef Name="Con_Id" />
+    </Key>
+    <Property Name="Con_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Con_Nm" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="IsDelete" Type="Boolean" />
+    <Property Name="AddBy" Type="Int32" />
+    <Property Name="AddOn" Type="DateTime" Precision="3" />
+    <Property Name="ModBy" Type="Int32" />
+    <Property Name="ModOn" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="Mst_District">
+    <Key>
+      <PropertyRef Name="Dst_Id" />
+    </Key>
+    <Property Name="Dst_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="St_Id" Type="Int32" Nullable="false" />
+    <Property Name="Dst_Nm" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="IsDelete" Type="Boolean" />
+    <Property Name="AddOn" Type="DateTime" Precision="3" />
+    <Property Name="AddBy" Type="Int32" />
+    <Property Name="ModOn" Type="DateTime" Precision="3" />
+    <Property Name="ModBy" Type="Int32" />
+    <Property Name="Con_Id" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Mst_Divison">
+    <Key>
+      <PropertyRef Name="divisonid" />
+    </Key>
+    <Property Name="divisonid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="divisonname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="IsDelete" Type="Boolean" />
+    <Property Name="AddBy" Type="Int32" />
+    <Property Name="AddOn" Type="DateTime" Precision="3" />
+    <Property Name="ModBy" Type="Int32" />
+    <Property Name="ModOn" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="Mst_InnerSubHead">
+    <Key>
+      <PropertyRef Name="InnerSubHead_ID" />
+    </Key>
+    <Property Name="InnerSubHead_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SubHead_Id" Type="Int32" />
+    <Property Name="InnerSubHead_Code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="InnerSubHead_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="addon" Type="DateTime" Precision="3" />
+    <Property Name="addby" Type="Int32" />
+    <Property Name="modon" Type="DateTime" Precision="3" />
+    <Property Name="modby" Type="Int32" />
+    <Property Name="isactive" Type="Boolean" />
+    <Property Name="isdelete" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="Mst_month">
+    <Key>
+      <PropertyRef Name="monthid" />
+    </Key>
+    <Property Name="monthid" Type="Int32" Nullable="false" />
+    <Property Name="monthnm" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="addon" Type="DateTime" Precision="3" />
+    <Property Name="addby" Type="Int32" />
+    <Property Name="modon" Type="DateTime" Precision="3" />
+    <Property Name="modby" Type="Int32" />
+    <Property Name="isdelete" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Trans_Salary" Relationship="BMSModel.FK_Trans_Salary_Mst_month" FromRole="Mst_month" ToRole="Trans_Salary" />
+  </EntityType>
+  <EntityType Name="Mst_SalaryHeads">
+    <Key>
+      <PropertyRef Name="SalHead_Id" />
+    </Key>
+    <Property Name="SalHead_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Salhdnm" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Salhdcode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="addon" Type="DateTime" Precision="3" />
+    <Property Name="addby" Type="Int32" />
+    <Property Name="modon" Type="DateTime" Precision="3" />
+    <Property Name="modby" Type="Int32" />
+    <Property Name="isdelete" Type="Boolean" Nullable="false" />
+    <Property Name="IsActive" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="Mst_State">
+    <Key>
+      <PropertyRef Name="St_Id" />
+    </Key>
+    <Property Name="St_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="St_Nm" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="IsDelete" Type="Boolean" />
+    <Property Name="AddBy" Type="Int32" />
+    <Property Name="AddOn" Type="DateTime" Precision="3" />
+    <Property Name="ModBy" Type="Int32" />
+    <Property Name="ModOn" Type="DateTime" Precision="3" />
+    <Property Name="Con_Id" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Mst_Unit">
+    <Key>
+      <PropertyRef Name="Unit_Id" />
+    </Key>
+    <Property Name="Unit_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Con_Id" Type="Int32" />
+    <Property Name="St_Id" Type="Int32" />
+    <Property Name="Dst_Id" Type="Int32" />
+    <Property Name="zoneid" Type="Int32" />
+    <Property Name="circleid" Type="Int32" />
+    <Property Name="divisonid" Type="Int32" />
+    <Property Name="bnkid" Type="Int32" />
+    <Property Name="Bnk_DtlsId" Type="Int32" />
+    <Property Name="Office_Type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Unit_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Unit_Code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Plot_No" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="AT" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="PO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="PS" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Land_Mark" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Area" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Pin" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Contact_No" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CP_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="IsDelete" Type="Boolean" />
+    <Property Name="AddOn" Type="DateTime" Precision="3" />
+    <Property Name="AddBy" Type="Int32" />
+    <Property Name="ModOn" Type="DateTime" Precision="3" />
+    <Property Name="ModBy" Type="Int32" />
+    <NavigationProperty Name="Mst_AssignUnitToBank" Relationship="Self.FK_Mst_AssignUnitToBank_Mst_Unit" FromRole="Mst_Unit" ToRole="Mst_AssignUnitToBank" />
+    <NavigationProperty Name="Trans_RequsitionNumber" Relationship="Self.FK_Trans_RequsitionNumber_Mst_Unit" FromRole="Mst_Unit" ToRole="Trans_RequsitionNumber" />
+    <NavigationProperty Name="Trans_Salary" Relationship="BMSModel.FK_Trans_Salary_Mst_Unit" FromRole="Mst_Unit" ToRole="Trans_Salary" />
+  </EntityType>
+  <EntityType Name="Mst_Zone">
+    <Key>
+      <PropertyRef Name="zoneid" />
+    </Key>
+    <Property Name="zoneid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="zonename" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="IsDelete" Type="Boolean" />
+    <Property Name="AddBy" Type="Int32" />
+    <Property Name="AddOn" Type="DateTime" Precision="3" />
+    <Property Name="ModBy" Type="Int32" />
+    <Property Name="ModOn" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="Page">
+    <Key>
+      <PropertyRef Name="pageid" />
+    </Key>
+    <Property Name="pageid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="distext" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="tooltip" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="targeturl" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="parentid" Type="Int32" />
+    <Property Name="orderby" Type="Int32" />
+    <Property Name="addby" Type="Int32" />
+    <Property Name="addon" Type="DateTime" Precision="3" />
+    <Property Name="modby" Type="Int32" />
+    <Property Name="modon" Type="DateTime" Precision="3" />
+    <Property Name="isactive" Type="Boolean" Nullable="false" />
+    <Property Name="isdelete" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="Permission">
+    <Key>
+      <PropertyRef Name="permid" />
+    </Key>
+    <Property Name="permid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="roleid" Type="Int32" Nullable="false" />
+    <Property Name="pageid" Type="Int32" Nullable="false" />
+    <Property Name="canview" Type="Boolean" />
+    <Property Name="canadd" Type="Boolean" />
+    <Property Name="canedit" Type="Boolean" />
+    <Property Name="candelete" Type="Boolean" />
+    <Property Name="adddby" Type="Int32" />
+    <Property Name="addon" Type="DateTime" Precision="3" />
+    <Property Name="modby" Type="Int32" />
+    <Property Name="modon" Type="DateTime" Precision="3" />
+    <Property Name="isactive" Type="Boolean" Nullable="false" />
+    <Property Name="isdelete" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Role">
+    <Key>
+      <PropertyRef Name="RoleID" />
+    </Key>
+    <Property Name="RoleID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RoleDesc" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="IsDelete" Type="Boolean" />
+    <Property Name="addon" Type="DateTime" Precision="3" />
+    <Property Name="addby" Type="Int32" />
+    <Property Name="modon" Type="DateTime" Precision="3" />
+    <Property Name="modby" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Tarn_Add_Budget">
+    <Key>
+      <PropertyRef Name="Bgt_Id" />
+    </Key>
+    <Property Name="Bgt_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Head_Id" Type="Int32" />
+    <Property Name="SubHead_Id" Type="Int32" />
+    <Property Name="InnerSubHead_ID" Type="Int32" />
+    <Property Name="Fin_Id" Type="Int32" />
+    <Property Name="Unit_Id" Type="Int32" />
+    <Property Name="Bit_Approved" Type="Boolean" />
+    <Property Name="Proposed_Re_For_Current" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Prop_Amnt" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Remarks" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="First_Lvl_Re_For_Current" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="fst_Aprov_Bdgt_Amnt" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="fst_Arop_Remarks" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="fst_Arop_BIT" Type="Boolean" />
+    <Property Name="Sec_Lvl_Re_For_Current" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Sec_Aprov_Bdgt_Amnt" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Sec_Arop_Remarks" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Sec_Arop_BIT" Type="Boolean" />
+    <Property Name="Bdgt_Amnt" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Ho_Remarks" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Sanc_Amnt" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Avlb_Amnt" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Rqst_Adtn_Alt_Amnt" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Aprv_Adtn_Alt_Amnt" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Intrm_Bug_Amnt" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Re_For_Current" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="IsDelete" Type="Boolean" />
+    <Property Name="AddOn" Type="DateTime" Precision="3" />
+    <Property Name="AddBy" Type="Int32" />
+    <Property Name="ModBy" Type="Int32" />
+    <Property Name="ModOn" Type="DateTime" Precision="3" />
+    <Property Name="Mod_Bug_Amnt" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Trans_Salary" Relationship="BMSModel.FK_Trans_Salary_Tarn_Add_Budget" FromRole="Tarn_Add_Budget" ToRole="Trans_Salary" />
+  </EntityType>
+  <EntityType Name="Tran_Cap_TP_Budget">
+    <Key>
+      <PropertyRef Name="Cap_TPbgt_Id" />
+    </Key>
+    <Property Name="Cap_TPbgt_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Head_Id" Type="Int32" />
+    <Property Name="SubHead_Id" Type="Int32" />
+    <Property Name="Fin_Id" Type="Int32" />
+    <Property Name="Unit_Id" Type="Int32" />
+    <Property Name="Proposed_Re_For_Current" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Prop_Amnt" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Bdgt_Amnt" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="First_Lvl_Re_For_Current" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="fst_Aprov_Bdgt_Amnt" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="fst_Arop_Remarks" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="fst_Arop_BIT" Type="Boolean" />
+    <Property Name="Sec_Lvl_Re_For_Current" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Sec_Aprov_Bdgt_Amnt" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Sec_Arop_Remarks" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Sec_Arop_BIT" Type="Boolean" />
+    <Property Name="Avlb_Amnt" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Rqst_Adtn_Alt_Amnt" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Aprv_Adtn_Alt_Amnt" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Intrm_Bug_Amnt" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Re_For_Current" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Ho_Remarks" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Remarks" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Bit_Approved" Type="Boolean" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="IsDelete" Type="Boolean" />
+    <Property Name="AddOn" Type="DateTime" Precision="3" />
+    <Property Name="AddBy" Type="Int32" />
+    <Property Name="ModOn" Type="DateTime" Precision="3" />
+    <Property Name="ModBy" Type="Int32" />
+    <NavigationProperty Name="Trans_Additional_Allotment" Relationship="Self.FK_Trans_Additional_Allotment_BudgetType" FromRole="Tran_Cap_TP_Budget" ToRole="Trans_Additional_Allotment" />
+    <NavigationProperty Name="Trans_CashRequstionNonInvoice" Relationship="Self.FK_Trans_CashRequstionNonInvoice_Tran_Cap_TP_Budget" FromRole="Tran_Cap_TP_Budget" ToRole="Trans_CashRequstionNonInvoice" />
+    <NavigationProperty Name="Trans_LeveL_ApprovalInvoice" Relationship="Self.FK_Trans_LeveL_ApprovalInvoice_Tran_Cap_TP_Budget" FromRole="Tran_Cap_TP_Budget" ToRole="Trans_LeveL_ApprovalInvoice" />
+    <NavigationProperty Name="Trans_LeveL_ApprovalNonInvoice" Relationship="Self.FK_Trans_LeveL_ApprovalNonInvoice_Tran_Cap_TP_Budget" FromRole="Tran_Cap_TP_Budget" ToRole="Trans_LeveL_ApprovalNonInvoice" />
+  </EntityType>
+  <EntityType Name="Tran_CWRequistionNumber">
+    <Key>
+      <PropertyRef Name="CWReq_NumberId" />
+    </Key>
+    <Property Name="CWReq_NumberId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Unit_Id" Type="Int32" />
+    <Property Name="Req_Num" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="AddOn" Type="DateTime" Precision="0" />
+    <Property Name="AddBy" Type="Int32" />
+    <Property Name="ModOn" Type="DateTime" Precision="0" />
+    <Property Name="ModBy" Type="DateTime" Precision="0" />
+  </EntityType>
+  <EntityType Name="Tran_User_Creation">
+    <Key>
+      <PropertyRef Name="Usr_Id" />
+    </Key>
+    <Property Name="Usr_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RoleID" Type="Int32" />
+    <Property Name="Dept_ID" Type="Int32" />
+    <Property Name="Desg_ID" Type="Int32" />
+    <Property Name="Unit_Id" Type="Int32" />
+    <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Phone" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="Usr_Nm" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Pwd" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="IsDelete" Type="Boolean" />
+    <Property Name="AddOn" Type="DateTime" Precision="3" />
+    <Property Name="AddBy" Type="Int32" />
+    <Property Name="ModOn" Type="DateTime" Precision="3" />
+    <Property Name="ModBy" Type="Int32" />
+    <Property Name="EmpCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Active" Type="Boolean" />
+    <Property Name="Regine" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="circleid" Type="Int32" />
+    <Property Name="divisonid" Type="Int32" />
+    <Property Name="zoneid" Type="Int32" />
+    <Property Name="ProfileName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Trans_Additional_Allotment">
+    <Key>
+      <PropertyRef Name="AddAlt_Id" />
+    </Key>
+    <Property Name="AddAlt_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Head_Id" Type="Int32" />
+    <Property Name="SubHead_Id" Type="Int32" />
+    <Property Name="Unit_Id" Type="Int32" />
+    <Property Name="Bgt_Id" Type="Int32" />
+    <Property Name="Cap_TPbgt_Id" Type="Int32" />
+    <Property Name="Fin_Id" Type="Int32" />
+    <Property Name="Exist_Altmnt" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Adtnal_Altmnt" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Lst_Yr_Expnd" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Cur_Yr_Expnd" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Aprov_Allotment" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Reasons" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Ho_Reasons" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="BgtTyp_Id" Type="Int32" />
+    <Property Name="Bit_Aprove" Type="Boolean" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="IsDelete" Type="Boolean" />
+    <Property Name="AddBy" Type="Int32" />
+    <Property Name="AddOn" Type="DateTime" Precision="3" />
+    <Property Name="ModOn" Type="DateTime" Precision="3" />
+    <Property Name="ModBy" Type="Int32" />
+    <NavigationProperty Name="Tran_Cap_TP_Budget" Relationship="Self.FK_Trans_Additional_Allotment_BudgetType" FromRole="Trans_Additional_Allotment" ToRole="Tran_Cap_TP_Budget" />
+  </EntityType>
+  <EntityType Name="Trans_Additional_allotment_Work">
+    <Key>
+      <PropertyRef Name="AddAltWork_Id" />
+    </Key>
+    <Property Name="AddAltWork_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Cap_Wok_Head_Id" Type="Int32" />
+    <Property Name="Unit_Id" Type="Int32" />
+    <Property Name="Cap_Work_Bgt_Id" Type="Int32" />
+    <Property Name="Fin_Id" Type="Int32" />
+    <Property Name="Exist_Altmnt" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Adtnal_Altmnt" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Lst_Yr_Expnd" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Cur_Yr_Expnd" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Aprov_Allotment" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Reasons" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Ho_Reasons" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Bit_Aprove" Type="Boolean" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="IsDelete" Type="Boolean" />
+    <Property Name="AddBy" Type="Int32" />
+    <Property Name="AddOn" Type="DateTime" Precision="3" />
+    <Property Name="ModOn" Type="DateTime" Precision="3" />
+    <Property Name="ModBy" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Trans_Cap_Work_Bgt_Requsion_Unit">
+    <Key>
+      <PropertyRef Name="Cap_Work_Bgt_Req_Id" />
+    </Key>
+    <Property Name="Cap_Work_Bgt_Req_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Cap_Wok_Head_Id" Type="Int32" />
+    <Property Name="Fin_Id" Type="Int32" />
+    <Property Name="Unit_Id" Type="Int32" />
+    <Property Name="Cap_Work_Bgt_Id" Type="Int32" />
+    <Property Name="Lst_Cum_Exp" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Curnt_Actul_Exp" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Probl_Exp" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Total_Exp" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Aprov_Bgt" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Prop_Re_Curnt" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Re_For_Current" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Ho_Remarks" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Bit_Aprove" Type="Boolean" />
+    <Property Name="Prop_BE_NxtFy" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Remarks" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="IsDelete" Type="Boolean" />
+    <Property Name="Addon" Type="DateTime" Precision="3" />
+    <Property Name="Addby" Type="Int32" />
+    <Property Name="Modon" Type="DateTime" Precision="3" />
+    <Property Name="Modby" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Trans_Cap_Work_Budget">
+    <Key>
+      <PropertyRef Name="Cap_Work_Bgt_Id" />
+    </Key>
+    <Property Name="Cap_Work_Bgt_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Cap_Wok_Head_Id" Type="Int32" />
+    <Property Name="Fin_Id" Type="Int32" />
+    <Property Name="Unit_Id" Type="Int32" />
+    <Property Name="Prop_Amnt" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Bdgt_Amnt" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Avlb_Amnt" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Rqst_Adtn_Alt_Amnt" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Aprv_Adtn_Alt_Amnt" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Mod_Bug_Amnt" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Re_For_Current" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Remarks" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Cry_Nxt_Fy" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="IsDelete" Type="Boolean" />
+    <Property Name="AddOn" Type="DateTime" Precision="3" />
+    <Property Name="AddBy" Type="Int32" />
+    <Property Name="ModOn" Type="DateTime" Precision="3" />
+    <Property Name="ModBy" Type="Int32" />
+    <Property Name="FileID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Trans_Cap_Wrk_CashRequistionInvoice">
+    <Key>
+      <PropertyRef Name="Cptl_Wrk_CashReq_Id" />
+    </Key>
+    <Property Name="Cptl_Wrk_CashReq_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Unit_Id" Type="Int32" />
+    <Property Name="Fin_Id" Type="Int32" />
+    <Property Name="Cap_Work_Bgt_Id" Type="Int32" />
+    <Property Name="Req_Date" Type="DateTime" Precision="3" />
+    <Property Name="Req_Num" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Cur_bnk_Balance" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="Cur_csh_Balance" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="ReasonCash_Maintain" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="bnkid" Type="Int32" />
+    <Property Name="Bnk_DtlsId" Type="Int32" />
+    <Property Name="Created_By" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Checked_By" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Authorized_By" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Invoice_Type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Invoice_Catagory" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Cap_Wok_Head_Id" Type="Int32" />
+    <Property Name="SupplierName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Purchased_MaterialDesc" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="wopoNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="InvoiceNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="InvoiceDt" Type="DateTime" Precision="3" />
+    <Property Name="InvoiceAmt" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="It_Tds" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="Igst_Td" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="Cgst_Tds" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="Sgst_Tds" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="Obroc_Tds" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="Royality_Tds" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="DeductedTds" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="Other_Deduction" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="Retain_Amt" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="NetPay" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="DivisonOfficer_Comment" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Ho_Initator" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Ho_AprovedLevel1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Final_approver" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="IsDelete" Type="Boolean" />
+    <Property Name="AddBy" Type="Int32" />
+    <Property Name="AddOn" Type="DateTime" Precision="3" />
+    <Property Name="ModBy" Type="Int32" />
+    <Property Name="ModOn" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="Trans_Capital_TPBgt_Prop_By_Unit">
+    <Key>
+      <PropertyRef Name="TP_Bgt_Unit_Id" />
+    </Key>
+    <Property Name="TP_Bgt_Unit_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Head_Id" Type="Int32" />
+    <Property Name="SubHead_Id" Type="Int32" />
+    <Property Name="Fin_Id" Type="Int32" />
+    <Property Name="Unit_Id" Type="Int32" />
+    <Property Name="Cap_TPbgt_Id" Type="Int32" />
+    <Property Name="Aprov_No" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Aprov_Dt" Type="DateTime" Precision="3" />
+    <Property Name="Aprov_Est_Cost" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Lst_Cum_Exp" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Curnt_Actul_Exp" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Probl_Exp" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Total_Exp" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Fst_Bdgt_Nxt_Fy" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Fst_remarks" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Fst_Prop_Re_Curnt" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="fst_Arop_BIT" Type="Boolean" />
+    <Property Name="Sec_Arop_BIT" Type="Boolean" />
+    <Property Name="Prop_Re_Curnt" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="bit_Second_Aprov" Type="Boolean" />
+    <Property Name="Re_For_Current" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Prop_BE_NxtFy" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Aprov_Bgt" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Remarks" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Ho_Remarks" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="bit_Aproved" Type="Boolean" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="IsDelete" Type="Boolean" />
+    <Property Name="Addon" Type="DateTime" Precision="3" />
+    <Property Name="Addby" Type="Int32" />
+    <Property Name="Modon" Type="DateTime" Precision="3" />
+    <Property Name="Modby" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Trans_CashRequistionInvoice">
+    <Key>
+      <PropertyRef Name="CashReq_Id" />
+    </Key>
+    <Property Name="CashReq_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Unit_Id" Type="Int32" />
+    <Property Name="Fin_Id" Type="Int32" />
+    <Property Name="Bgt_Id" Type="Int32" />
+    <Property Name="Cap_TPbgt_Id" Type="Int32" />
+    <Property Name="Req_Date" Type="DateTime" Precision="3" />
+    <Property Name="Req_Num" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Cur_bnk_Balance" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="Cur_csh_Balance" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="ReasonCash_Maintain" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="bnkid" Type="Int32" />
+    <Property Name="Bnk_DtlsId" Type="Int32" />
+    <Property Name="Created_By" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Checked_By" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Authorized_By" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Invoice_Type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Invoice_Catagory" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="BugtTyp_Id" Type="Int32" />
+    <Property Name="Head_Id" Type="Int32" />
+    <Property Name="SubHead_Id" Type="Int32" />
+    <Property Name="SubHeadCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="SupplierName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Purchased_MaterialDesc" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="wopoNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="InvoiceNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="InvoiceDt" Type="DateTime" Precision="3" />
+    <Property Name="InvoiceAmt" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="It_Tds" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="Igst_Td" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="Cgst_Tds" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="Sgst_Tds" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="Obroc_Tds" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="Royality_Tds" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="DeductedTds" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="Other_Deduction" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="Retain_Amt" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="NetPay" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="DivisonOfficer_Comment" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Ho_Initator" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Ho_AprovedLevel1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Final_approver" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="IsDelete" Type="Boolean" />
+    <Property Name="AddBy" Type="Int32" />
+    <Property Name="AddOn" Type="DateTime" Precision="3" />
+    <Property Name="ModBy" Type="Int32" />
+    <Property Name="ModOn" Type="DateTime" Precision="3" />
+    <Property Name="FileID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Trans_CashRequstionNonInvoice">
+    <Key>
+      <PropertyRef Name="CashReq_NonInvoiceId" />
+    </Key>
+    <Property Name="CashReq_NonInvoiceId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NonInvoiceNumber" Type="String" MaxLength="11" FixedLength="false" Unicode="false" annotation:StoreGeneratedPattern="Computed" />
+    <Property Name="Unit_Id" Type="Int32" />
+    <Property Name="Fin_Id" Type="Int32" />
+    <Property Name="Bgt_Id" Type="Int32" />
+    <Property Name="Cap_TPbgt_Id" Type="Int32" />
+    <Property Name="Req_Date" Type="DateTime" Precision="3" />
+    <Property Name="Req_Num" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Cur_bnk_Balance" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="Cur_csh_Balance" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="ReasonCash_Maintain" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="bnkid" Type="Int32" />
+    <Property Name="Bnk_DtlsId" Type="Int32" />
+    <Property Name="Created_By" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Checked_By" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Authorized_By" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Invoice_Type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Invoice_Catagory" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="BugtTyp_Id" Type="Int32" />
+    <Property Name="Head_Id" Type="Int32" />
+    <Property Name="SubHead_Id" Type="Int32" />
+    <Property Name="SubHeadCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Dues" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="Requeted_Amt" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="Budget_Amt" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Approved_Amt" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="DivisonOfficer_Comment" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Ho_Initator" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Ho_AprovedLevel1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Final_approver" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="IsDelete" Type="Boolean" />
+    <Property Name="AddBy" Type="Int32" />
+    <Property Name="AddOn" Type="DateTime" Precision="3" />
+    <Property Name="ModBy" Type="Int32" />
+    <Property Name="ModOn" Type="DateTime" Precision="3" />
+    <Property Name="FileID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Tran_Cap_TP_Budget" Relationship="Self.FK_Trans_CashRequstionNonInvoice_Tran_Cap_TP_Budget" FromRole="Trans_CashRequstionNonInvoice" ToRole="Tran_Cap_TP_Budget" />
+  </EntityType>
+  <EntityType Name="Trans_Cptl_wrk_CashRequstionNonInvoice">
+    <Key>
+      <PropertyRef Name="Cap_wrk_CashReq_NonInvoiceId" />
+    </Key>
+    <Property Name="Cap_wrk_CashReq_NonInvoiceId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NonInvoiceNumber" Type="String" MaxLength="11" FixedLength="false" Unicode="false" annotation:StoreGeneratedPattern="Computed" />
+    <Property Name="Unit_Id" Type="Int32" />
+    <Property Name="Fin_Id" Type="Int32" />
+    <Property Name="Cap_Work_Bgt_Id" Type="Int32" />
+    <Property Name="Req_Date" Type="DateTime" Precision="3" />
+    <Property Name="Req_Num" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Cur_bnk_Balance" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="Cur_csh_Balance" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="ReasonCash_Maintain" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="bnkid" Type="Int32" />
+    <Property Name="Bnk_DtlsId" Type="Int32" />
+    <Property Name="Created_By" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Checked_By" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Authorized_By" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Invoice_Type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Invoice_Catagory" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Cap_Wok_Head_Id" Type="Int32" />
+    <Property Name="Dues" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="Requeted_Amt" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="Budget_Amt" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Approved_Amt" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="DivisonOfficer_Comment" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Ho_Initator" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Ho_AprovedLevel1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Final_approver" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="IsDelete" Type="Boolean" />
+    <Property Name="AddBy" Type="Int32" />
+    <Property Name="AddOn" Type="DateTime" Precision="3" />
+    <Property Name="ModBy" Type="Int32" />
+    <Property Name="ModOn" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="Trans_LeveL_ApprovalInvoice">
+    <Key>
+      <PropertyRef Name="CashReqAprv_levelId" />
+    </Key>
+    <Property Name="CashReqAprv_levelId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CashReq_Id" Type="Int32" />
+    <Property Name="Unit_Id" Type="Int32" />
+    <Property Name="Fin_Id" Type="Int32" />
+    <Property Name="Bgt_Id" Type="Int32" />
+    <Property Name="Cap_TPbgt_Id" Type="Int32" />
+    <Property Name="BugtTyp_Id" Type="Int32" />
+    <Property Name="InvoiceNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Req_Num" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Level_Approver1" Type="Int32" />
+    <Property Name="Approv_Quantity1" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Bit_Approv1" Type="Boolean" />
+    <Property Name="Approvr1_remarks" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Level_Approver2" Type="Int32" />
+    <Property Name="Approv_Quantity2" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Bit_Approv2" Type="Boolean" />
+    <Property Name="Approvr2_remarks" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Level_Approver3" Type="Int32" />
+    <Property Name="Approv_Quantity13" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Bit_Approv3" Type="Boolean" />
+    <Property Name="Approvr3_remarks" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Level_Approver4" Type="Int32" />
+    <Property Name="Approv_Quantity4" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Bit_Approv4" Type="Boolean" />
+    <Property Name="Approvr4_remarks" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Level_Approver5" Type="Int32" />
+    <Property Name="Approv_Quantity5" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Bit_Approv5" Type="Boolean" />
+    <Property Name="Approvr5_remarks" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="IsDelete" Type="Boolean" />
+    <Property Name="AddBy" Type="Int32" />
+    <Property Name="AddOn" Type="DateTime" Precision="3" />
+    <Property Name="ModBy" Type="Int32" />
+    <Property Name="ModOn" Type="DateTime" Precision="3" />
+    <Property Name="FileID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Tran_Cap_TP_Budget" Relationship="Self.FK_Trans_LeveL_ApprovalInvoice_Tran_Cap_TP_Budget" FromRole="Trans_LeveL_ApprovalInvoice" ToRole="Tran_Cap_TP_Budget" />
+  </EntityType>
+  <EntityType Name="Trans_LeveL_ApprovalNonInvoice">
+    <Key>
+      <PropertyRef Name="CashReqAprv_levelNonInvoiceId" />
+    </Key>
+    <Property Name="CashReqAprv_levelNonInvoiceId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CashReq_NonInvoiceId" Type="Int32" />
+    <Property Name="Unit_Id" Type="Int32" />
+    <Property Name="BugtTyp_Id" Type="Int32" />
+    <Property Name="Fin_Id" Type="Int32" />
+    <Property Name="Bgt_Id" Type="Int32" />
+    <Property Name="Cap_TPbgt_Id" Type="Int32" />
+    <Property Name="Req_Num" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="NonInvoiceNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Level_Approver1" Type="Int32" />
+    <Property Name="Approv_Quantity1" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Bit_Approv1" Type="Boolean" />
+    <Property Name="Approvr1_remarks" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Level_Approver2" Type="Int32" />
+    <Property Name="Approv_Quantity2" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Bit_Approv2" Type="Boolean" />
+    <Property Name="Approvr2_remarks" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Level_Approver3" Type="Int32" />
+    <Property Name="Approv_Quantity13" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Bit_Approv3" Type="Boolean" />
+    <Property Name="Approvr3_remarks" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Level_Approver4" Type="Int32" />
+    <Property Name="Approv_Quantity4" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Bit_Approv4" Type="Boolean" />
+    <Property Name="Approvr4_remarks" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Level_Approver5" Type="Int32" />
+    <Property Name="Approv_Quantity5" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Bit_Approv5" Type="Boolean" />
+    <Property Name="Approvr5_remarks" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="IsDelete" Type="Boolean" />
+    <Property Name="AddBy" Type="Int32" />
+    <Property Name="AddOn" Type="DateTime" Precision="3" />
+    <Property Name="ModBy" Type="Int32" />
+    <Property Name="ModOn" Type="DateTime" Precision="3" />
+    <Property Name="FileID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Tran_Cap_TP_Budget" Relationship="Self.FK_Trans_LeveL_ApprovalNonInvoice_Tran_Cap_TP_Budget" FromRole="Trans_LeveL_ApprovalNonInvoice" ToRole="Tran_Cap_TP_Budget" />
+  </EntityType>
+  <EntityType Name="Trans_RequsitionNumber">
+    <Key>
+      <PropertyRef Name="Req_NumberId" />
+    </Key>
+    <Property Name="Req_NumberId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Unit_Id" Type="Int32" />
+    <Property Name="Req_Num" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="AddOn" Type="DateTime" Precision="0" />
+    <Property Name="AddBy" Type="Int32" />
+    <Property Name="ModOn" Type="DateTime" Precision="0" />
+    <Property Name="ModBy" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="Mst_Unit" Relationship="Self.FK_Trans_RequsitionNumber_Mst_Unit" FromRole="Trans_RequsitionNumber" ToRole="Mst_Unit" />
+  </EntityType>
+  <EntityType Name="Trans_Revnu_Expenditure_By_Unit">
+    <Key>
+      <PropertyRef Name="Unit_RevExp_Id" />
+    </Key>
+    <Property Name="Unit_RevExp_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Unit_Id" Type="Int32" />
+    <Property Name="Fin_Id" Type="Int32" />
+    <Property Name="Head_Id" Type="Int32" />
+    <Property Name="Subhead_Id" Type="Int32" />
+    <Property Name="Lt_Fy_Exp" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Bgt_Id" Type="Int32" />
+    <Property Name="Lb_Pr_Paid" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Current_expdr" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Total_Pmt" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Prob_Exp" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Total_Prop_Exp" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Fst_Bdgt_Nxt_Fy" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Fst_remarks" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Fst_Prop_Re_Curnt" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="fst_Arop_BIT" Type="Boolean" />
+    <Property Name="Sec_Arop_BIT" Type="Boolean" />
+    <Property Name="Prop_Re_Curnt" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Bdgt_Nxt_Fy" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Remarks" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="bit_Second_Aprov" Type="Boolean" />
+    <Property Name="Re_For_Current" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Bdgt_Amnt" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Ho_Remarks" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="FileID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="bit_Aproved" Type="Boolean" />
+    <Property Name="Addby" Type="Int32" />
+    <Property Name="Addon" Type="DateTime" Precision="3" />
+    <Property Name="Modby" Type="Int32" />
+    <Property Name="Modon" Type="DateTime" Precision="3" />
+    <Property Name="IsDelete" Type="Boolean" />
+    <Property Name="IsActive" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="TransCap_Wrk__LeveL_ApprovalInvoice">
+    <Key>
+      <PropertyRef Name="Cap_wrk_CashReqAprv_levelId" />
+    </Key>
+    <Property Name="Cap_wrk_CashReqAprv_levelId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Cptl_Wrk_CashReq_Id" Type="Int32" />
+    <Property Name="Unit_Id" Type="Int32" />
+    <Property Name="Fin_Id" Type="Int32" />
+    <Property Name="Cap_Work_Bgt_Id" Type="Int32" />
+    <Property Name="InvoiceNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Req_Num" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Level_Approver1" Type="Int32" />
+    <Property Name="Approv_Quantity1" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Bit_Approv1" Type="Boolean" />
+    <Property Name="Approvr1_remarks" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Level_Approver2" Type="Int32" />
+    <Property Name="Approv_Quantity2" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Bit_Approv2" Type="Boolean" />
+    <Property Name="Approvr2_remarks" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Level_Approver3" Type="Int32" />
+    <Property Name="Approv_Quantity13" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Bit_Approv3" Type="Boolean" />
+    <Property Name="Approvr3_remarks" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Level_Approver4" Type="Int32" />
+    <Property Name="Approv_Quantity4" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Bit_Approv4" Type="Boolean" />
+    <Property Name="Approvr4_remarks" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Level_Approver5" Type="Int32" />
+    <Property Name="Approv_Quantity5" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Bit_Approv5" Type="Boolean" />
+    <Property Name="Approvr5_remarks" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="IsDelete" Type="Boolean" />
+    <Property Name="AddBy" Type="Int32" />
+    <Property Name="AddOn" Type="DateTime" Precision="3" />
+    <Property Name="ModBy" Type="Int32" />
+    <Property Name="ModOn" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="TransCap_Wrk__LeveL_ApprovalNonInvoice">
+    <Key>
+      <PropertyRef Name="Cap_wrk_CashReqAprv_levelIdNoninvoice" />
+    </Key>
+    <Property Name="Cap_wrk_CashReqAprv_levelIdNoninvoice" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Cap_wrk_CashReq_NonInvoiceId" Type="Int32" />
+    <Property Name="Fin_Id" Type="Int32" />
+    <Property Name="Unit_Id" Type="Int32" />
+    <Property Name="Cap_Work_Bgt_Id" Type="Int32" />
+    <Property Name="Req_Num" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="NonInvoiceNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Level_Approver1" Type="Int32" />
+    <Property Name="Approv_Quantity1" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Bit_Approv1" Type="Boolean" />
+    <Property Name="Approvr1_remarks" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Level_Approver2" Type="Int32" />
+    <Property Name="Approv_Quantity2" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Bit_Approv2" Type="Boolean" />
+    <Property Name="Approvr2_remarks" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Level_Approver3" Type="Int32" />
+    <Property Name="Approv_Quantity13" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Bit_Approv3" Type="Boolean" />
+    <Property Name="Approvr3_remarks" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Level_Approver4" Type="Int32" />
+    <Property Name="Approv_Quantity4" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Bit_Approv4" Type="Boolean" />
+    <Property Name="Approvr4_remarks" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Level_Approver5" Type="Int32" />
+    <Property Name="Approv_Quantity5" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Bit_Approv5" Type="Boolean" />
+    <Property Name="Approvr5_remarks" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="IsDelete" Type="Boolean" />
+    <Property Name="AddBy" Type="Int32" />
+    <Property Name="AddOn" Type="DateTime" Precision="3" />
+    <Property Name="ModBy" Type="Int32" />
+    <Property Name="ModOn" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="Trns_Chng_Pwd_Log">
+    <Key>
+      <PropertyRef Name="Cp_Id" />
+    </Key>
+    <Property Name="Cp_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Usr_Id" Type="Int32" />
+    <Property Name="OTP" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Modby" Type="Int32" />
+    <Property Name="Modon" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="Mst_User">
+    <Key>
+      <PropertyRef Name="userid" />
+      <PropertyRef Name="roleid" />
+      <PropertyRef Name="unm" />
+      <PropertyRef Name="pwd" />
+      <PropertyRef Name="isactive" />
+      <PropertyRef Name="isdelete" />
+    </Key>
+    <Property Name="userid" Type="Int32" Nullable="false" />
+    <Property Name="unid" Type="Int32" />
+    <Property Name="utyp" Type="Int16" />
+    <Property Name="roleid" Type="Int32" Nullable="false" />
+    <Property Name="empnm" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="unm" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="pwd" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="mail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="phn" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="isactive" Type="Boolean" Nullable="false" />
+    <Property Name="isdelete" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Mst_AssignUnitToBank_Mst_Bank">
+    <End Role="Mst_Bank" Type="Self.Mst_Bank" Multiplicity="0..1" />
+    <End Role="Mst_AssignUnitToBank" Type="Self.Mst_AssignUnitToBank" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Mst_Bank">
+        <PropertyRef Name="bnkid" />
+      </Principal>
+      <Dependent Role="Mst_AssignUnitToBank">
+        <PropertyRef Name="bnkid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Mst_AssignUnitToBank_Mst_Unit">
+    <End Role="Mst_Unit" Type="Self.Mst_Unit" Multiplicity="0..1" />
+    <End Role="Mst_AssignUnitToBank" Type="Self.Mst_AssignUnitToBank" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Mst_Unit">
+        <PropertyRef Name="Unit_Id" />
+      </Principal>
+      <Dependent Role="Mst_AssignUnitToBank">
+        <PropertyRef Name="Unit_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Trans_RequsitionNumber_Mst_Unit">
+    <End Role="Mst_Unit" Type="Self.Mst_Unit" Multiplicity="0..1" />
+    <End Role="Trans_RequsitionNumber" Type="Self.Trans_RequsitionNumber" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Mst_Unit">
+        <PropertyRef Name="Unit_Id" />
+      </Principal>
+      <Dependent Role="Trans_RequsitionNumber">
+        <PropertyRef Name="Unit_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Trans_Additional_Allotment_BudgetType">
+    <End Role="Tran_Cap_TP_Budget" Type="Self.Tran_Cap_TP_Budget" Multiplicity="0..1" />
+    <End Role="Trans_Additional_Allotment" Type="Self.Trans_Additional_Allotment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tran_Cap_TP_Budget">
+        <PropertyRef Name="Cap_TPbgt_Id" />
+      </Principal>
+      <Dependent Role="Trans_Additional_Allotment">
+        <PropertyRef Name="Cap_TPbgt_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Trans_CashRequstionNonInvoice_Tran_Cap_TP_Budget">
+    <End Role="Tran_Cap_TP_Budget" Type="Self.Tran_Cap_TP_Budget" Multiplicity="0..1" />
+    <End Role="Trans_CashRequstionNonInvoice" Type="Self.Trans_CashRequstionNonInvoice" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tran_Cap_TP_Budget">
+        <PropertyRef Name="Cap_TPbgt_Id" />
+      </Principal>
+      <Dependent Role="Trans_CashRequstionNonInvoice">
+        <PropertyRef Name="Cap_TPbgt_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Trans_LeveL_ApprovalInvoice_Tran_Cap_TP_Budget">
+    <End Role="Tran_Cap_TP_Budget" Type="Self.Tran_Cap_TP_Budget" Multiplicity="0..1" />
+    <End Role="Trans_LeveL_ApprovalInvoice" Type="Self.Trans_LeveL_ApprovalInvoice" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tran_Cap_TP_Budget">
+        <PropertyRef Name="Cap_TPbgt_Id" />
+      </Principal>
+      <Dependent Role="Trans_LeveL_ApprovalInvoice">
+        <PropertyRef Name="Cap_TPbgt_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Trans_LeveL_ApprovalNonInvoice_Tran_Cap_TP_Budget">
+    <End Role="Tran_Cap_TP_Budget" Type="Self.Tran_Cap_TP_Budget" Multiplicity="0..1" />
+    <End Role="Trans_LeveL_ApprovalNonInvoice" Type="Self.Trans_LeveL_ApprovalNonInvoice" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tran_Cap_TP_Budget">
+        <PropertyRef Name="Cap_TPbgt_Id" />
+      </Principal>
+      <Dependent Role="Trans_LeveL_ApprovalNonInvoice">
+        <PropertyRef Name="Cap_TPbgt_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="BMSEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="BudgetTypes" EntityType="Self.BudgetType" />
+    <EntitySet Name="Files" EntityType="Self.File" />
+    <EntitySet Name="Financial_Year" EntityType="Self.Financial_Year" />
+    <EntitySet Name="Head_Master" EntityType="Self.Head_Master" />
+    <EntitySet Name="Mst_ApproveType" EntityType="Self.Mst_ApproveType" />
+    <EntitySet Name="Mst_Assign_Designation" EntityType="Self.Mst_Assign_Designation" />
+    <EntitySet Name="Mst_AssignCircleDivison" EntityType="Self.Mst_AssignCircleDivison" />
+    <EntitySet Name="Mst_AssignUnitToBank" EntityType="Self.Mst_AssignUnitToBank" />
+    <EntitySet Name="Mst_AssignZoneCircle" EntityType="Self.Mst_AssignZoneCircle" />
+    <EntitySet Name="Mst_Bank" EntityType="Self.Mst_Bank" />
+    <EntitySet Name="Mst_BnkDtls" EntityType="Self.Mst_BnkDtls" />
+    <EntitySet Name="Mst_Capital_Works_Detail" EntityType="Self.Mst_Capital_Works_Detail" />
+    <EntitySet Name="Mst_Circle" EntityType="Self.Mst_Circle" />
+    <EntitySet Name="Mst_Country" EntityType="Self.Mst_Country" />
+    <EntitySet Name="Mst_District" EntityType="Self.Mst_District" />
+    <EntitySet Name="Mst_Divison" EntityType="Self.Mst_Divison" />
+    <EntitySet Name="Mst_InnerSubHead" EntityType="Self.Mst_InnerSubHead" />
+    <EntitySet Name="Mst_month" EntityType="Self.Mst_month" />
+    <EntitySet Name="Mst_SalaryHeads" EntityType="Self.Mst_SalaryHeads" />
+    <EntitySet Name="Mst_State" EntityType="Self.Mst_State" />
+    <EntitySet Name="Mst_Unit" EntityType="Self.Mst_Unit" />
+    <EntitySet Name="Mst_Zone" EntityType="Self.Mst_Zone" />
+    <EntitySet Name="Pages" EntityType="Self.Page" />
+    <EntitySet Name="Permissions" EntityType="Self.Permission" />
+    <EntitySet Name="Roles" EntityType="Self.Role" />
+    <EntitySet Name="Tarn_Add_Budget" EntityType="Self.Tarn_Add_Budget" />
+    <EntitySet Name="Tran_Cap_TP_Budget" EntityType="Self.Tran_Cap_TP_Budget" />
+    <EntitySet Name="Tran_CWRequistionNumber" EntityType="Self.Tran_CWRequistionNumber" />
+    <EntitySet Name="Tran_User_Creation" EntityType="Self.Tran_User_Creation" />
+    <EntitySet Name="Trans_Additional_Allotment" EntityType="Self.Trans_Additional_Allotment" />
+    <EntitySet Name="Trans_Additional_allotment_Work" EntityType="Self.Trans_Additional_allotment_Work" />
+    <EntitySet Name="Trans_Cap_Work_Bgt_Requsion_Unit" EntityType="Self.Trans_Cap_Work_Bgt_Requsion_Unit" />
+    <EntitySet Name="Trans_Cap_Work_Budget" EntityType="Self.Trans_Cap_Work_Budget" />
+    <EntitySet Name="Trans_Cap_Wrk_CashRequistionInvoice" EntityType="Self.Trans_Cap_Wrk_CashRequistionInvoice" />
+    <EntitySet Name="Trans_Capital_TPBgt_Prop_By_Unit" EntityType="Self.Trans_Capital_TPBgt_Prop_By_Unit" />
+    <EntitySet Name="Trans_CashRequistionInvoice" EntityType="Self.Trans_CashRequistionInvoice" />
+    <EntitySet Name="Trans_CashRequstionNonInvoice" EntityType="Self.Trans_CashRequstionNonInvoice" />
+    <EntitySet Name="Trans_Cptl_wrk_CashRequstionNonInvoice" EntityType="Self.Trans_Cptl_wrk_CashRequstionNonInvoice" />
+    <EntitySet Name="Trans_LeveL_ApprovalInvoice" EntityType="Self.Trans_LeveL_ApprovalInvoice" />
+    <EntitySet Name="Trans_LeveL_ApprovalNonInvoice" EntityType="Self.Trans_LeveL_ApprovalNonInvoice" />
+    <EntitySet Name="Trans_RequsitionNumber" EntityType="Self.Trans_RequsitionNumber" />
+    <EntitySet Name="Trans_Revnu_Expenditure_By_Unit" EntityType="Self.Trans_Revnu_Expenditure_By_Unit" />
+    <EntitySet Name="TransCap_Wrk__LeveL_ApprovalInvoice" EntityType="Self.TransCap_Wrk__LeveL_ApprovalInvoice" />
+    <EntitySet Name="TransCap_Wrk__LeveL_ApprovalNonInvoice" EntityType="Self.TransCap_Wrk__LeveL_ApprovalNonInvoice" />
+    <EntitySet Name="Trns_Chng_Pwd_Log" EntityType="Self.Trns_Chng_Pwd_Log" />
+    <EntitySet Name="Mst_User" EntityType="Self.Mst_User" />
+    <AssociationSet Name="FK_Mst_AssignUnitToBank_Mst_Bank" Association="Self.FK_Mst_AssignUnitToBank_Mst_Bank">
+      <End Role="Mst_Bank" EntitySet="Mst_Bank" />
+      <End Role="Mst_AssignUnitToBank" EntitySet="Mst_AssignUnitToBank" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Mst_AssignUnitToBank_Mst_Unit" Association="Self.FK_Mst_AssignUnitToBank_Mst_Unit">
+      <End Role="Mst_Unit" EntitySet="Mst_Unit" />
+      <End Role="Mst_AssignUnitToBank" EntitySet="Mst_AssignUnitToBank" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Trans_RequsitionNumber_Mst_Unit" Association="Self.FK_Trans_RequsitionNumber_Mst_Unit">
+      <End Role="Mst_Unit" EntitySet="Mst_Unit" />
+      <End Role="Trans_RequsitionNumber" EntitySet="Trans_RequsitionNumber" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Trans_Additional_Allotment_BudgetType" Association="Self.FK_Trans_Additional_Allotment_BudgetType">
+      <End Role="Tran_Cap_TP_Budget" EntitySet="Tran_Cap_TP_Budget" />
+      <End Role="Trans_Additional_Allotment" EntitySet="Trans_Additional_Allotment" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Trans_CashRequstionNonInvoice_Tran_Cap_TP_Budget" Association="Self.FK_Trans_CashRequstionNonInvoice_Tran_Cap_TP_Budget">
+      <End Role="Tran_Cap_TP_Budget" EntitySet="Tran_Cap_TP_Budget" />
+      <End Role="Trans_CashRequstionNonInvoice" EntitySet="Trans_CashRequstionNonInvoice" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Trans_LeveL_ApprovalInvoice_Tran_Cap_TP_Budget" Association="Self.FK_Trans_LeveL_ApprovalInvoice_Tran_Cap_TP_Budget">
+      <End Role="Tran_Cap_TP_Budget" EntitySet="Tran_Cap_TP_Budget" />
+      <End Role="Trans_LeveL_ApprovalInvoice" EntitySet="Trans_LeveL_ApprovalInvoice" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Trans_LeveL_ApprovalNonInvoice_Tran_Cap_TP_Budget" Association="Self.FK_Trans_LeveL_ApprovalNonInvoice_Tran_Cap_TP_Budget">
+      <End Role="Tran_Cap_TP_Budget" EntitySet="Tran_Cap_TP_Budget" />
+      <End Role="Trans_LeveL_ApprovalNonInvoice" EntitySet="Trans_LeveL_ApprovalNonInvoice" />
+    </AssociationSet>
+    <EntitySet Name="Mst_Department" EntityType="BMSModel.Mst_Department" />
+    <EntitySet Name="Mst_Designation" EntityType="BMSModel.Mst_Designation" />
+    <FunctionImport Name="Head_MasterSelectAll" ReturnType="Collection(BMSModel.Head_MasterSelectAll_Result)" />
+    <FunctionImport Name="BankDetails_SelectAll" ReturnType="Collection(BMSModel.BankDetails_SelectAll_Result)" />
+    <FunctionImport Name="SubHeadMasterAll" ReturnType="Collection(BMSModel.SubHeadMasterAll_Result)" />
+    <EntitySet Name="Trans_Salary" EntityType="BMSModel.Trans_Salary" />
+    <AssociationSet Name="FK_Trans_Salary_Financial_Year" Association="BMSModel.FK_Trans_Salary_Financial_Year">
+      <End Role="Financial_Year" EntitySet="Financial_Year" />
+      <End Role="Trans_Salary" EntitySet="Trans_Salary" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Trans_Salary_Mst_month" Association="BMSModel.FK_Trans_Salary_Mst_month">
+      <End Role="Mst_month" EntitySet="Mst_month" />
+      <End Role="Trans_Salary" EntitySet="Trans_Salary" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Trans_Salary_Mst_Unit" Association="BMSModel.FK_Trans_Salary_Mst_Unit">
+      <End Role="Mst_Unit" EntitySet="Mst_Unit" />
+      <End Role="Trans_Salary" EntitySet="Trans_Salary" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Trans_Salary_Tarn_Add_Budget" Association="BMSModel.FK_Trans_Salary_Tarn_Add_Budget">
+      <End Role="Tarn_Add_Budget" EntitySet="Tarn_Add_Budget" />
+      <End Role="Trans_Salary" EntitySet="Trans_Salary" />
+    </AssociationSet>
+    <EntitySet Name="Mst_SubHead" EntityType="BMSModel.Mst_SubHead" />
+    <EntitySet Name="Trans_Assign_User_ToApprov" EntityType="BMSModel.Trans_Assign_User_ToApprov" />
+    <FunctionImport Name="User_Create_Details" ReturnType="Collection(BMSModel.User_Create_Details_Result)" />
+    <FunctionImport Name="StateSelectAll" ReturnType="Collection(BMSModel.StateSelectAll_Result)" />
+    <FunctionImport Name="DistrictSelectAll" ReturnType="Collection(BMSModel.DistrictSelectAll_Result)" />
+    <FunctionImport Name="AssignCircleDivisonAll" ReturnType="Collection(BMSModel.AssignCircleDivisonAll_Result)" />
+    <FunctionImport Name="AssignUnitBankAll" ReturnType="Collection(BMSModel.AssignUnitBankAll_Result)" />
+    <FunctionImport Name="AssigneToUser_SelectAll" ReturnType="Collection(BMSModel.AssigneToUser_SelectAll_Result)" />
+    <FunctionImport Name="User_SelectById" ReturnType="Collection(BMSModel.User_SelectById_Result)">
+      <Parameter Name="Usr_Id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="SelectAllByUnitAll" ReturnType="Collection(BMSModel.SelectAllByUnitAll_Result)">
+      <Parameter Name="Fin_Id" Mode="In" Type="Int32" />
+      <Parameter Name="Unit_Id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Update_BudgetexpByUnit">
+      <Parameter Name="PXMLTABLEEARNING" Mode="In" Type="String" />
+      <Parameter Name="AddBy" Mode="In" Type="Int32" />
+      <Parameter Name="rv" Mode="In" Type="Int32" />
+      <Parameter Name="ReturnValue" Mode="InOut" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Update_CapitalTPBudgetByUnit">
+      <Parameter Name="PXMLTABLEEARNING" Mode="In" Type="String" />
+      <Parameter Name="AddBy" Mode="In" Type="Int32" />
+      <Parameter Name="rv" Mode="In" Type="Int32" />
+      <Parameter Name="ReturnValue" Mode="InOut" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="UpdateBudgetexpByUnit">
+      <Parameter Name="PXMLTABLEEARNING" Mode="In" Type="String" />
+      <Parameter Name="AddBy" Mode="In" Type="Int32" />
+      <Parameter Name="rv" Mode="In" Type="Int32" />
+      <Parameter Name="ReturnValue" Mode="InOut" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="BudgetSelectAll" ReturnType="Collection(BMSModel.BudgetSelectAll_Result)" />
+    <FunctionImport Name="SelectAllByUnitAllbyId" ReturnType="Collection(BMSModel.SelectAllByUnitAllbyId_Result)">
+      <Parameter Name="Fin_Id" Mode="In" Type="Int32" />
+      <Parameter Name="Unit_Id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="SelectAllByUnitAllbyIdd" ReturnType="Collection(BMSModel.SelectAllByUnitAllbyIdd_Result)">
+      <Parameter Name="Fin_Id" Mode="In" Type="Int32" />
+      <Parameter Name="Unit_Id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="GetAllRevenueHeadForFstLvl" ReturnType="Collection(BMSModel.GetAllRevenueHeadForFstLvl_Result)">
+      <Parameter Name="Fin_Id" Mode="In" Type="Int32" />
+      <Parameter Name="Unit_Id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="ExpenditureSelectAllByUnit" ReturnType="Collection(BMSModel.ExpenditureSelectAllByUnit_Result)">
+      <Parameter Name="Fin_Id" Mode="In" Type="Int32" />
+      <Parameter Name="Unit_Id" Mode="In" Type="Int32" />
+      <Parameter Name="Head_Id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="GetAllRevenueHeadForSecLvl" ReturnType="Collection(BMSModel.GetAllRevenueHeadForSecLvl_Result)">
+      <Parameter Name="Fin_Id" Mode="In" Type="Int32" />
+      <Parameter Name="Unit_Id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="ExpendSelectAllForHoApprove" ReturnType="Collection(BMSModel.ExpendSelectAllForHoApprove_Result)">
+      <Parameter Name="Fin_Id" Mode="In" Type="Int32" />
+      <Parameter Name="Unit_Id" Mode="In" Type="Int32" />
+      <Parameter Name="Head_Id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="RevenueBudgetSelectAllHead" ReturnType="Collection(BMSModel.RevenueBudgetSelectAllHead_Result)">
+      <Parameter Name="Fin_Id" Mode="In" Type="Int32" />
+      <Parameter Name="Unit_Id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="ExpenditureSelectAllByUnitForFinal" ReturnType="Collection(BMSModel.ExpenditureSelectAllByUnitForFinal_Result)">
+      <Parameter Name="Fin_Id" Mode="In" Type="Int32" />
+      <Parameter Name="Unit_Id" Mode="In" Type="Int32" />
+      <Parameter Name="Head_Id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="GetRevenueHeadforProposalByUnit" ReturnType="Collection(BMSModel.GetRevenueHeadforProposalByUnit_Result)">
+      <Parameter Name="Fin_Id" Mode="In" Type="Int32" />
+      <Parameter Name="Unit_Id" Mode="In" Type="Int32" />
+    </FunctionImport>
+  </EntityContainer>
+  <EntityType Name="Mst_Department">
+    <Key>
+      <PropertyRef Name="Dept_ID" />
+    </Key>
+    <Property Name="Dept_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Dept_Code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Dept_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="isactive" Type="Boolean" />
+    <Property Name="isdelete" Type="Boolean" />
+    <Property Name="addon" Type="DateTime" Precision="3" />
+    <Property Name="addby" Type="Int32" />
+    <Property Name="modon" Type="DateTime" Precision="3" />
+    <Property Name="modby" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Mst_Designation">
+    <Key>
+      <PropertyRef Name="Desg_ID" />
+    </Key>
+    <Property Name="Desg_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Designation_Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Desg_Code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="IsDelete" Type="Boolean" />
+    <Property Name="addon" Type="DateTime" Precision="3" />
+    <Property Name="addby" Type="Int32" />
+    <Property Name="modon" Type="DateTime" Precision="3" />
+    <Property Name="modby" Type="Int32" />
+    <Property Name="Dept_ID" Type="Int32" />
+  </EntityType>
+  <ComplexType Name="Head_MasterSelectAll_Result">
+    <Property Type="Int32" Name="Head_Id" Nullable="false" />
+    <Property Type="String" Name="hdnm" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="hdcode" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="BugtTyp_Id" Nullable="false" />
+    <Property Type="String" Name="BgtTypNm" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="BankDetails_SelectAll_Result">
+    <Property Type="Int32" Name="bnkid" Nullable="false" />
+    <Property Type="String" Name="Branch" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Acnt_holderName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="IFSC_Code" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="AccountType" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Address" Nullable="true" MaxLength="500" />
+    <Property Type="Int32" Name="Bnk_DtlsId" Nullable="false" />
+    <Property Type="String" Name="Account_Number" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Bank_Name" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="SubHeadMasterAll_Result">
+    <Property Type="Int32" Name="SubHead_Id" Nullable="false" />
+    <Property Type="Int32" Name="Head_Id" Nullable="false" />
+    <Property Type="String" Name="hdnm" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="BugtTyp_Id" Nullable="true" />
+    <Property Type="String" Name="BgtTypNm" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="SubHead_Name" Nullable="true" />
+    <Property Type="String" Name="SubHead_Code" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="AddOn" Nullable="true" Precision="23" />
+    <Property Type="Int32" Name="AddBy" Nullable="true" />
+  </ComplexType>
+  <EntityType Name="Trans_Salary">
+    <Key>
+      <PropertyRef Name="Salary_Id" />
+    </Key>
+    <Property Name="Salary_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SubHead_Id" Type="Int32" />
+    <Property Name="monthid" Type="Int32" />
+    <Property Name="Bgt_Id" Type="Int32" />
+    <Property Name="Unit_Id" Type="Int32" />
+    <Property Name="Fin_Id" Type="Int32" />
+    <Property Name="Req_Amount" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="Pf" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="Gsli" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="Others" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="ReductionRtainByHo" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="DeductionRealsedtoUnit" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="bit_Approve" Type="Boolean" />
+    <Property Name="ApproveAmountByHo" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="Remarks" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="IsDelete" Type="Boolean" />
+    <Property Name="AddBy" Type="Int32" />
+    <Property Name="AddOn" Type="DateTime" Precision="3" />
+    <Property Name="ModBy" Type="Int32" />
+    <Property Name="ModOn" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Financial_Year" Relationship="BMSModel.FK_Trans_Salary_Financial_Year" FromRole="Trans_Salary" ToRole="Financial_Year" />
+    <NavigationProperty Name="Mst_month" Relationship="BMSModel.FK_Trans_Salary_Mst_month" FromRole="Trans_Salary" ToRole="Mst_month" />
+    <NavigationProperty Name="Mst_Unit" Relationship="BMSModel.FK_Trans_Salary_Mst_Unit" FromRole="Trans_Salary" ToRole="Mst_Unit" />
+    <NavigationProperty Name="Tarn_Add_Budget" Relationship="BMSModel.FK_Trans_Salary_Tarn_Add_Budget" FromRole="Trans_Salary" ToRole="Tarn_Add_Budget" />
+  </EntityType>
+  <Association Name="FK_Trans_Salary_Financial_Year">
+    <End Type="BMSModel.Financial_Year" Role="Financial_Year" Multiplicity="0..1" />
+    <End Type="BMSModel.Trans_Salary" Role="Trans_Salary" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Financial_Year">
+        <PropertyRef Name="Fin_Id" />
+      </Principal>
+      <Dependent Role="Trans_Salary">
+        <PropertyRef Name="Fin_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Trans_Salary_Mst_month">
+    <End Type="BMSModel.Mst_month" Role="Mst_month" Multiplicity="0..1" />
+    <End Type="BMSModel.Trans_Salary" Role="Trans_Salary" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Mst_month">
+        <PropertyRef Name="monthid" />
+      </Principal>
+      <Dependent Role="Trans_Salary">
+        <PropertyRef Name="monthid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Trans_Salary_Mst_Unit">
+    <End Type="BMSModel.Mst_Unit" Role="Mst_Unit" Multiplicity="0..1" />
+    <End Type="BMSModel.Trans_Salary" Role="Trans_Salary" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Mst_Unit">
+        <PropertyRef Name="Unit_Id" />
+      </Principal>
+      <Dependent Role="Trans_Salary">
+        <PropertyRef Name="Unit_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Trans_Salary_Tarn_Add_Budget">
+    <End Type="BMSModel.Tarn_Add_Budget" Role="Tarn_Add_Budget" Multiplicity="0..1" />
+    <End Type="BMSModel.Trans_Salary" Role="Trans_Salary" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tarn_Add_Budget">
+        <PropertyRef Name="Bgt_Id" />
+      </Principal>
+      <Dependent Role="Trans_Salary">
+        <PropertyRef Name="Bgt_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Mst_SubHead">
+    <Key>
+      <PropertyRef Name="SubHead_Id" />
+    </Key>
+    <Property Name="SubHead_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="BugtTyp_Id" Type="Int32" />
+    <Property Name="Head_Id" Type="Int32" />
+    <Property Name="SubHead_Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="SubHead_Code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="IsDelete" Type="Boolean" />
+    <Property Name="AddOn" Type="DateTime" Precision="3" />
+    <Property Name="AddBy" Type="Int32" />
+    <Property Name="ModOn" Type="DateTime" Precision="3" />
+    <Property Name="ModBy" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Trans_Assign_User_ToApprov">
+    <Key>
+      <PropertyRef Name="Asgn_usr_Aprv_ID" />
+    </Key>
+    <Property Name="Asgn_usr_Aprv_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Unit_Id" Type="Int32" />
+    <Property Name="Usr_Id" Type="Int32" />
+    <Property Name="Aprov_Type_ID" Type="Int32" />
+    <Property Name="FromDt" Type="DateTime" Precision="3" />
+    <Property Name="ToDate" Type="DateTime" Precision="3" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="IsDelete" Type="Boolean" />
+    <Property Name="Addon" Type="DateTime" Precision="3" />
+    <Property Name="Addby" Type="Int32" />
+    <Property Name="Modon" Type="DateTime" Precision="3" />
+    <Property Name="Modby" Type="Int32" />
+  </EntityType>
+  <ComplexType Name="User_Create_Details_Result">
+    <Property Type="Int32" Name="Usr_Id" Nullable="false" />
+    <Property Type="String" Name="Name" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="EmpCode" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Email" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Phone" Nullable="true" MaxLength="15" />
+    <Property Type="String" Name="Usr_Nm" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="RoleDesc" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Dept_Name" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Designation_Name" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Unit_Name" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="StateSelectAll_Result">
+    <Property Type="Int32" Name="St_Id" Nullable="false" />
+    <Property Type="String" Name="St_Nm" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="Con_Id" Nullable="false" />
+    <Property Type="String" Name="Con_Nm" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="DistrictSelectAll_Result">
+    <Property Type="Int32" Name="Dst_Id" Nullable="false" />
+    <Property Type="String" Name="Dst_Nm" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="St_Id" Nullable="false" />
+    <Property Type="String" Name="St_Nm" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="Con_Id" Nullable="false" />
+    <Property Type="String" Name="Con_Nm" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="AssignCircleDivisonAll_Result">
+    <Property Type="Int32" Name="AssignCircleDivisonid" Nullable="false" />
+    <Property Type="Int32" Name="circleid" Nullable="true" />
+    <Property Type="Int32" Name="divisonid" Nullable="true" />
+    <Property Type="String" Name="circlename" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="divisonname" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="AssignUnitBankAll_Result">
+    <Property Type="Int32" Name="Assg_unitbnkid" Nullable="false" />
+    <Property Type="Int32" Name="Unit_Id" Nullable="true" />
+    <Property Type="Int32" Name="bnkid" Nullable="true" />
+    <Property Type="String" Name="Unit_Name" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Bank_Name" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="AssigneToUser_SelectAll_Result">
+    <Property Type="Int32" Name="Asgn_usr_Aprv_ID" Nullable="false" />
+    <Property Type="Int32" Name="Unit_Id" Nullable="false" />
+    <Property Type="Int32" Name="Usr_Id" Nullable="false" />
+    <Property Type="Int32" Name="Aprov_Type_ID" Nullable="false" />
+    <Property Type="DateTime" Name="FromDt" Nullable="false" Precision="23" />
+    <Property Type="DateTime" Name="ToDate" Nullable="false" Precision="23" />
+    <Property Type="String" Name="Name" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="EmpCode" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Description" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Unit_Name" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="User_SelectById_Result">
+    <Property Type="String" Name="Usr_Nm" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="RoleID" Nullable="false" />
+    <Property Type="Int32" Name="Dept_ID" Nullable="false" />
+    <Property Type="Int32" Name="Desg_ID" Nullable="false" />
+    <Property Type="Int32" Name="Unit_Id" Nullable="false" />
+    <Property Type="String" Name="Name" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="ProfileName" Nullable="true" />
+    <Property Type="String" Name="Email" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Phone" Nullable="true" MaxLength="15" />
+    <Property Type="String" Name="EmpCode" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="Usr_Id" Nullable="false" />
+    <Property Type="String" Name="Pwd" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Dept_Name" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="RoleDesc" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Designation_Name" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Unit_Name" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Unit_Code" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="zoneid" Nullable="false" />
+    <Property Type="Int32" Name="circleid" Nullable="false" />
+    <Property Type="Int32" Name="divisonid" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="SelectAllByUnitAll_Result">
+    <Property Type="Int32" Name="Unit_RevExp_Id" Nullable="false" />
+    <Property Type="Int32" Name="Bgt_Id" Nullable="false" />
+    <Property Type="Int32" Name="Head_Id" Nullable="false" />
+    <Property Type="Int32" Name="SubHead_Id" Nullable="false" />
+    <Property Type="Int32" Name="Fin_Id" Nullable="false" />
+    <Property Type="Int32" Name="Unit_Id" Nullable="false" />
+    <Property Type="Decimal" Name="Lt_Fy_Exp" Nullable="false" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="Lb_Pr_Paid" Nullable="false" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="Total_Pmt" Nullable="false" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="Prob_Exp" Nullable="false" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="Total_Prop_Exp" Nullable="false" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="Bdgt_Nxt_Fy" Nullable="false" Precision="18" Scale="2" />
+    <Property Type="Boolean" Name="IsActive" Nullable="true" />
+    <Property Type="Boolean" Name="IsDelete" Nullable="true" />
+    <Property Type="String" Name="Ho_Remarks" Nullable="true" />
+    <Property Type="String" Name="Remarks" Nullable="true" />
+    <Property Type="Decimal" Name="Prop_Re_Curnt" Nullable="false" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="Re_For_Current" Nullable="false" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="Bdgt_Amnt" Nullable="false" Precision="18" Scale="2" />
+    <Property Type="String" Name="Fst_Prop_Re_Curnt" Nullable="true" />
+    <Property Type="Decimal" Name="Fst_Bdgt_Nxt_Fy" Nullable="false" Precision="18" Scale="2" />
+    <Property Type="String" Name="Fst_remarks" Nullable="true" />
+    <Property Type="String" Name="hdnm" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="hdcode" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="SubHead_Name" Nullable="true" />
+    <Property Type="String" Name="SubHead_Code" Nullable="true" MaxLength="50" />
+    <Property Type="Decimal" Name="Current_Bgt_Amt" Nullable="false" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="Current_expdr" Nullable="false" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="Prop_Amnt" Nullable="false" Precision="18" Scale="2" />
+    <Property Type="String" Name="Fin_Yr" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="BudgetSelectAll_Result">
+    <Property Type="Int32" Name="Unit_RevExp_Id" Nullable="false" />
+    <Property Type="Int32" Name="Unit_Id" Nullable="true" />
+    <Property Type="Int32" Name="Fin_Id" Nullable="true" />
+    <Property Type="Int32" Name="Head_Id" Nullable="true" />
+    <Property Type="Int32" Name="Subhead_Id" Nullable="true" />
+    <Property Type="Decimal" Name="Lt_Fy_Exp" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="Int32" Name="Bgt_Id" Nullable="true" />
+    <Property Type="Decimal" Name="Lb_Pr_Paid" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="Current_expdr" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="Total_Pmt" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="Prob_Exp" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="Total_Prop_Exp" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="Fst_Bdgt_Nxt_Fy" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="String" Name="Fst_remarks" Nullable="true" />
+    <Property Type="String" Name="Fst_Prop_Re_Curnt" Nullable="true" />
+    <Property Type="Boolean" Name="fst_Arop_BIT" Nullable="true" />
+    <Property Type="Boolean" Name="Sec_Arop_BIT" Nullable="true" />
+    <Property Type="Decimal" Name="Prop_Re_Curnt" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="Bdgt_Nxt_Fy" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="String" Name="Remarks" Nullable="true" />
+    <Property Type="Boolean" Name="bit_Second_Aprov" Nullable="true" />
+    <Property Type="Decimal" Name="Re_For_Current" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="Bdgt_Amnt" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="String" Name="Ho_Remarks" Nullable="true" />
+    <Property Type="String" Name="FileID" Nullable="true" MaxLength="50" />
+    <Property Type="Boolean" Name="bit_Aproved" Nullable="true" />
+    <Property Type="Int32" Name="Addby" Nullable="true" />
+    <Property Type="DateTime" Name="Addon" Nullable="true" Precision="23" />
+    <Property Type="Int32" Name="Modby" Nullable="true" />
+    <Property Type="DateTime" Name="Modon" Nullable="true" Precision="23" />
+    <Property Type="Boolean" Name="IsDelete" Nullable="true" />
+    <Property Type="Boolean" Name="IsActive" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="SelectAllByUnitAllbyId_Result">
+    <Property Type="Int32" Name="Unit_RevExp_Id" Nullable="false" />
+    <Property Type="Int32" Name="Bgt_Id" Nullable="false" />
+    <Property Type="Int32" Name="Head_Id" Nullable="false" />
+    <Property Type="Int32" Name="SubHead_Id" Nullable="false" />
+    <Property Type="Int32" Name="Fin_Id" Nullable="false" />
+    <Property Type="Int32" Name="Unit_Id" Nullable="false" />
+    <Property Type="Decimal" Name="Lt_Fy_Exp" Nullable="false" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="Lb_Pr_Paid" Nullable="false" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="Total_Pmt" Nullable="false" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="Prob_Exp" Nullable="false" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="Total_Prop_Exp" Nullable="false" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="Bdgt_Nxt_Fy" Nullable="false" Precision="18" Scale="2" />
+    <Property Type="Boolean" Name="IsActive" Nullable="true" />
+    <Property Type="Boolean" Name="IsDelete" Nullable="true" />
+    <Property Type="String" Name="Ho_Remarks" Nullable="true" />
+    <Property Type="String" Name="Remarks" Nullable="true" />
+    <Property Type="Decimal" Name="Prop_Re_Curnt" Nullable="false" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="Re_For_Current" Nullable="false" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="Bdgt_Amnt" Nullable="false" Precision="18" Scale="2" />
+    <Property Type="String" Name="Fst_Prop_Re_Curnt" Nullable="true" />
+    <Property Type="Decimal" Name="Fst_Bdgt_Nxt_Fy" Nullable="false" Precision="18" Scale="2" />
+    <Property Type="String" Name="Fst_remarks" Nullable="true" />
+    <Property Type="String" Name="hdnm" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="hdcode" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="SubHead_Name" Nullable="true" />
+    <Property Type="String" Name="SubHead_Code" Nullable="true" MaxLength="50" />
+    <Property Type="Decimal" Name="Current_Bgt_Amt" Nullable="false" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="Current_expdr" Nullable="false" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="Prop_Amnt" Nullable="false" Precision="18" Scale="2" />
+    <Property Type="String" Name="Fin_Yr" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="SelectAllByUnitAllbyIdd_Result">
+    <Property Type="Int32" Name="Unit_RevExp_Id" Nullable="false" />
+    <Property Type="Int32" Name="Bgt_Id" Nullable="false" />
+    <Property Type="Int32" Name="Head_Id" Nullable="false" />
+    <Property Type="Int32" Name="SubHead_Id" Nullable="false" />
+    <Property Type="Int32" Name="Fin_Id" Nullable="false" />
+    <Property Type="Int32" Name="Unit_Id" Nullable="false" />
+    <Property Type="Decimal" Name="Lt_Fy_Exp" Nullable="false" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="Lb_Pr_Paid" Nullable="false" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="Total_Pmt" Nullable="false" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="Prob_Exp" Nullable="false" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="Total_Prop_Exp" Nullable="false" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="Bdgt_Nxt_Fy" Nullable="false" Precision="18" Scale="2" />
+    <Property Type="Boolean" Name="IsActive" Nullable="true" />
+    <Property Type="Boolean" Name="IsDelete" Nullable="true" />
+    <Property Type="String" Name="Ho_Remarks" Nullable="true" />
+    <Property Type="String" Name="Remarks" Nullable="true" />
+    <Property Type="Decimal" Name="Prop_Re_Curnt" Nullable="false" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="Re_For_Current" Nullable="false" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="Bdgt_Amnt" Nullable="false" Precision="18" Scale="2" />
+    <Property Type="String" Name="Fst_Prop_Re_Curnt" Nullable="true" />
+    <Property Type="Decimal" Name="Fst_Bdgt_Nxt_Fy" Nullable="false" Precision="18" Scale="2" />
+    <Property Type="String" Name="Fst_remarks" Nullable="true" />
+    <Property Type="String" Name="FileID" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="hdnm" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="hdcode" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="SubHead_Name" Nullable="true" />
+    <Property Type="String" Name="SubHead_Code" Nullable="true" MaxLength="50" />
+    <Property Type="Decimal" Name="Current_Bgt_Amt" Nullable="false" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="Current_expdr" Nullable="false" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="Prop_Amnt" Nullable="false" Precision="18" Scale="2" />
+    <Property Type="String" Name="Fin_Yr" Nullable="true" MaxLength="50" />
+    <Property Type="Binary" Name="Data" Nullable="true" />
+    <Property Type="String" Name="FileName" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="GetAllRevenueHeadForFstLvl_Result">
+    <Property Type="Int32" Name="Head_Id" Nullable="false" />
+    <Property Type="Int32" Name="Fin_Id" Nullable="false" />
+    <Property Type="Int32" Name="Unit_Id" Nullable="false" />
+    <Property Type="String" Name="FileID" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="hdnm" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="hdcode" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Fin_Yr" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Unit_Name" Nullable="true" MaxLength="50" />
+    <Property Type="Binary" Name="Data" Nullable="true" />
+    <Property Type="String" Name="FileName" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="ExpenditureSelectAllByUnit_Result">
+    <Property Type="Int32" Name="Bgt_Id" Nullable="false" />
+    <Property Type="Int32" Name="Head_Id" Nullable="false" />
+    <Property Type="Int32" Name="SubHead_Id" Nullable="false" />
+    <Property Type="Int32" Name="Fin_Id" Nullable="false" />
+    <Property Type="Int32" Name="Unit_Id" Nullable="false" />
+    <Property Type="Decimal" Name="Lt_Fy_Exp" Nullable="false" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="Lb_Pr_Paid" Nullable="false" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="Total_Pmt" Nullable="false" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="Prob_Exp" Nullable="false" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="Prop_Re_Curnt" Nullable="false" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="Total_Prop_Exp" Nullable="false" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="Bdgt_Nxt_Fy" Nullable="false" Precision="18" Scale="2" />
+    <Property Type="String" Name="Remarks" Nullable="true" />
+    <Property Type="String" Name="FileID" Nullable="true" MaxLength="50" />
+    <Property Type="Boolean" Name="IsDelete" Nullable="true" />
+    <Property Type="String" Name="hdnm" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="hdcode" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="SubHead_Name" Nullable="true" />
+    <Property Type="String" Name="SubHead_Code" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Fin_Yr" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Fin_Yrlast" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Fin_Yrnext" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Unit_Name" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="GetAllRevenueHeadForSecLvl_Result">
+    <Property Type="Int32" Name="Head_Id" Nullable="false" />
+    <Property Type="Int32" Name="Fin_Id" Nullable="false" />
+    <Property Type="Int32" Name="Unit_Id" Nullable="false" />
+    <Property Type="String" Name="FileID" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="hdnm" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="hdcode" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Fin_Yr" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Unit_Name" Nullable="true" MaxLength="50" />
+    <Property Type="Binary" Name="Data" Nullable="true" />
+    <Property Type="String" Name="FileName" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="ExpendSelectAllForHoApprove_Result">
+    <Property Type="Int32" Name="Bgt_Id" Nullable="false" />
+    <Property Type="Int32" Name="Head_Id" Nullable="false" />
+    <Property Type="Int32" Name="SubHead_Id" Nullable="false" />
+    <Property Type="Int32" Name="Fin_Id" Nullable="false" />
+    <Property Type="Int32" Name="Unit_Id" Nullable="false" />
+    <Property Type="Decimal" Name="Lt_Fy_Exp" Nullable="false" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="Lb_Pr_Paid" Nullable="false" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="Total_Pmt" Nullable="false" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="Prob_Exp" Nullable="false" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="Prop_Re_Curnt" Nullable="false" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="Total_Prop_Exp" Nullable="false" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="Bdgt_Nxt_Fy" Nullable="false" Precision="18" Scale="2" />
+    <Property Type="String" Name="Remarks" Nullable="true" />
+    <Property Type="String" Name="FileID" Nullable="true" MaxLength="50" />
+    <Property Type="Boolean" Name="IsActive" Nullable="true" />
+    <Property Type="Boolean" Name="IsDelete" Nullable="true" />
+    <Property Type="String" Name="hdnm" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="hdcode" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="SubHead_Name" Nullable="true" />
+    <Property Type="String" Name="SubHead_Code" Nullable="true" MaxLength="50" />
+    <Property Type="Decimal" Name="First_Lvl_Re_For_Current" Nullable="false" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="fst_Aprov_Bdgt_Amnt" Nullable="false" Precision="18" Scale="2" />
+    <Property Type="String" Name="fst_Arop_Remarks" Nullable="true" />
+    <Property Type="String" Name="Fin_Yr" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Fin_Yrlast" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Fin_Yrnext" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Unit_Name" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="RevenueBudgetSelectAllHead_Result">
+    <Property Type="Int32" Name="Head_Id" Nullable="false" />
+    <Property Type="Int32" Name="Fin_Id" Nullable="false" />
+    <Property Type="Int32" Name="Unit_Id" Nullable="false" />
+    <Property Type="String" Name="FileID" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="hdnm" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="hdcode" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Fin_Yr" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Unit_Name" Nullable="true" MaxLength="50" />
+    <Property Type="Binary" Name="Data" Nullable="true" />
+    <Property Type="String" Name="FileName" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="ExpenditureSelectAllByUnitForFinal_Result">
+    <Property Type="Int32" Name="Bgt_Id" Nullable="false" />
+    <Property Type="Int32" Name="Head_Id" Nullable="false" />
+    <Property Type="Int32" Name="SubHead_Id" Nullable="false" />
+    <Property Type="Int32" Name="Fin_Id" Nullable="false" />
+    <Property Type="Int32" Name="Unit_Id" Nullable="false" />
+    <Property Type="Decimal" Name="Lt_Fy_Exp" Nullable="false" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="Lb_Pr_Paid" Nullable="false" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="Total_Pmt" Nullable="false" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="Prob_Exp" Nullable="false" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="Prop_Re_Curnt" Nullable="false" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="Total_Prop_Exp" Nullable="false" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="Bdgt_Nxt_Fy" Nullable="false" Precision="18" Scale="2" />
+    <Property Type="String" Name="Remarks" Nullable="true" />
+    <Property Type="String" Name="FileID" Nullable="true" MaxLength="50" />
+    <Property Type="Boolean" Name="IsDelete" Nullable="true" />
+    <Property Type="String" Name="hdnm" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="hdcode" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="SubHead_Name" Nullable="true" />
+    <Property Type="String" Name="SubHead_Code" Nullable="true" MaxLength="50" />
+    <Property Type="Decimal" Name="First_Lvl_Re_For_Current" Nullable="false" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="fst_Aprov_Bdgt_Amnt" Nullable="false" Precision="18" Scale="2" />
+    <Property Type="String" Name="fst_Arop_Remarks" Nullable="true" />
+    <Property Type="Decimal" Name="Sec_Lvl_Re_For_Current" Nullable="false" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="Sec_Aprov_Bdgt_Amnt" Nullable="false" Precision="18" Scale="2" />
+    <Property Type="String" Name="Sec_Arop_Remarks" Nullable="true" />
+    <Property Type="String" Name="Fin_Yr" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Unit_Name" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="GetRevenueHeadforProposalByUnit_Result">
+    <Property Type="Int32" Name="Head_Id" Nullable="false" />
+    <Property Type="Int32" Name="Fin_Id" Nullable="false" />
+    <Property Type="Int32" Name="Unit_Id" Nullable="false" />
+    <Property Type="String" Name="FileID" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="hdnm" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="hdcode" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Fin_Yr" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Unit_Name" Nullable="true" MaxLength="50" />
+    <Property Type="Binary" Name="Data" Nullable="true" />
+    <Property Type="String" Name="FileName" Nullable="true" MaxLength="50" />
+  </ComplexType>
+</Schema>

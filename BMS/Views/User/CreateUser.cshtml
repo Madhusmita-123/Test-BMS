@@ -1,0 +1,327 @@
+﻿
+@model BMS.Models.UserModel
+@{
+    ViewBag.Title = "CreateUser";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+<style>
+    .form-control1 {
+        border: 1px solid #f11111 !important;
+    }
+</style>
+<div class="clearfix"></div>
+
+
+@{string confirmMessage = Convert.ToString(TempData["Message"]); }
+<div class="content-wrapper">
+    <div class="container-fluid">
+        <div class="modal fade" id="myModal" role="dialog">
+            <div class="modal-dialog">
+                @using (Html.BeginForm("CreateUser", "User", FormMethod.Post, new { enctype = "multipart/form-data", data_ajax = "false", role = "form" }))
+                {
+                    @Html.AntiForgeryToken()
+                    //confirmMessage = Convert.ToString(TempData["Message"]);
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+
+
+                        </div>
+                        <div class="modal-body">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <label>Role:</label>
+                                        @{
+                                            var RoleList = new SelectList(Model.lstRole, "RoleID", "RoleDesc").ToList();
+                                            RoleList.Insert(0, new SelectListItem() { Value = "0", Text = "-- Select One --" });
+                                        }
+                                        @Html.DropDownListFor(x => x.User.RoleID, RoleList, new { @required = "true", @class = "form-control", @id = "role" })
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label> Unit:</label>
+                                        @{
+                                            var unit = new SelectList(Model.Unit, "Unit_Id", "Unit_Name").ToList();
+                                            unit.Insert(0, new SelectListItem() { Value = "0", Text = "-- Select One --" });
+                                        }
+                                        @Html.DropDownListFor(x => x.User.Unit_Id, unit, new { @required = "true", @class = "form-control", @id = "unit" })
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label>Department:</label>
+                                        @{
+                                            var dept = new SelectList(Model.department, "Dept_ID", "Dept_Name").ToList();
+                                            dept.Insert(0, new SelectListItem() { Value = "0", Text = "-- Select One --" });
+                                        }
+                                        @Html.DropDownListFor(x => x.User.Dept_ID, dept, new { @required = "true", @class = "form-control", @id = "department", @onchange = "Binddesignation()" })
+                                    </div>
+                                </div>
+                                <div class="row mt-2">
+                                    <div class="col-md-4">
+                                        <label>Designation:</label>
+
+                                        @{
+                                            var Deg = new SelectList(Model.designation, "Desg_ID", "Designation_Name").ToList();
+                                            Deg.Insert(0, new SelectListItem() { Value = "0", Text = "-- Select One --" });
+                                        }
+                                        @Html.DropDownListFor(x => x.User.Desg_ID, Deg, new { @required = "true", @class = "form-control", @id = "designation", @disabled = "disabled" })
+
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label>Name:</label>
+
+                                        @Html.TextBoxFor(m => m.User.Name, new { @id = "name", @class = "form-control", @placeholder = "Name", @autocomplete = "off" })
+
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label>EmpCode:</label>
+
+                                        @Html.TextBoxFor(m => m.User.EmpCode, new { @id = "code", @class = "form-control", @placeholder = "EmpCode", @autocomplete = "off" })
+                                    </div>
+                                </div>
+                                <div class="row mt-2">
+                                    <div class="col-md-4">
+                                        <label>Email:</label>
+
+                                        @Html.TextBoxFor(m => m.User.Email, new { @id = "email", @class = "form-control", @placeholder = "Email-Id", @autocomplete = "off" })
+
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label>Phone No:</label>
+
+                                        @Html.TextBoxFor(m => m.User.Phone, new { @id = "phn", @class = "form-control", @placeholder = "Phone Number", @autocomplete = "off", @maxlength = "10" })
+
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label>UserName:</label>
+                                        @Html.TextBoxFor(m => m.User.Usr_Nm, new { @id = "usrname", @class = "form-control", @placeholder = "Name", @autocomplete = "off" })
+
+
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-danger" id="Submit">Submit</button>
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+                        </div>
+                    </div>
+                }
+            </div>
+
+        </div>
+        <div class="modal fade" id="myModal1" role="dialog">
+
+        </div>
+        
+        <!-- Breadcrumb-->
+        <!-- End Breadcrumb-->
+        <div class="row pt-4 pb-3">
+
+            <div class="col-lg-12">
+                @{confirmMessage = Convert.ToString(TempData["Message"]); }
+                @if (!string.IsNullOrEmpty(confirmMessage))
+                {
+                    <div class="alert alert-success alert-dismissable" id="divSuccessMessage">
+                        @confirmMessage
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                    </div>
+                }
+                <div class="card">
+                    <div class="card-header">
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <i class="fa fa-table"></i> User List
+                            </div>
+                            <div class="col-md-6 text-md-right">
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal"><i class="fa fa-plus"></i>  Add</button>
+                                @*<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>*@
+
+                                <!-- Modal -->
+
+
+                            </div>
+                        </div>
+
+                    </div>
+                    @if (ViewBag.GridData == null)
+                    {
+                        <div class="box-body">
+                            <div id="FormOne">
+                                <div class="row">
+                                    <div class="col-md-12">No Application found.</div>
+                                    @Html.ValidationSummary()
+                                </div>
+                            </div>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <div id="default-datatable_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4">
+
+                                    <div class="row">
+                                        <div class="table-responsive">
+                                            <table id="default-datatable" class="table table-bordered">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Role</th>
+                                                        <th>Unit</th>
+                                                        <th>Department</th>
+                                                        <th>Designation</th>
+                                                        <th>Name</th>
+                                                        <th>EmpCode</th>
+                                                        <th>Email</th>
+                                                        <th>PhoneNo</th>
+                                                        <th>UserName</th>
+                                                        <th>Edit</th>
+                                                        <th>Delete</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    @foreach (var d in ViewBag.GridData)
+                                                    {
+                                                        <tr>
+
+                                                            <td>@d.RoleDesc</td>
+                                                            <td>@d.Unit_Name</td>
+                                                            <td>@d.Dept_Name</td>
+                                                            <td>@d.Designation_Name</td>
+                                                            <td>@d.Name</td>
+                                                            <td>@d.EmpCode</td>
+                                                            <td>@d.Email</td>
+                                                            <td>@d.Phone</td>
+                                                            <td>@d.Usr_Nm</td>
+                                                            <td><button class="btn btn-primary" onclick="EditUser(@d.Usr_Id)"> <i class="fa fa-edit"></i></button></td>
+
+                                                            <td><button class="btn btn-danger" onclick="Deleteuser(@d.Usr_Id)"> <i class="fa fa-trash"></i></button></td>
+
+
+
+                                                        </tr>
+                                                    }
+                                                </tbody>
+
+                                            </table>
+
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+                    }
+                </div>
+            </div>
+        </div><!-- End Row-->
+
+
+
+
+    </div>
+    <!-- End container-fluid-->
+
+</div><!--End content-wrapper-->
+
+
+
+<script src="~/assets/js/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+
+        $("#designation").html('');
+        $("#designation").append("<option value='0'>--Select One--</option>");
+    })
+
+    function Binddesignation() {
+        debugger;
+        $.ajax({
+            type: 'POST',
+            url: "/User/BindDesignation",
+            data: { deptid: $("#department").val() },
+            dataType: "json",
+            success: function (resultData) {
+                debugger;
+                var data = "";
+                $("#designation").html('');
+                $("#designation").append("<option value='0'>--Select One--</option>");
+                if (resultData != null) {
+                    $("#designation").prop('disabled', false);
+                    for (var i = 0; i < resultData.length; i++) {
+                        data += "<option value=" + resultData[i].Desg_ID + ">" + resultData[i].Designation_Name + "</option>";
+
+                    }
+
+                }
+                $("#designation").append(data);
+            }
+        })
+    }
+    $("#Submit").click(function (e) {
+        debugger;
+        var pcount = 0;
+
+        if ($("#role").val() == "0") { $("#role").addClass('form-control1'); pcount = 1; }
+        if ($("#unit").val() == "0") { $("#unit").addClass('form-control1'); pcount = 1; }
+        if ($("#department").val() == "0") { $("#department").addClass('form-control1'); pcount = 1; }
+        if ($("#role").val() == "0") { $("#role").addClass('form-control1'); pcount = 1; }
+        if ($("#name").val() == "") { $("#name").addClass('form-control1'); pcount = 1; }
+        if ($("#code").val() == "") { $("#code").addClass('form-control1'); pcount = 1; }
+        if ($("#email").val() == "") { $("#email").addClass('form-control1'); pcount = 1; }
+        if ($("#phn").val() == "") { $("#phn").addClass('form-control1'); pcount = 1; }
+        if ($("#usrname").val() == "") { $("#usrname").addClass('form-control1'); pcount = 1; }
+
+        if (pcount != 0) {
+            e.preventDefault();
+            return false;
+        }
+        else {
+            return true;
+        }
+    });
+    $(".allow_decimal").on("input", function (evt) {
+        var self = $(this);
+        self.val(self.val().replace(/[^0-9\.]/g, ''));
+        if ((evt.which != 46 || self.val().indexOf('.') != -1) && (evt.which < 48 || evt.which > 57)) {
+            evt.preventDefault();
+        }
+    });
+
+
+    function EditUser(id) {
+        debugger;
+        $.ajax({
+            type: 'POST',
+            url: "/User/EditUser",
+            data: { usrid: id },
+            dataType: "html",
+            success: function (resultData) {
+                debugger;
+                $("#myModal1").html(resultData);
+                $("#myModal1").addClass('show');
+                $("#myModal1").css("display", "block");
+            }
+        })
+    }
+    function Deleteuser(id) {
+        if (confirm("Are you sure want to delete userdetail ")) {
+            $.ajax({
+                type: 'POST',
+                url: "/User/DeleteUser",
+                data: { id: id },
+                dataType: "json",
+                success: function (resultData) {
+                    if (resultData == true) {
+                        alert("User deleted successfully");
+                        location.href = "/User/CreateUser";
+                    }
+                }
+            })
+        }
+    }
+
+
+</script>

@@ -1,0 +1,545 @@
+﻿@model BMS.Models.RevenueProposalByUnitModel
+@{
+    ViewBag.Title = "RevenueProposalByUnit";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<style>
+    .ks {
+        max-width: 100% !important;
+        width: 100%;
+        padding: 4px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+
+    .btnn {
+        color: white;
+        padding: 6px 9px;
+        margin: 8px 0;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    input[type=submit]:hover {
+        background-color: #45a049;
+    }
+
+    table {
+        width: 100%;
+    }
+
+    #example_filter {
+        float: right;
+    }
+
+    #example_paginate {
+        float: right;
+    }
+
+    label {
+        display: inline-flex;
+        margin-bottom: .5rem;
+        margin-top: .5rem;
+    }
+</style>
+@{string confirmMessage = Convert.ToString(TempData["Message"]); }
+<div class="content-wrapper">
+    <div class="container-fluid">
+       
+                            <div class="container" id="page">
+                                @using (Html.BeginForm("RevenueProposalByUnit", "Finance", FormMethod.Post, new { enctype = "multipart/form-data", data_ajax = "false", role = "form" }))
+                                {
+                                    @Html.AntiForgeryToken()
+                                    <div class="row">
+                                        <div class="col-lg-12 ">
+                                            @Html.HiddenFor(x => x.Revenue.Unit_Id, new { @id = "Unit_Id" })
+                                            @Html.HiddenFor(x => x.Revenue.Fin_Id, new { @id = "Fin_Id" })
+                                            <input type="hidden" id="usrid" value="" />
+                                            <input type="hidden" id="hf_ReBudget" value="" />
+                                            <input type="hidden" id="fileid" value="" />
+                                            <div class="card-box ribbon-box">
+                                                <div class="ribbon ribbon-custom">Revenue Proposal By Unit</div>
+                                                <div class="col-lg-12 box bb">
+                                                    <input type="hidden" id="hf_pageid" value="" />
+                                                    <div class="row hd_titl">
+                                                        <div class="col-lg-6 col-sm-12 col-xs-12">
+                                                            <span>Unit Name:</span>
+                                                            <span id="lbl_Unitname" style="color:deeppink"></span>
+
+                                                        </div>
+                                                        <div class="col-lg-3 col-sm-12 col-xs-12">
+                                                            <span>Unit Code:</span>
+                                                            <span id="lbl_UnitCode" style="color:deeppink"></span>
+                                                        </div>
+                                                        <div class="col-lg-3 col-sm-12 col-xs-12">
+                                                            <span>Financial Year:</span>
+                                                            <span id="lbl_Fyrname" style="color:deeppink"></span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-12 col-xs-12 col-sm-12 formbox">
+                                                        <div class="row mb-btm odd">
+                                                            <div class="col-lg-3 col-sm-12 col-xs-12">
+                                                                <span>Head Name</span>
+                                                                @Html.HiddenFor(x => x.Revenue.Unit_RevExp_Id, new { @id = "revenuid" })
+                                                                @{
+                                                                    var headlist = new SelectList(Model.head, "Head_Id", "hdnm").ToList();
+                                                                    headlist.Insert(0, new SelectListItem() { Value = "0", Text = "-- Select One --" });
+                                                                }
+                                                                @Html.DropDownListFor(x => x.Revenue.Head_Id, headlist, new { @required = "true", @class = "form-control", @id = "head", @Onchange = "BindSubhead()" })
+                                                            </div>
+                                                            <div class="col-lg-3 col-sm-12 col-xs-12">
+                                                                <span>SubHead Name</span>
+                                                                @{
+                                                                    var subheadlist = new SelectList(Model.SubHead, "SubHead_Id", "SubHead_Name").ToList();
+                                                                    subheadlist.Insert(0, new SelectListItem() { Value = "0", Text = "-- Select One --" });
+                                                                }
+                                                                @Html.DropDownListFor(x => x.Revenue.Subhead_Id, subheadlist, new { @required = "true", @class = "form-control", @id = "subhead", @disabled = "disabled", @onchange = "BindSubheadCode()" })
+                                                            </div>
+                                                            <div class="col-lg-3 col-sm-12 col-xs-12">
+                                                                <span>SubHead Code :</span><br />
+                                                                @Html.TextBoxFor(x => x.Revenue.Subhead_Id, new { @required = "true", @class = "form-control", @id = "subheadcode", @readonly = "readonly" })
+                                                            </div>
+                                                            <div class="col-lg-3 col-sm-12 col-xs-12">
+                                                                <span>Current BE:</span><br />
+
+                                                                <span id="lbl_Curbgtexp" style="color:deeppink">0.00</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row mb-btm even">
+                                                            <div class="col-lg-2 col-sm-12 col-xs-12">
+                                                                <span>Expenses for Last FY</span>
+                                                                @Html.TextBoxFor(m => m.Revenue.Lt_Fy_Exp, new { @required = "true", @id = "txt_Explstyr", @class = "form-control", @placeholder = "0.00", @autocomplete = "off", value = "0.00", onpaste = "return false", onkeypress = "return numericOnly(this)" })
+
+                                                            </div>
+                                                            <div class="col-lg-4 col-sm-12 col-xs-12">
+                                                                <span>Liability of Last FY Paid During This Year</span>
+                                                                @Html.TextBoxFor(m => m.Revenue.Lb_Pr_Paid, new { @required = "true", @id = "txt_LibltyCurntfy", @class = "form-control", @placeholder = "0.00", @autocomplete = "off", value = "0.00", onpaste = "return false", onchange = "getdata()" })
+
+                                                            </div>
+                                                            <div class="col-lg-4 col-sm-12 col-xs-12">
+                                                                <span>Current Year Expenditure Till November</span>
+                                                                <span id="lbl_Curntyerexp" style="color:deeppink">0.00</span>
+                                                            </div>
+                                                            <div class="col-lg-2 col-sm-12 col-xs-12">
+                                                                <span>Total Payment</span><br />
+                                                                <span id="lbl_TotalPayment" style="color:deeppink">0.00</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row odd">
+                                                            <div class="col-lg-3 col-sm-12 col-xs-12">
+                                                                <span>Probable Expenditure</span>
+                                                                @Html.TextBoxFor(m => m.Revenue.Prob_Exp, new { @required = "true", @id = "txt_ProbableExpd", @class = "form-control", @placeholder = "0.00", @autocomplete = "off", value = "0.00", onpaste = "return false", onkeyup = "getdata1()", onkeypress = "return numericOnly(this)" })
+
+                                                            </div>
+                                                            <div class="col-lg-3 col-sm-12 col-xs-12">
+                                                                <span>Total Expenditure of Current: </span><br />
+                                                                <span id="lbl_totlexpcurrent" style="color:deeppink">0.00</span>
+                                                            </div>
+                                                            <div class="col-lg-3 col-sm-12 col-xs-12">
+                                                                <span>Requested Budget For Next FY</span>
+                                                                @Html.TextBoxFor(m => m.Revenue.Fst_Bdgt_Nxt_Fy, new { @required = "true", @id = "txt_NxtFinancialYr", @class = "form-control", @placeholder = "0.00", @autocomplete = "off", value = "0.00", onpaste = "return false", onkeypress = "return numericOnly(this)" })
+
+                                                            </div>
+                                                            <div class="col-lg-3 col-sm-12 col-xs-12">
+                                                                <span>Remarks </span>
+                                                                @Html.TextBoxFor(m => m.Revenue.Fst_remarks, new { @required = "true", @id = "txt_remark", @class = "form-control", @placeholder = "" })
+
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-lg-10 col-sm-12 col-xs-12"></div>
+                                                            <div class="col-lg-2 col-sm-12 col-xs-12" style="padding-top: 12px;">
+                                                                <button type="button" class="btn btn-primary" id="btn_AddRowtotable" data-toggle="modal" data-target="#myModal"><i class="fa fa-plus"></i>  Add More</button>
+                                                                @*<button type="button" id="btn_AddRowtotable" value="Add More" class="btnn btnsbmt" />*@
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-lg-12 col-sm-12 col-xs-12">
+                                                            <div style="overflow-x:auto;margin-top:15px">
+                                                                <table id="tbl_revenueproposalbyunit" class="table table-striped table-bordered" style="width:100%">
+                                                                    <thead>
+                                                                        <tr style="background-image: linear-gradient(to right, #17a2b8, #75808a, #00c4d5, #388883, #009688);font-size:10px;color:white">
+                                                                            <th>Select</th>
+                                                                            <th>Head Name</th>
+                                                                            <th>SubHead Name</th>
+                                                                            <th>SubHead Code</th>
+                                                                            <th>Current BE</th>
+                                                                            <th>Expenses for Last FY</th>
+                                                                            <th>Liability of Last FY Paid During This Year</th>
+                                                                            <th>Current Year Expenditure Till November</th>
+                                                                            <th>Total Payment</th>
+                                                                            <th>Probable Expenditure</th>
+                                                                            <th>Total Expenditure of Current</th>
+                                                                            <th>RE for Current</th>
+                                                                            <th>Requested Budget Next FY</th>
+                                                                            <th>Remarks </th>
+                                                                            <th>Remove</th>
+                                                                        </tr>
+                                                                    </thead>
+                                                                    <tbody></tbody>
+                                                                </table>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-sm-12 col-lg-7 col-xs-12 ">
+                                                            <input type="file" name="postedFile" id="btnupload" />
+                                                        </div>
+                                                        <div class="col-sm-12 col-lg-3 col-xs-12">
+                                                            <button type="button" class="btnn btnsbmt" id="btn_ViewallBudget" onclick="gotoview()"> View Requisition Budgets</button>
+                                                            @*<input type="button" id="btn_ViewallBudget" value="View Requisition Budgets" class="newdesg" style="" onclick="gotoview()" />*@
+                                                        </div>
+                                                        <div class="col-sm-12 col-lg-2 col-xs-12">
+                                                            <button type="button" class="btnn btnsbmt" id="btn_Submit" onclick="Saverevenue()"> Submit</button>
+                                                            @*<input type="button" id="btn_Submit" value="Submit" class="btnn btnsbmt" onclick="" />*@
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                               
+
+
+                                                                }
+
+
+
+            <!-- End Row-->
+
+
+
+
+    </div>
+        <!-- End container-fluid-->
+</div>
+        
+</div><!--End content-wrapper-->
+
+
+                                                                }  
+<script src="~/assets/js/jquery.min.js"></script>    
+<script>
+    var count = 0;
+    var IndentArray = [];
+    function BindSubhead() {
+        debugger;
+        $.ajax({
+            type: 'POST',
+            url: "/Finance/BindSubheaddata",
+            data: { subheadid: $("#head").val() },
+            dataType: "json",
+            success: function (resultData) {
+                debugger;
+                var data = "";
+                $("#subhead").html('');
+                $("#subhead").append("<option value='0'>--Select One--</option>");
+                if (resultData != null) {
+                   
+                    $("#subhead").prop('disabled', false);
+                        
+                        
+                    for (var i = 0; i < resultData.length; i++) {
+                        data += "<option value=" + resultData[i].SubHead_Id + ">" + resultData[i].SubHead_Name + "</option>";
+
+                    }
+
+                }
+                $("#subhead").append(data);
+            }
+        })
+    }
+    function BindSubheadCode() {
+        debugger;
+        $.ajax({
+            async: false,
+            type: 'POST',
+            url: "/Finance/BindsubheadCode",
+            data: { subheadid: $("#subhead").val() },
+            dataType: "json",
+            success: function (resultData) {
+                debugger;
+                $("#subheadcode").prop('disabled', false);
+                $("#subheadcode").val(resultData);
+            }
+        })
+    }
+    $(document).ready(function () {
+    $(function () {
+        
+            $.ajax({
+                type: "GET",
+                url: "/Finance/GetUnitDetails",   
+                //data: { Usr_Id: Usr_Id },
+                dataType: "json",
+                success: function (response) {
+                    
+                   
+                    $('#lbl_Unitname').text(response.Unit_Name);
+                    $("#lbl_UnitCode").text(response.Unit_Code);
+                    $("#Unit_Id").val(response.Unit_Id);
+                   
+                },
+                failure: function (response) {
+                    alert(response);
+                },
+                error: function (response) {
+                    alert(response);
+                }
+            });
+        });
+        $(function () {
+
+            $.ajax({
+                type: "GET",
+                url: "/Finance/GetActivefyr",
+                dataType: "json",
+                success: function (response) {
+
+
+                    $('#lbl_Fyrname').text(response.Fin_Yr);
+                   
+                    $("#Fin_Id").val(response.Fin_Id);
+
+                },
+                failure: function (response) {
+                    alert(response);
+                },
+                error: function (response) {
+                    alert(response);
+                }
+            });
+        });
+    });
+    function getdata() {
+        debugger;
+        var deductedtds = $("#txt_LibltyCurntfy").val();
+        var retainamnt = $("#lbl_Curntyerexp").text();
+        var sum = parseFloat(deductedtds) + parseFloat(retainamnt);
+        if (!isNaN(sum)) {
+            if ($("#hf_ReBudget").val() < sum) ///// check total payment value should be less than RE Budget of the curreny year.
+            {
+                alert("Total Payment cannot be more than Budget Amount");
+                $("#txt_LibltyCurntfy").val('0.00');
+                //  $("#lbl_Curntyerexp").text('0.00');
+                $("#lbl_TotalPayment").text("");
+            }
+            else {
+                netamnt = $("#lbl_TotalPayment").text(sum);
+                getdata1();
+            }
+        }
+    }
+    function getdata1() {
+        debugger;
+        var deductedtds1 = $("#lbl_TotalPayment").text();
+        var retainamnt11 = $("#txt_ProbableExpd").val();
+        var Add = parseFloat(deductedtds1) + parseFloat(retainamnt11);
+        if (!isNaN(Add)) {
+            curntexp = $("#lbl_totlexpcurrent").text(Add);
+        }
+
+    }
+    function UploadFile() {
+        debugger;
+        var fileData = new FormData();
+        var files = $("#btnupload").get(0).files;
+        if (files.length > 0) {
+            fileData.append(files[0].name, files[0]);
+        }
+        $.ajax({
+            async: false,
+            url: "/Finance/Fileupload",
+            type: "POST",
+            processData: false,
+            contentType: false,
+            data: fileData,
+            success: function (response) {
+                //code after success
+                alert(response);
+                $("#fileid").val(response);
+            },
+            error: function (er) {
+
+            }
+        });
+    }
+    //submit data
+    
+    function rejectdata() {
+        debugger;
+
+        $("#head").val('0');
+        $("#subhead").val('0');
+        $("#subheadcode").text('');
+        $("#lbl_Curbgtexp").text('');
+        $("#txt_Explstyr").val('0.00');
+        $("#txt_LibltyCurntfy").val('0.00');
+        $("#lbl_Curntyerexp").text('0.00');
+        $("#lbl_TotalPayment").text('0.00');
+        $("#txt_ProbableExpd").val('0.00');
+        $("#lbl_totlexpcurrent").text('0.00');
+        //$("#txt_ReCurnt").val('0.00')
+        $("#txt_NxtFinancialYr").val('0.00');
+        $("#txt_remark").val('');
+
+    }
+    $("#btn_AddRowtotable").click(function () {
+        debugger;
+       
+        var submit = 0;
+        var table = $("#tbl_revenueproposalbyunit");
+       
+        var headname = $("#head").val();
+       
+        var headname1 = $("#head option:selected").text();
+       
+        var subheadname = $("#subhead").val();
+        var subheadname1 = $("#subhead  option:selected").text();
+       
+        var subheadcode = $("#subheadcode").val();
+        
+        var bgtid = $("#lbl_Curbgtexp").attr("class");
+
+        var Curbgtexp = $("#lbl_Curbgtexp").text();
+        
+        
+        
+        var txtExplstyr = parseFloat($("#txt_Explstyr").val()).toFixed(2);
+       
+        var txtLibltyCurntfy = parseFloat($("#txt_LibltyCurntfy").val()).toFixed(2);
+        
+        var txtCurntyrexp = parseFloat($("#lbl_Curntyerexp").text()).toFixed(2);
+       
+        var txttotlpmt = $("#lbl_TotalPayment").text();
+       
+        var txtProbableExpd = parseFloat($("#txt_ProbableExpd").val()).toFixed(2);
+        
+        var totlexpcurrent = $("#lbl_totlexpcurrent").text();
+        
+        //var Re_For_Current = $("#txt_ReCurnt").val();
+        var txtNxtFinancialYr = $("#txt_NxtFinancialYr").val();
+        
+        var txtremark = $("#txt_remark").val();
+       
+        
+        var markup = "<tr><td><input type='checkbox' name='record'></td><td id=" + headname + " >" + headname1 + "</td><td id=" + subheadname + " >" + subheadname1 +
+            "</td><td>" + subheadcode + "</td><td  id=" + bgtid + ">" + Curbgtexp + "</td><td>" + txtExplstyr + "</td><td>" + txtLibltyCurntfy + "</td><td>" + txtCurntyrexp +
+            "</td><td>" + txttotlpmt + "</td><td>" + txtProbableExpd + "</td><td>" + totlexpcurrent + "</td><td>" + totlexpcurrent + "</td><td>" + txtNxtFinancialYr + "</td><td>" + txtremark +
+            "</td><td><button type='button'  class='btn btn-primary' id='btnD1' data-toggle='modal' data-target='#myModal'>DELETE</button>"
+        "</td></tr>";
+        if (headname == null || headname == "" || headname == "0" || headname1 == "" || subheadname == null || subheadname == "" || subheadname == "0" || subheadname1 == "" ||
+             txtExplstyr == "" || txtLibltyCurntfy == "" || txtCurntyrexp == "" ||
+             txttotlpmt == "" || txtProbableExpd == "" || totlexpcurrent == ""
+        ) {
+            alert("Please Fill All the value!")
+        }
+        else {
+
+            if (txtremark == "" && txtNxtFinancialYr == 0.00) {
+                alert("Please Provide Budget For Next FY!")
+            }
+            else {
+                $("table tbody").append(markup);
+               
+            }
+
+            var datacount = 0;
+            if (datacount == 0) {
+                count = count + 1;
+                var item = {};
+                item["id"] = count;
+                item["Head_Id"] = headname;
+               
+                item["Subhead_Id"] = subheadname;
+               
+               
+                item["Bgt_Id"] = bgtid;
+                item["Current_expdr"] = Curbgtexp;
+                item["Lt_Fy_Exp"] = txtExplstyr;
+                item["Lb_Pr_Paid"] = txtLibltyCurntfy;
+                item["txtCurntyrexp"] = txtCurntyrexp;
+                item["Total_Pmt"] = txttotlpmt;
+                item["Prob_Exp"] = txtProbableExpd;
+
+                item["FileID"] = "";
+                item["Total_Prop_Exp"] = totlexpcurrent;
+                item["Fst_Prop_Re_Curnt"] = totlexpcurrent;
+                item["Fst_Bdgt_Nxt_Fy"] = txtNxtFinancialYr;
+                item["Fin_Id"] = $("#Fin_Id").val();
+                item["Unit_Id"] = $("#Unit_Id").val();
+                item["Fst_remarks"] = txtremark;
+                IndentArray.push(item);
+
+            }
+
+        }
+
+        rejectdata();
+        //Delete the records
+        $('#tbl_revenueproposalbyunit').on('click', 'td button[type="button"]', function () {
+            debugger;
+            if (confirm("Are you sure wants to delete ?.")) {
+                var row = $(this).closest("tr");
+                row.remove();
+            }
+        });
+        function numericOnly(elementRef) {
+            var keyCodeEntered = (event.which) ? event.which : (window.event.keyCode) ? window.event.keyCode : -1;
+            if ((keyCodeEntered >= 48) && (keyCodeEntered <= 57)) {
+                return true;
+            }
+            else if (keyCodeEntered == 46) {
+                if ((elementRef.value) && (elementRef.value.indexOf('.') >= 0))
+                    return false;
+                else
+                    return true;
+            }
+            return false;
+        }
+    })
+    function gotoview() {
+        window.location.href = "/Finance/ViewBudgetDetails";
+    }
+    function Saverevenue() {
+     
+        debugger;
+        UploadFile();
+        var file = $("#fileid").val();
+
+        if (IndentArray.length > 0) {
+            for (var i = 0; i < IndentArray.length; i++) {
+                IndentArray[i].FileID = file ;
+            }
+        }
+
+        if (IndentArray.length == 0) {
+            alert("Please add some item to list");
+            return false;
+        }
+        else {
+            if (confirm("Are you sure want to create revenue for these item ")) {
+                $.ajax({
+                    type: 'POST',
+                    url: "/Finance/CreateRevenue",
+                    data: { customers: IndentArray },
+                    dataType: "json",
+                    success: function (resultData) {
+                        if (resultData == true) {
+                            alert("Revenue created successfully");
+                            
+                        }
+                    }
+                })
+            }
+        }
+    }
+   
+   
+</script>                                                   

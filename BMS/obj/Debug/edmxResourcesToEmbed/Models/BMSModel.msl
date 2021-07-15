@@ -1,0 +1,1626 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="BMSModelStoreContainer" CdmEntityContainer="BMSEntities">
+    <EntitySetMapping Name="BudgetTypes">
+      <EntityTypeMapping TypeName="BMSModel.BudgetType">
+        <MappingFragment StoreEntitySet="BudgetType">
+          <ScalarProperty Name="BugtTyp_Id" ColumnName="BugtTyp_Id" />
+          <ScalarProperty Name="BgtTypNm" ColumnName="BgtTypNm" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Files">
+      <EntityTypeMapping TypeName="BMSModel.File">
+        <MappingFragment StoreEntitySet="Files">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="FileID" ColumnName="FileID" />
+          <ScalarProperty Name="FileName" ColumnName="FileName" />
+          <ScalarProperty Name="Data" ColumnName="Data" />
+          <ScalarProperty Name="path" ColumnName="path" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Financial_Year">
+      <EntityTypeMapping TypeName="BMSModel.Financial_Year">
+        <MappingFragment StoreEntitySet="Financial_Year">
+          <ScalarProperty Name="Fin_Id" ColumnName="Fin_Id" />
+          <ScalarProperty Name="Fin_Yr" ColumnName="Fin_Yr" />
+          <ScalarProperty Name="AddBy" ColumnName="AddBy" />
+          <ScalarProperty Name="AddOn" ColumnName="AddOn" />
+          <ScalarProperty Name="ModBy" ColumnName="ModBy" />
+          <ScalarProperty Name="ModOn" ColumnName="ModOn" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Head_Master">
+      <EntityTypeMapping TypeName="BMSModel.Head_Master">
+        <MappingFragment StoreEntitySet="Head_Master">
+          <ScalarProperty Name="Head_Id" ColumnName="Head_Id" />
+          <ScalarProperty Name="hdnm" ColumnName="hdnm" />
+          <ScalarProperty Name="hdcode" ColumnName="hdcode" />
+          <ScalarProperty Name="BugtTyp_Id" ColumnName="BugtTyp_Id" />
+          <ScalarProperty Name="addon" ColumnName="addon" />
+          <ScalarProperty Name="addby" ColumnName="addby" />
+          <ScalarProperty Name="modon" ColumnName="modon" />
+          <ScalarProperty Name="modby" ColumnName="modby" />
+          <ScalarProperty Name="isdelete" ColumnName="isdelete" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Mst_ApproveType">
+      <EntityTypeMapping TypeName="BMSModel.Mst_ApproveType">
+        <MappingFragment StoreEntitySet="Mst_ApproveType">
+          <ScalarProperty Name="Aprov_Type_ID" ColumnName="Aprov_Type_ID" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Mst_Assign_Designation">
+      <EntityTypeMapping TypeName="BMSModel.Mst_Assign_Designation">
+        <MappingFragment StoreEntitySet="Mst_Assign_Designation">
+          <ScalarProperty Name="AssDeg_ID" ColumnName="AssDeg_ID" />
+          <ScalarProperty Name="Desg_ID" ColumnName="Desg_ID" />
+          <ScalarProperty Name="Dept_ID" ColumnName="Dept_ID" />
+          <ScalarProperty Name="Addon" ColumnName="Addon" />
+          <ScalarProperty Name="Addby" ColumnName="Addby" />
+          <ScalarProperty Name="Modon" ColumnName="Modon" />
+          <ScalarProperty Name="Modby" ColumnName="Modby" />
+          <ScalarProperty Name="isActive" ColumnName="isActive" />
+          <ScalarProperty Name="isDelete" ColumnName="isDelete" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Mst_AssignCircleDivison">
+      <EntityTypeMapping TypeName="BMSModel.Mst_AssignCircleDivison">
+        <MappingFragment StoreEntitySet="Mst_AssignCircleDivison">
+          <ScalarProperty Name="AssignCircleDivisonid" ColumnName="AssignCircleDivisonid" />
+          <ScalarProperty Name="circleid" ColumnName="circleid" />
+          <ScalarProperty Name="divisonid" ColumnName="divisonid" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+          <ScalarProperty Name="AddBy" ColumnName="AddBy" />
+          <ScalarProperty Name="AddOn" ColumnName="AddOn" />
+          <ScalarProperty Name="ModBy" ColumnName="ModBy" />
+          <ScalarProperty Name="ModOn" ColumnName="ModOn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Mst_AssignUnitToBank">
+      <EntityTypeMapping TypeName="BMSModel.Mst_AssignUnitToBank">
+        <MappingFragment StoreEntitySet="Mst_AssignUnitToBank">
+          <ScalarProperty Name="Assg_unitbnkid" ColumnName="Assg_unitbnkid" />
+          <ScalarProperty Name="Unit_Id" ColumnName="Unit_Id" />
+          <ScalarProperty Name="bnkid" ColumnName="bnkid" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+          <ScalarProperty Name="AddBy" ColumnName="AddBy" />
+          <ScalarProperty Name="AddOn" ColumnName="AddOn" />
+          <ScalarProperty Name="ModBy" ColumnName="ModBy" />
+          <ScalarProperty Name="ModOn" ColumnName="ModOn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Mst_AssignZoneCircle">
+      <EntityTypeMapping TypeName="BMSModel.Mst_AssignZoneCircle">
+        <MappingFragment StoreEntitySet="Mst_AssignZoneCircle">
+          <ScalarProperty Name="AssignZoneCircleid" ColumnName="AssignZoneCircleid" />
+          <ScalarProperty Name="circleid" ColumnName="circleid" />
+          <ScalarProperty Name="zoneid" ColumnName="zoneid" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+          <ScalarProperty Name="AddBy" ColumnName="AddBy" />
+          <ScalarProperty Name="AddOn" ColumnName="AddOn" />
+          <ScalarProperty Name="ModBy" ColumnName="ModBy" />
+          <ScalarProperty Name="ModOn" ColumnName="ModOn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Mst_Bank">
+      <EntityTypeMapping TypeName="BMSModel.Mst_Bank">
+        <MappingFragment StoreEntitySet="Mst_Bank">
+          <ScalarProperty Name="bnkid" ColumnName="bnkid" />
+          <ScalarProperty Name="Bank_Name" ColumnName="Bank_Name" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+          <ScalarProperty Name="AddBy" ColumnName="AddBy" />
+          <ScalarProperty Name="AddOn" ColumnName="AddOn" />
+          <ScalarProperty Name="ModBy" ColumnName="ModBy" />
+          <ScalarProperty Name="ModOn" ColumnName="ModOn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Mst_BnkDtls">
+      <EntityTypeMapping TypeName="BMSModel.Mst_BnkDtls">
+        <MappingFragment StoreEntitySet="Mst_BnkDtls">
+          <ScalarProperty Name="Bnk_DtlsId" ColumnName="Bnk_DtlsId" />
+          <ScalarProperty Name="bnkid" ColumnName="bnkid" />
+          <ScalarProperty Name="Branch" ColumnName="Branch" />
+          <ScalarProperty Name="Acnt_holderName" ColumnName="Acnt_holderName" />
+          <ScalarProperty Name="IFSC_Code" ColumnName="IFSC_Code" />
+          <ScalarProperty Name="AccountType" ColumnName="AccountType" />
+          <ScalarProperty Name="Account_Number" ColumnName="Account_Number" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+          <ScalarProperty Name="AddBy" ColumnName="AddBy" />
+          <ScalarProperty Name="AddOn" ColumnName="AddOn" />
+          <ScalarProperty Name="ModBy" ColumnName="ModBy" />
+          <ScalarProperty Name="ModOn" ColumnName="ModOn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Mst_Capital_Works_Detail">
+      <EntityTypeMapping TypeName="BMSModel.Mst_Capital_Works_Detail">
+        <MappingFragment StoreEntitySet="Mst_Capital_Works_Detail">
+          <ScalarProperty Name="Cap_Wok_Head_Id" ColumnName="Cap_Wok_Head_Id" />
+          <ScalarProperty Name="Proj_Name" ColumnName="Proj_Name" />
+          <ScalarProperty Name="Proj_Code" ColumnName="Proj_Code" />
+          <ScalarProperty Name="Aprov_No" ColumnName="Aprov_No" />
+          <ScalarProperty Name="Aprov_Date" ColumnName="Aprov_Date" />
+          <ScalarProperty Name="Aprov_Cost" ColumnName="Aprov_Cost" />
+          <ScalarProperty Name="Cont_Value" ColumnName="Cont_Value" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+          <ScalarProperty Name="Addon" ColumnName="Addon" />
+          <ScalarProperty Name="Addby" ColumnName="Addby" />
+          <ScalarProperty Name="Modon" ColumnName="Modon" />
+          <ScalarProperty Name="Modby" ColumnName="Modby" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Mst_Circle">
+      <EntityTypeMapping TypeName="BMSModel.Mst_Circle">
+        <MappingFragment StoreEntitySet="Mst_Circle">
+          <ScalarProperty Name="circleid" ColumnName="circleid" />
+          <ScalarProperty Name="circlename" ColumnName="circlename" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+          <ScalarProperty Name="AddBy" ColumnName="AddBy" />
+          <ScalarProperty Name="AddOn" ColumnName="AddOn" />
+          <ScalarProperty Name="ModBy" ColumnName="ModBy" />
+          <ScalarProperty Name="ModOn" ColumnName="ModOn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Mst_Country">
+      <EntityTypeMapping TypeName="BMSModel.Mst_Country">
+        <MappingFragment StoreEntitySet="Mst_Country">
+          <ScalarProperty Name="Con_Id" ColumnName="Con_Id" />
+          <ScalarProperty Name="Con_Nm" ColumnName="Con_Nm" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+          <ScalarProperty Name="AddBy" ColumnName="AddBy" />
+          <ScalarProperty Name="AddOn" ColumnName="AddOn" />
+          <ScalarProperty Name="ModBy" ColumnName="ModBy" />
+          <ScalarProperty Name="ModOn" ColumnName="ModOn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Mst_District">
+      <EntityTypeMapping TypeName="BMSModel.Mst_District">
+        <MappingFragment StoreEntitySet="Mst_District">
+          <ScalarProperty Name="Dst_Id" ColumnName="Dst_Id" />
+          <ScalarProperty Name="St_Id" ColumnName="St_Id" />
+          <ScalarProperty Name="Dst_Nm" ColumnName="Dst_Nm" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+          <ScalarProperty Name="AddOn" ColumnName="AddOn" />
+          <ScalarProperty Name="AddBy" ColumnName="AddBy" />
+          <ScalarProperty Name="ModOn" ColumnName="ModOn" />
+          <ScalarProperty Name="ModBy" ColumnName="ModBy" />
+          <ScalarProperty Name="Con_Id" ColumnName="Con_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Mst_Divison">
+      <EntityTypeMapping TypeName="BMSModel.Mst_Divison">
+        <MappingFragment StoreEntitySet="Mst_Divison">
+          <ScalarProperty Name="divisonid" ColumnName="divisonid" />
+          <ScalarProperty Name="divisonname" ColumnName="divisonname" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+          <ScalarProperty Name="AddBy" ColumnName="AddBy" />
+          <ScalarProperty Name="AddOn" ColumnName="AddOn" />
+          <ScalarProperty Name="ModBy" ColumnName="ModBy" />
+          <ScalarProperty Name="ModOn" ColumnName="ModOn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Mst_InnerSubHead">
+      <EntityTypeMapping TypeName="BMSModel.Mst_InnerSubHead">
+        <MappingFragment StoreEntitySet="Mst_InnerSubHead">
+          <ScalarProperty Name="InnerSubHead_ID" ColumnName="InnerSubHead_ID" />
+          <ScalarProperty Name="SubHead_Id" ColumnName="SubHead_Id" />
+          <ScalarProperty Name="InnerSubHead_Code" ColumnName="InnerSubHead_Code" />
+          <ScalarProperty Name="InnerSubHead_Name" ColumnName="InnerSubHead_Name" />
+          <ScalarProperty Name="addon" ColumnName="addon" />
+          <ScalarProperty Name="addby" ColumnName="addby" />
+          <ScalarProperty Name="modon" ColumnName="modon" />
+          <ScalarProperty Name="modby" ColumnName="modby" />
+          <ScalarProperty Name="isactive" ColumnName="isactive" />
+          <ScalarProperty Name="isdelete" ColumnName="isdelete" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Mst_month">
+      <EntityTypeMapping TypeName="BMSModel.Mst_month">
+        <MappingFragment StoreEntitySet="Mst_month">
+          <ScalarProperty Name="monthid" ColumnName="monthid" />
+          <ScalarProperty Name="monthnm" ColumnName="monthnm" />
+          <ScalarProperty Name="addon" ColumnName="addon" />
+          <ScalarProperty Name="addby" ColumnName="addby" />
+          <ScalarProperty Name="modon" ColumnName="modon" />
+          <ScalarProperty Name="modby" ColumnName="modby" />
+          <ScalarProperty Name="isdelete" ColumnName="isdelete" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Mst_SalaryHeads">
+      <EntityTypeMapping TypeName="BMSModel.Mst_SalaryHeads">
+        <MappingFragment StoreEntitySet="Mst_SalaryHeads">
+          <ScalarProperty Name="SalHead_Id" ColumnName="SalHead_Id" />
+          <ScalarProperty Name="Salhdnm" ColumnName="Salhdnm" />
+          <ScalarProperty Name="Salhdcode" ColumnName="Salhdcode" />
+          <ScalarProperty Name="addon" ColumnName="addon" />
+          <ScalarProperty Name="addby" ColumnName="addby" />
+          <ScalarProperty Name="modon" ColumnName="modon" />
+          <ScalarProperty Name="modby" ColumnName="modby" />
+          <ScalarProperty Name="isdelete" ColumnName="isdelete" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Mst_State">
+      <EntityTypeMapping TypeName="BMSModel.Mst_State">
+        <MappingFragment StoreEntitySet="Mst_State">
+          <ScalarProperty Name="St_Id" ColumnName="St_Id" />
+          <ScalarProperty Name="St_Nm" ColumnName="St_Nm" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+          <ScalarProperty Name="AddBy" ColumnName="AddBy" />
+          <ScalarProperty Name="AddOn" ColumnName="AddOn" />
+          <ScalarProperty Name="ModBy" ColumnName="ModBy" />
+          <ScalarProperty Name="ModOn" ColumnName="ModOn" />
+          <ScalarProperty Name="Con_Id" ColumnName="Con_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Mst_Unit">
+      <EntityTypeMapping TypeName="BMSModel.Mst_Unit">
+        <MappingFragment StoreEntitySet="Mst_Unit">
+          <ScalarProperty Name="Unit_Id" ColumnName="Unit_Id" />
+          <ScalarProperty Name="Con_Id" ColumnName="Con_Id" />
+          <ScalarProperty Name="St_Id" ColumnName="St_Id" />
+          <ScalarProperty Name="Dst_Id" ColumnName="Dst_Id" />
+          <ScalarProperty Name="zoneid" ColumnName="zoneid" />
+          <ScalarProperty Name="circleid" ColumnName="circleid" />
+          <ScalarProperty Name="divisonid" ColumnName="divisonid" />
+          <ScalarProperty Name="bnkid" ColumnName="bnkid" />
+          <ScalarProperty Name="Bnk_DtlsId" ColumnName="Bnk_DtlsId" />
+          <ScalarProperty Name="Office_Type" ColumnName="Office_Type" />
+          <ScalarProperty Name="Unit_Name" ColumnName="Unit_Name" />
+          <ScalarProperty Name="Unit_Code" ColumnName="Unit_Code" />
+          <ScalarProperty Name="Plot_No" ColumnName="Plot_No" />
+          <ScalarProperty Name="AT" ColumnName="AT" />
+          <ScalarProperty Name="PO" ColumnName="PO" />
+          <ScalarProperty Name="PS" ColumnName="PS" />
+          <ScalarProperty Name="Land_Mark" ColumnName="Land_Mark" />
+          <ScalarProperty Name="Area" ColumnName="Area" />
+          <ScalarProperty Name="Pin" ColumnName="Pin" />
+          <ScalarProperty Name="Contact_No" ColumnName="Contact_No" />
+          <ScalarProperty Name="CP_Name" ColumnName="CP_Name" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+          <ScalarProperty Name="AddOn" ColumnName="AddOn" />
+          <ScalarProperty Name="AddBy" ColumnName="AddBy" />
+          <ScalarProperty Name="ModOn" ColumnName="ModOn" />
+          <ScalarProperty Name="ModBy" ColumnName="ModBy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Mst_Zone">
+      <EntityTypeMapping TypeName="BMSModel.Mst_Zone">
+        <MappingFragment StoreEntitySet="Mst_Zone">
+          <ScalarProperty Name="zoneid" ColumnName="zoneid" />
+          <ScalarProperty Name="zonename" ColumnName="zonename" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+          <ScalarProperty Name="AddBy" ColumnName="AddBy" />
+          <ScalarProperty Name="AddOn" ColumnName="AddOn" />
+          <ScalarProperty Name="ModBy" ColumnName="ModBy" />
+          <ScalarProperty Name="ModOn" ColumnName="ModOn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Pages">
+      <EntityTypeMapping TypeName="BMSModel.Page">
+        <MappingFragment StoreEntitySet="Pages">
+          <ScalarProperty Name="pageid" ColumnName="pageid" />
+          <ScalarProperty Name="distext" ColumnName="distext" />
+          <ScalarProperty Name="tooltip" ColumnName="tooltip" />
+          <ScalarProperty Name="targeturl" ColumnName="targeturl" />
+          <ScalarProperty Name="parentid" ColumnName="parentid" />
+          <ScalarProperty Name="orderby" ColumnName="orderby" />
+          <ScalarProperty Name="addby" ColumnName="addby" />
+          <ScalarProperty Name="addon" ColumnName="addon" />
+          <ScalarProperty Name="modby" ColumnName="modby" />
+          <ScalarProperty Name="modon" ColumnName="modon" />
+          <ScalarProperty Name="isactive" ColumnName="isactive" />
+          <ScalarProperty Name="isdelete" ColumnName="isdelete" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Permissions">
+      <EntityTypeMapping TypeName="BMSModel.Permission">
+        <MappingFragment StoreEntitySet="Permission">
+          <ScalarProperty Name="permid" ColumnName="permid" />
+          <ScalarProperty Name="roleid" ColumnName="roleid" />
+          <ScalarProperty Name="pageid" ColumnName="pageid" />
+          <ScalarProperty Name="canview" ColumnName="canview" />
+          <ScalarProperty Name="canadd" ColumnName="canadd" />
+          <ScalarProperty Name="canedit" ColumnName="canedit" />
+          <ScalarProperty Name="candelete" ColumnName="candelete" />
+          <ScalarProperty Name="adddby" ColumnName="adddby" />
+          <ScalarProperty Name="addon" ColumnName="addon" />
+          <ScalarProperty Name="modby" ColumnName="modby" />
+          <ScalarProperty Name="modon" ColumnName="modon" />
+          <ScalarProperty Name="isactive" ColumnName="isactive" />
+          <ScalarProperty Name="isdelete" ColumnName="isdelete" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Roles">
+      <EntityTypeMapping TypeName="BMSModel.Role">
+        <MappingFragment StoreEntitySet="Roles">
+          <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+          <ScalarProperty Name="RoleDesc" ColumnName="RoleDesc" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+          <ScalarProperty Name="addon" ColumnName="addon" />
+          <ScalarProperty Name="addby" ColumnName="addby" />
+          <ScalarProperty Name="modon" ColumnName="modon" />
+          <ScalarProperty Name="modby" ColumnName="modby" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tarn_Add_Budget">
+      <EntityTypeMapping TypeName="BMSModel.Tarn_Add_Budget">
+        <MappingFragment StoreEntitySet="Tarn_Add_Budget">
+          <ScalarProperty Name="Bgt_Id" ColumnName="Bgt_Id" />
+          <ScalarProperty Name="Head_Id" ColumnName="Head_Id" />
+          <ScalarProperty Name="SubHead_Id" ColumnName="SubHead_Id" />
+          <ScalarProperty Name="InnerSubHead_ID" ColumnName="InnerSubHead_ID" />
+          <ScalarProperty Name="Fin_Id" ColumnName="Fin_Id" />
+          <ScalarProperty Name="Unit_Id" ColumnName="Unit_Id" />
+          <ScalarProperty Name="Bit_Approved" ColumnName="Bit_Approved" />
+          <ScalarProperty Name="Proposed_Re_For_Current" ColumnName="Proposed_Re_For_Current" />
+          <ScalarProperty Name="Prop_Amnt" ColumnName="Prop_Amnt" />
+          <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+          <ScalarProperty Name="First_Lvl_Re_For_Current" ColumnName="First_Lvl_Re_For_Current" />
+          <ScalarProperty Name="fst_Aprov_Bdgt_Amnt" ColumnName="fst_Aprov_Bdgt_Amnt" />
+          <ScalarProperty Name="fst_Arop_Remarks" ColumnName="fst_Arop_Remarks" />
+          <ScalarProperty Name="fst_Arop_BIT" ColumnName="fst_Arop_BIT" />
+          <ScalarProperty Name="Sec_Lvl_Re_For_Current" ColumnName="Sec_Lvl_Re_For_Current" />
+          <ScalarProperty Name="Sec_Aprov_Bdgt_Amnt" ColumnName="Sec_Aprov_Bdgt_Amnt" />
+          <ScalarProperty Name="Sec_Arop_Remarks" ColumnName="Sec_Arop_Remarks" />
+          <ScalarProperty Name="Sec_Arop_BIT" ColumnName="Sec_Arop_BIT" />
+          <ScalarProperty Name="Bdgt_Amnt" ColumnName="Bdgt_Amnt" />
+          <ScalarProperty Name="Ho_Remarks" ColumnName="Ho_Remarks" />
+          <ScalarProperty Name="Sanc_Amnt" ColumnName="Sanc_Amnt" />
+          <ScalarProperty Name="Avlb_Amnt" ColumnName="Avlb_Amnt" />
+          <ScalarProperty Name="Rqst_Adtn_Alt_Amnt" ColumnName="Rqst_Adtn_Alt_Amnt" />
+          <ScalarProperty Name="Aprv_Adtn_Alt_Amnt" ColumnName="Aprv_Adtn_Alt_Amnt" />
+          <ScalarProperty Name="Intrm_Bug_Amnt" ColumnName="Intrm_Bug_Amnt" />
+          <ScalarProperty Name="Re_For_Current" ColumnName="Re_For_Current" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+          <ScalarProperty Name="AddOn" ColumnName="AddOn" />
+          <ScalarProperty Name="AddBy" ColumnName="AddBy" />
+          <ScalarProperty Name="ModBy" ColumnName="ModBy" />
+          <ScalarProperty Name="ModOn" ColumnName="ModOn" />
+          <ScalarProperty Name="Mod_Bug_Amnt" ColumnName="Mod_Bug_Amnt" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tran_Cap_TP_Budget">
+      <EntityTypeMapping TypeName="BMSModel.Tran_Cap_TP_Budget">
+        <MappingFragment StoreEntitySet="Tran_Cap_TP_Budget">
+          <ScalarProperty Name="Cap_TPbgt_Id" ColumnName="Cap_TPbgt_Id" />
+          <ScalarProperty Name="Head_Id" ColumnName="Head_Id" />
+          <ScalarProperty Name="SubHead_Id" ColumnName="SubHead_Id" />
+          <ScalarProperty Name="Fin_Id" ColumnName="Fin_Id" />
+          <ScalarProperty Name="Unit_Id" ColumnName="Unit_Id" />
+          <ScalarProperty Name="Proposed_Re_For_Current" ColumnName="Proposed_Re_For_Current" />
+          <ScalarProperty Name="Prop_Amnt" ColumnName="Prop_Amnt" />
+          <ScalarProperty Name="Bdgt_Amnt" ColumnName="Bdgt_Amnt" />
+          <ScalarProperty Name="First_Lvl_Re_For_Current" ColumnName="First_Lvl_Re_For_Current" />
+          <ScalarProperty Name="fst_Aprov_Bdgt_Amnt" ColumnName="fst_Aprov_Bdgt_Amnt" />
+          <ScalarProperty Name="fst_Arop_Remarks" ColumnName="fst_Arop_Remarks" />
+          <ScalarProperty Name="fst_Arop_BIT" ColumnName="fst_Arop_BIT" />
+          <ScalarProperty Name="Sec_Lvl_Re_For_Current" ColumnName="Sec_Lvl_Re_For_Current" />
+          <ScalarProperty Name="Sec_Aprov_Bdgt_Amnt" ColumnName="Sec_Aprov_Bdgt_Amnt" />
+          <ScalarProperty Name="Sec_Arop_Remarks" ColumnName="Sec_Arop_Remarks" />
+          <ScalarProperty Name="Sec_Arop_BIT" ColumnName="Sec_Arop_BIT" />
+          <ScalarProperty Name="Avlb_Amnt" ColumnName="Avlb_Amnt" />
+          <ScalarProperty Name="Rqst_Adtn_Alt_Amnt" ColumnName="Rqst_Adtn_Alt_Amnt" />
+          <ScalarProperty Name="Aprv_Adtn_Alt_Amnt" ColumnName="Aprv_Adtn_Alt_Amnt" />
+          <ScalarProperty Name="Intrm_Bug_Amnt" ColumnName="Intrm_Bug_Amnt" />
+          <ScalarProperty Name="Re_For_Current" ColumnName="Re_For_Current" />
+          <ScalarProperty Name="Ho_Remarks" ColumnName="Ho_Remarks" />
+          <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+          <ScalarProperty Name="Bit_Approved" ColumnName="Bit_Approved" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+          <ScalarProperty Name="AddOn" ColumnName="AddOn" />
+          <ScalarProperty Name="AddBy" ColumnName="AddBy" />
+          <ScalarProperty Name="ModOn" ColumnName="ModOn" />
+          <ScalarProperty Name="ModBy" ColumnName="ModBy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tran_CWRequistionNumber">
+      <EntityTypeMapping TypeName="BMSModel.Tran_CWRequistionNumber">
+        <MappingFragment StoreEntitySet="Tran_CWRequistionNumber">
+          <ScalarProperty Name="CWReq_NumberId" ColumnName="CWReq_NumberId" />
+          <ScalarProperty Name="Unit_Id" ColumnName="Unit_Id" />
+          <ScalarProperty Name="Req_Num" ColumnName="Req_Num" />
+          <ScalarProperty Name="AddOn" ColumnName="AddOn" />
+          <ScalarProperty Name="AddBy" ColumnName="AddBy" />
+          <ScalarProperty Name="ModOn" ColumnName="ModOn" />
+          <ScalarProperty Name="ModBy" ColumnName="ModBy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tran_User_Creation">
+      <EntityTypeMapping TypeName="BMSModel.Tran_User_Creation">
+        <MappingFragment StoreEntitySet="Tran_User_Creation">
+          <ScalarProperty Name="Usr_Id" ColumnName="Usr_Id" />
+          <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+          <ScalarProperty Name="Dept_ID" ColumnName="Dept_ID" />
+          <ScalarProperty Name="Desg_ID" ColumnName="Desg_ID" />
+          <ScalarProperty Name="Unit_Id" ColumnName="Unit_Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Usr_Nm" ColumnName="Usr_Nm" />
+          <ScalarProperty Name="Pwd" ColumnName="Pwd" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+          <ScalarProperty Name="AddOn" ColumnName="AddOn" />
+          <ScalarProperty Name="AddBy" ColumnName="AddBy" />
+          <ScalarProperty Name="ModOn" ColumnName="ModOn" />
+          <ScalarProperty Name="ModBy" ColumnName="ModBy" />
+          <ScalarProperty Name="EmpCode" ColumnName="EmpCode" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="Regine" ColumnName="Regine" />
+          <ScalarProperty Name="circleid" ColumnName="circleid" />
+          <ScalarProperty Name="divisonid" ColumnName="divisonid" />
+          <ScalarProperty Name="zoneid" ColumnName="zoneid" />
+          <ScalarProperty Name="ProfileName" ColumnName="ProfileName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Trans_Additional_Allotment">
+      <EntityTypeMapping TypeName="BMSModel.Trans_Additional_Allotment">
+        <MappingFragment StoreEntitySet="Trans_Additional_Allotment">
+          <ScalarProperty Name="AddAlt_Id" ColumnName="AddAlt_Id" />
+          <ScalarProperty Name="Head_Id" ColumnName="Head_Id" />
+          <ScalarProperty Name="SubHead_Id" ColumnName="SubHead_Id" />
+          <ScalarProperty Name="Unit_Id" ColumnName="Unit_Id" />
+          <ScalarProperty Name="Bgt_Id" ColumnName="Bgt_Id" />
+          <ScalarProperty Name="Cap_TPbgt_Id" ColumnName="Cap_TPbgt_Id" />
+          <ScalarProperty Name="Fin_Id" ColumnName="Fin_Id" />
+          <ScalarProperty Name="Exist_Altmnt" ColumnName="Exist_Altmnt" />
+          <ScalarProperty Name="Adtnal_Altmnt" ColumnName="Adtnal_Altmnt" />
+          <ScalarProperty Name="Lst_Yr_Expnd" ColumnName="Lst_Yr_Expnd" />
+          <ScalarProperty Name="Cur_Yr_Expnd" ColumnName="Cur_Yr_Expnd" />
+          <ScalarProperty Name="Aprov_Allotment" ColumnName="Aprov_Allotment" />
+          <ScalarProperty Name="Reasons" ColumnName="Reasons" />
+          <ScalarProperty Name="Ho_Reasons" ColumnName="Ho_Reasons" />
+          <ScalarProperty Name="BgtTyp_Id" ColumnName="BgtTyp_Id" />
+          <ScalarProperty Name="Bit_Aprove" ColumnName="Bit_Aprove" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+          <ScalarProperty Name="AddBy" ColumnName="AddBy" />
+          <ScalarProperty Name="AddOn" ColumnName="AddOn" />
+          <ScalarProperty Name="ModOn" ColumnName="ModOn" />
+          <ScalarProperty Name="ModBy" ColumnName="ModBy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Trans_Additional_allotment_Work">
+      <EntityTypeMapping TypeName="BMSModel.Trans_Additional_allotment_Work">
+        <MappingFragment StoreEntitySet="Trans_Additional_allotment_Work">
+          <ScalarProperty Name="AddAltWork_Id" ColumnName="AddAltWork_Id" />
+          <ScalarProperty Name="Cap_Wok_Head_Id" ColumnName="Cap_Wok_Head_Id" />
+          <ScalarProperty Name="Unit_Id" ColumnName="Unit_Id" />
+          <ScalarProperty Name="Cap_Work_Bgt_Id" ColumnName="Cap_Work_Bgt_Id" />
+          <ScalarProperty Name="Fin_Id" ColumnName="Fin_Id" />
+          <ScalarProperty Name="Exist_Altmnt" ColumnName="Exist_Altmnt" />
+          <ScalarProperty Name="Adtnal_Altmnt" ColumnName="Adtnal_Altmnt" />
+          <ScalarProperty Name="Lst_Yr_Expnd" ColumnName="Lst_Yr_Expnd" />
+          <ScalarProperty Name="Cur_Yr_Expnd" ColumnName="Cur_Yr_Expnd" />
+          <ScalarProperty Name="Aprov_Allotment" ColumnName="Aprov_Allotment" />
+          <ScalarProperty Name="Reasons" ColumnName="Reasons" />
+          <ScalarProperty Name="Ho_Reasons" ColumnName="Ho_Reasons" />
+          <ScalarProperty Name="Bit_Aprove" ColumnName="Bit_Aprove" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+          <ScalarProperty Name="AddBy" ColumnName="AddBy" />
+          <ScalarProperty Name="AddOn" ColumnName="AddOn" />
+          <ScalarProperty Name="ModOn" ColumnName="ModOn" />
+          <ScalarProperty Name="ModBy" ColumnName="ModBy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Trans_Cap_Work_Bgt_Requsion_Unit">
+      <EntityTypeMapping TypeName="BMSModel.Trans_Cap_Work_Bgt_Requsion_Unit">
+        <MappingFragment StoreEntitySet="Trans_Cap_Work_Bgt_Requsion_Unit">
+          <ScalarProperty Name="Cap_Work_Bgt_Req_Id" ColumnName="Cap_Work_Bgt_Req_Id" />
+          <ScalarProperty Name="Cap_Wok_Head_Id" ColumnName="Cap_Wok_Head_Id" />
+          <ScalarProperty Name="Fin_Id" ColumnName="Fin_Id" />
+          <ScalarProperty Name="Unit_Id" ColumnName="Unit_Id" />
+          <ScalarProperty Name="Cap_Work_Bgt_Id" ColumnName="Cap_Work_Bgt_Id" />
+          <ScalarProperty Name="Lst_Cum_Exp" ColumnName="Lst_Cum_Exp" />
+          <ScalarProperty Name="Curnt_Actul_Exp" ColumnName="Curnt_Actul_Exp" />
+          <ScalarProperty Name="Probl_Exp" ColumnName="Probl_Exp" />
+          <ScalarProperty Name="Total_Exp" ColumnName="Total_Exp" />
+          <ScalarProperty Name="Aprov_Bgt" ColumnName="Aprov_Bgt" />
+          <ScalarProperty Name="Prop_Re_Curnt" ColumnName="Prop_Re_Curnt" />
+          <ScalarProperty Name="Re_For_Current" ColumnName="Re_For_Current" />
+          <ScalarProperty Name="Ho_Remarks" ColumnName="Ho_Remarks" />
+          <ScalarProperty Name="Bit_Aprove" ColumnName="Bit_Aprove" />
+          <ScalarProperty Name="Prop_BE_NxtFy" ColumnName="Prop_BE_NxtFy" />
+          <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+          <ScalarProperty Name="Addon" ColumnName="Addon" />
+          <ScalarProperty Name="Addby" ColumnName="Addby" />
+          <ScalarProperty Name="Modon" ColumnName="Modon" />
+          <ScalarProperty Name="Modby" ColumnName="Modby" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Trans_Cap_Work_Budget">
+      <EntityTypeMapping TypeName="BMSModel.Trans_Cap_Work_Budget">
+        <MappingFragment StoreEntitySet="Trans_Cap_Work_Budget">
+          <ScalarProperty Name="Cap_Work_Bgt_Id" ColumnName="Cap_Work_Bgt_Id" />
+          <ScalarProperty Name="Cap_Wok_Head_Id" ColumnName="Cap_Wok_Head_Id" />
+          <ScalarProperty Name="Fin_Id" ColumnName="Fin_Id" />
+          <ScalarProperty Name="Unit_Id" ColumnName="Unit_Id" />
+          <ScalarProperty Name="Prop_Amnt" ColumnName="Prop_Amnt" />
+          <ScalarProperty Name="Bdgt_Amnt" ColumnName="Bdgt_Amnt" />
+          <ScalarProperty Name="Avlb_Amnt" ColumnName="Avlb_Amnt" />
+          <ScalarProperty Name="Rqst_Adtn_Alt_Amnt" ColumnName="Rqst_Adtn_Alt_Amnt" />
+          <ScalarProperty Name="Aprv_Adtn_Alt_Amnt" ColumnName="Aprv_Adtn_Alt_Amnt" />
+          <ScalarProperty Name="Mod_Bug_Amnt" ColumnName="Mod_Bug_Amnt" />
+          <ScalarProperty Name="Re_For_Current" ColumnName="Re_For_Current" />
+          <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+          <ScalarProperty Name="Cry_Nxt_Fy" ColumnName="Cry_Nxt_Fy" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+          <ScalarProperty Name="AddOn" ColumnName="AddOn" />
+          <ScalarProperty Name="AddBy" ColumnName="AddBy" />
+          <ScalarProperty Name="ModOn" ColumnName="ModOn" />
+          <ScalarProperty Name="ModBy" ColumnName="ModBy" />
+          <ScalarProperty Name="FileID" ColumnName="FileID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Trans_Cap_Wrk_CashRequistionInvoice">
+      <EntityTypeMapping TypeName="BMSModel.Trans_Cap_Wrk_CashRequistionInvoice">
+        <MappingFragment StoreEntitySet="Trans_Cap_Wrk_CashRequistionInvoice">
+          <ScalarProperty Name="Cptl_Wrk_CashReq_Id" ColumnName="Cptl_Wrk_CashReq_Id" />
+          <ScalarProperty Name="Unit_Id" ColumnName="Unit_Id" />
+          <ScalarProperty Name="Fin_Id" ColumnName="Fin_Id" />
+          <ScalarProperty Name="Cap_Work_Bgt_Id" ColumnName="Cap_Work_Bgt_Id" />
+          <ScalarProperty Name="Req_Date" ColumnName="Req_Date" />
+          <ScalarProperty Name="Req_Num" ColumnName="Req_Num" />
+          <ScalarProperty Name="Cur_bnk_Balance" ColumnName="Cur_bnk_Balance" />
+          <ScalarProperty Name="Cur_csh_Balance" ColumnName="Cur_csh_Balance" />
+          <ScalarProperty Name="ReasonCash_Maintain" ColumnName="ReasonCash_Maintain" />
+          <ScalarProperty Name="bnkid" ColumnName="bnkid" />
+          <ScalarProperty Name="Bnk_DtlsId" ColumnName="Bnk_DtlsId" />
+          <ScalarProperty Name="Created_By" ColumnName="Created_By" />
+          <ScalarProperty Name="Checked_By" ColumnName="Checked_By" />
+          <ScalarProperty Name="Authorized_By" ColumnName="Authorized_By" />
+          <ScalarProperty Name="Invoice_Type" ColumnName="Invoice_Type" />
+          <ScalarProperty Name="Invoice_Catagory" ColumnName="Invoice_Catagory" />
+          <ScalarProperty Name="Cap_Wok_Head_Id" ColumnName="Cap_Wok_Head_Id" />
+          <ScalarProperty Name="SupplierName" ColumnName="SupplierName" />
+          <ScalarProperty Name="Purchased_MaterialDesc" ColumnName="Purchased_MaterialDesc" />
+          <ScalarProperty Name="wopoNo" ColumnName="wopoNo" />
+          <ScalarProperty Name="InvoiceNo" ColumnName="InvoiceNo" />
+          <ScalarProperty Name="InvoiceDt" ColumnName="InvoiceDt" />
+          <ScalarProperty Name="InvoiceAmt" ColumnName="InvoiceAmt" />
+          <ScalarProperty Name="It_Tds" ColumnName="It_Tds" />
+          <ScalarProperty Name="Igst_Td" ColumnName="Igst_Td" />
+          <ScalarProperty Name="Cgst_Tds" ColumnName="Cgst_Tds" />
+          <ScalarProperty Name="Sgst_Tds" ColumnName="Sgst_Tds" />
+          <ScalarProperty Name="Obroc_Tds" ColumnName="Obroc_Tds" />
+          <ScalarProperty Name="Royality_Tds" ColumnName="Royality_Tds" />
+          <ScalarProperty Name="DeductedTds" ColumnName="DeductedTds" />
+          <ScalarProperty Name="Other_Deduction" ColumnName="Other_Deduction" />
+          <ScalarProperty Name="Retain_Amt" ColumnName="Retain_Amt" />
+          <ScalarProperty Name="NetPay" ColumnName="NetPay" />
+          <ScalarProperty Name="DivisonOfficer_Comment" ColumnName="DivisonOfficer_Comment" />
+          <ScalarProperty Name="Ho_Initator" ColumnName="Ho_Initator" />
+          <ScalarProperty Name="Ho_AprovedLevel1" ColumnName="Ho_AprovedLevel1" />
+          <ScalarProperty Name="Final_approver" ColumnName="Final_approver" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+          <ScalarProperty Name="AddBy" ColumnName="AddBy" />
+          <ScalarProperty Name="AddOn" ColumnName="AddOn" />
+          <ScalarProperty Name="ModBy" ColumnName="ModBy" />
+          <ScalarProperty Name="ModOn" ColumnName="ModOn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Trans_Capital_TPBgt_Prop_By_Unit">
+      <EntityTypeMapping TypeName="BMSModel.Trans_Capital_TPBgt_Prop_By_Unit">
+        <MappingFragment StoreEntitySet="Trans_Capital_TPBgt_Prop_By_Unit">
+          <ScalarProperty Name="TP_Bgt_Unit_Id" ColumnName="TP_Bgt_Unit_Id" />
+          <ScalarProperty Name="Head_Id" ColumnName="Head_Id" />
+          <ScalarProperty Name="SubHead_Id" ColumnName="SubHead_Id" />
+          <ScalarProperty Name="Fin_Id" ColumnName="Fin_Id" />
+          <ScalarProperty Name="Unit_Id" ColumnName="Unit_Id" />
+          <ScalarProperty Name="Cap_TPbgt_Id" ColumnName="Cap_TPbgt_Id" />
+          <ScalarProperty Name="Aprov_No" ColumnName="Aprov_No" />
+          <ScalarProperty Name="Aprov_Dt" ColumnName="Aprov_Dt" />
+          <ScalarProperty Name="Aprov_Est_Cost" ColumnName="Aprov_Est_Cost" />
+          <ScalarProperty Name="Lst_Cum_Exp" ColumnName="Lst_Cum_Exp" />
+          <ScalarProperty Name="Curnt_Actul_Exp" ColumnName="Curnt_Actul_Exp" />
+          <ScalarProperty Name="Probl_Exp" ColumnName="Probl_Exp" />
+          <ScalarProperty Name="Total_Exp" ColumnName="Total_Exp" />
+          <ScalarProperty Name="Fst_Bdgt_Nxt_Fy" ColumnName="Fst_Bdgt_Nxt_Fy" />
+          <ScalarProperty Name="Fst_remarks" ColumnName="Fst_remarks" />
+          <ScalarProperty Name="Fst_Prop_Re_Curnt" ColumnName="Fst_Prop_Re_Curnt" />
+          <ScalarProperty Name="fst_Arop_BIT" ColumnName="fst_Arop_BIT" />
+          <ScalarProperty Name="Sec_Arop_BIT" ColumnName="Sec_Arop_BIT" />
+          <ScalarProperty Name="Prop_Re_Curnt" ColumnName="Prop_Re_Curnt" />
+          <ScalarProperty Name="bit_Second_Aprov" ColumnName="bit_Second_Aprov" />
+          <ScalarProperty Name="Re_For_Current" ColumnName="Re_For_Current" />
+          <ScalarProperty Name="Prop_BE_NxtFy" ColumnName="Prop_BE_NxtFy" />
+          <ScalarProperty Name="Aprov_Bgt" ColumnName="Aprov_Bgt" />
+          <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+          <ScalarProperty Name="Ho_Remarks" ColumnName="Ho_Remarks" />
+          <ScalarProperty Name="bit_Aproved" ColumnName="bit_Aproved" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+          <ScalarProperty Name="Addon" ColumnName="Addon" />
+          <ScalarProperty Name="Addby" ColumnName="Addby" />
+          <ScalarProperty Name="Modon" ColumnName="Modon" />
+          <ScalarProperty Name="Modby" ColumnName="Modby" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Trans_CashRequistionInvoice">
+      <EntityTypeMapping TypeName="BMSModel.Trans_CashRequistionInvoice">
+        <MappingFragment StoreEntitySet="Trans_CashRequistionInvoice">
+          <ScalarProperty Name="CashReq_Id" ColumnName="CashReq_Id" />
+          <ScalarProperty Name="Unit_Id" ColumnName="Unit_Id" />
+          <ScalarProperty Name="Fin_Id" ColumnName="Fin_Id" />
+          <ScalarProperty Name="Bgt_Id" ColumnName="Bgt_Id" />
+          <ScalarProperty Name="Cap_TPbgt_Id" ColumnName="Cap_TPbgt_Id" />
+          <ScalarProperty Name="Req_Date" ColumnName="Req_Date" />
+          <ScalarProperty Name="Req_Num" ColumnName="Req_Num" />
+          <ScalarProperty Name="Cur_bnk_Balance" ColumnName="Cur_bnk_Balance" />
+          <ScalarProperty Name="Cur_csh_Balance" ColumnName="Cur_csh_Balance" />
+          <ScalarProperty Name="ReasonCash_Maintain" ColumnName="ReasonCash_Maintain" />
+          <ScalarProperty Name="bnkid" ColumnName="bnkid" />
+          <ScalarProperty Name="Bnk_DtlsId" ColumnName="Bnk_DtlsId" />
+          <ScalarProperty Name="Created_By" ColumnName="Created_By" />
+          <ScalarProperty Name="Checked_By" ColumnName="Checked_By" />
+          <ScalarProperty Name="Authorized_By" ColumnName="Authorized_By" />
+          <ScalarProperty Name="Invoice_Type" ColumnName="Invoice_Type" />
+          <ScalarProperty Name="Invoice_Catagory" ColumnName="Invoice_Catagory" />
+          <ScalarProperty Name="BugtTyp_Id" ColumnName="BugtTyp_Id" />
+          <ScalarProperty Name="Head_Id" ColumnName="Head_Id" />
+          <ScalarProperty Name="SubHead_Id" ColumnName="SubHead_Id" />
+          <ScalarProperty Name="SubHeadCode" ColumnName="SubHeadCode" />
+          <ScalarProperty Name="SupplierName" ColumnName="SupplierName" />
+          <ScalarProperty Name="Purchased_MaterialDesc" ColumnName="Purchased_MaterialDesc" />
+          <ScalarProperty Name="wopoNo" ColumnName="wopoNo" />
+          <ScalarProperty Name="InvoiceNo" ColumnName="InvoiceNo" />
+          <ScalarProperty Name="InvoiceDt" ColumnName="InvoiceDt" />
+          <ScalarProperty Name="InvoiceAmt" ColumnName="InvoiceAmt" />
+          <ScalarProperty Name="It_Tds" ColumnName="It_Tds" />
+          <ScalarProperty Name="Igst_Td" ColumnName="Igst_Td" />
+          <ScalarProperty Name="Cgst_Tds" ColumnName="Cgst_Tds" />
+          <ScalarProperty Name="Sgst_Tds" ColumnName="Sgst_Tds" />
+          <ScalarProperty Name="Obroc_Tds" ColumnName="Obroc_Tds" />
+          <ScalarProperty Name="Royality_Tds" ColumnName="Royality_Tds" />
+          <ScalarProperty Name="DeductedTds" ColumnName="DeductedTds" />
+          <ScalarProperty Name="Other_Deduction" ColumnName="Other_Deduction" />
+          <ScalarProperty Name="Retain_Amt" ColumnName="Retain_Amt" />
+          <ScalarProperty Name="NetPay" ColumnName="NetPay" />
+          <ScalarProperty Name="DivisonOfficer_Comment" ColumnName="DivisonOfficer_Comment" />
+          <ScalarProperty Name="Ho_Initator" ColumnName="Ho_Initator" />
+          <ScalarProperty Name="Ho_AprovedLevel1" ColumnName="Ho_AprovedLevel1" />
+          <ScalarProperty Name="Final_approver" ColumnName="Final_approver" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+          <ScalarProperty Name="AddBy" ColumnName="AddBy" />
+          <ScalarProperty Name="AddOn" ColumnName="AddOn" />
+          <ScalarProperty Name="ModBy" ColumnName="ModBy" />
+          <ScalarProperty Name="ModOn" ColumnName="ModOn" />
+          <ScalarProperty Name="FileID" ColumnName="FileID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Trans_CashRequstionNonInvoice">
+      <EntityTypeMapping TypeName="BMSModel.Trans_CashRequstionNonInvoice">
+        <MappingFragment StoreEntitySet="Trans_CashRequstionNonInvoice">
+          <ScalarProperty Name="CashReq_NonInvoiceId" ColumnName="CashReq_NonInvoiceId" />
+          <ScalarProperty Name="NonInvoiceNumber" ColumnName="NonInvoiceNumber" />
+          <ScalarProperty Name="Unit_Id" ColumnName="Unit_Id" />
+          <ScalarProperty Name="Fin_Id" ColumnName="Fin_Id" />
+          <ScalarProperty Name="Bgt_Id" ColumnName="Bgt_Id" />
+          <ScalarProperty Name="Cap_TPbgt_Id" ColumnName="Cap_TPbgt_Id" />
+          <ScalarProperty Name="Req_Date" ColumnName="Req_Date" />
+          <ScalarProperty Name="Req_Num" ColumnName="Req_Num" />
+          <ScalarProperty Name="Cur_bnk_Balance" ColumnName="Cur_bnk_Balance" />
+          <ScalarProperty Name="Cur_csh_Balance" ColumnName="Cur_csh_Balance" />
+          <ScalarProperty Name="ReasonCash_Maintain" ColumnName="ReasonCash_Maintain" />
+          <ScalarProperty Name="bnkid" ColumnName="bnkid" />
+          <ScalarProperty Name="Bnk_DtlsId" ColumnName="Bnk_DtlsId" />
+          <ScalarProperty Name="Created_By" ColumnName="Created_By" />
+          <ScalarProperty Name="Checked_By" ColumnName="Checked_By" />
+          <ScalarProperty Name="Authorized_By" ColumnName="Authorized_By" />
+          <ScalarProperty Name="Invoice_Type" ColumnName="Invoice_Type" />
+          <ScalarProperty Name="Invoice_Catagory" ColumnName="Invoice_Catagory" />
+          <ScalarProperty Name="BugtTyp_Id" ColumnName="BugtTyp_Id" />
+          <ScalarProperty Name="Head_Id" ColumnName="Head_Id" />
+          <ScalarProperty Name="SubHead_Id" ColumnName="SubHead_Id" />
+          <ScalarProperty Name="SubHeadCode" ColumnName="SubHeadCode" />
+          <ScalarProperty Name="Dues" ColumnName="Dues" />
+          <ScalarProperty Name="Requeted_Amt" ColumnName="Requeted_Amt" />
+          <ScalarProperty Name="Budget_Amt" ColumnName="Budget_Amt" />
+          <ScalarProperty Name="Approved_Amt" ColumnName="Approved_Amt" />
+          <ScalarProperty Name="DivisonOfficer_Comment" ColumnName="DivisonOfficer_Comment" />
+          <ScalarProperty Name="Ho_Initator" ColumnName="Ho_Initator" />
+          <ScalarProperty Name="Ho_AprovedLevel1" ColumnName="Ho_AprovedLevel1" />
+          <ScalarProperty Name="Final_approver" ColumnName="Final_approver" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+          <ScalarProperty Name="AddBy" ColumnName="AddBy" />
+          <ScalarProperty Name="AddOn" ColumnName="AddOn" />
+          <ScalarProperty Name="ModBy" ColumnName="ModBy" />
+          <ScalarProperty Name="ModOn" ColumnName="ModOn" />
+          <ScalarProperty Name="FileID" ColumnName="FileID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Trans_Cptl_wrk_CashRequstionNonInvoice">
+      <EntityTypeMapping TypeName="BMSModel.Trans_Cptl_wrk_CashRequstionNonInvoice">
+        <MappingFragment StoreEntitySet="Trans_Cptl_wrk_CashRequstionNonInvoice">
+          <ScalarProperty Name="Cap_wrk_CashReq_NonInvoiceId" ColumnName="Cap_wrk_CashReq_NonInvoiceId" />
+          <ScalarProperty Name="NonInvoiceNumber" ColumnName="NonInvoiceNumber" />
+          <ScalarProperty Name="Unit_Id" ColumnName="Unit_Id" />
+          <ScalarProperty Name="Fin_Id" ColumnName="Fin_Id" />
+          <ScalarProperty Name="Cap_Work_Bgt_Id" ColumnName="Cap_Work_Bgt_Id" />
+          <ScalarProperty Name="Req_Date" ColumnName="Req_Date" />
+          <ScalarProperty Name="Req_Num" ColumnName="Req_Num" />
+          <ScalarProperty Name="Cur_bnk_Balance" ColumnName="Cur_bnk_Balance" />
+          <ScalarProperty Name="Cur_csh_Balance" ColumnName="Cur_csh_Balance" />
+          <ScalarProperty Name="ReasonCash_Maintain" ColumnName="ReasonCash_Maintain" />
+          <ScalarProperty Name="bnkid" ColumnName="bnkid" />
+          <ScalarProperty Name="Bnk_DtlsId" ColumnName="Bnk_DtlsId" />
+          <ScalarProperty Name="Created_By" ColumnName="Created_By" />
+          <ScalarProperty Name="Checked_By" ColumnName="Checked_By" />
+          <ScalarProperty Name="Authorized_By" ColumnName="Authorized_By" />
+          <ScalarProperty Name="Invoice_Type" ColumnName="Invoice_Type" />
+          <ScalarProperty Name="Invoice_Catagory" ColumnName="Invoice_Catagory" />
+          <ScalarProperty Name="Cap_Wok_Head_Id" ColumnName="Cap_Wok_Head_Id" />
+          <ScalarProperty Name="Dues" ColumnName="Dues" />
+          <ScalarProperty Name="Requeted_Amt" ColumnName="Requeted_Amt" />
+          <ScalarProperty Name="Budget_Amt" ColumnName="Budget_Amt" />
+          <ScalarProperty Name="Approved_Amt" ColumnName="Approved_Amt" />
+          <ScalarProperty Name="DivisonOfficer_Comment" ColumnName="DivisonOfficer_Comment" />
+          <ScalarProperty Name="Ho_Initator" ColumnName="Ho_Initator" />
+          <ScalarProperty Name="Ho_AprovedLevel1" ColumnName="Ho_AprovedLevel1" />
+          <ScalarProperty Name="Final_approver" ColumnName="Final_approver" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+          <ScalarProperty Name="AddBy" ColumnName="AddBy" />
+          <ScalarProperty Name="AddOn" ColumnName="AddOn" />
+          <ScalarProperty Name="ModBy" ColumnName="ModBy" />
+          <ScalarProperty Name="ModOn" ColumnName="ModOn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Trans_LeveL_ApprovalInvoice">
+      <EntityTypeMapping TypeName="BMSModel.Trans_LeveL_ApprovalInvoice">
+        <MappingFragment StoreEntitySet="Trans_LeveL_ApprovalInvoice">
+          <ScalarProperty Name="CashReqAprv_levelId" ColumnName="CashReqAprv_levelId" />
+          <ScalarProperty Name="CashReq_Id" ColumnName="CashReq_Id" />
+          <ScalarProperty Name="Unit_Id" ColumnName="Unit_Id" />
+          <ScalarProperty Name="Fin_Id" ColumnName="Fin_Id" />
+          <ScalarProperty Name="Bgt_Id" ColumnName="Bgt_Id" />
+          <ScalarProperty Name="Cap_TPbgt_Id" ColumnName="Cap_TPbgt_Id" />
+          <ScalarProperty Name="BugtTyp_Id" ColumnName="BugtTyp_Id" />
+          <ScalarProperty Name="InvoiceNo" ColumnName="InvoiceNo" />
+          <ScalarProperty Name="Req_Num" ColumnName="Req_Num" />
+          <ScalarProperty Name="Level_Approver1" ColumnName="Level_Approver1" />
+          <ScalarProperty Name="Approv_Quantity1" ColumnName="Approv_Quantity1" />
+          <ScalarProperty Name="Bit_Approv1" ColumnName="Bit_Approv1" />
+          <ScalarProperty Name="Approvr1_remarks" ColumnName="Approvr1_remarks" />
+          <ScalarProperty Name="Level_Approver2" ColumnName="Level_Approver2" />
+          <ScalarProperty Name="Approv_Quantity2" ColumnName="Approv_Quantity2" />
+          <ScalarProperty Name="Bit_Approv2" ColumnName="Bit_Approv2" />
+          <ScalarProperty Name="Approvr2_remarks" ColumnName="Approvr2_remarks" />
+          <ScalarProperty Name="Level_Approver3" ColumnName="Level_Approver3" />
+          <ScalarProperty Name="Approv_Quantity13" ColumnName="Approv_Quantity13" />
+          <ScalarProperty Name="Bit_Approv3" ColumnName="Bit_Approv3" />
+          <ScalarProperty Name="Approvr3_remarks" ColumnName="Approvr3_remarks" />
+          <ScalarProperty Name="Level_Approver4" ColumnName="Level_Approver4" />
+          <ScalarProperty Name="Approv_Quantity4" ColumnName="Approv_Quantity4" />
+          <ScalarProperty Name="Bit_Approv4" ColumnName="Bit_Approv4" />
+          <ScalarProperty Name="Approvr4_remarks" ColumnName="Approvr4_remarks" />
+          <ScalarProperty Name="Level_Approver5" ColumnName="Level_Approver5" />
+          <ScalarProperty Name="Approv_Quantity5" ColumnName="Approv_Quantity5" />
+          <ScalarProperty Name="Bit_Approv5" ColumnName="Bit_Approv5" />
+          <ScalarProperty Name="Approvr5_remarks" ColumnName="Approvr5_remarks" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+          <ScalarProperty Name="AddBy" ColumnName="AddBy" />
+          <ScalarProperty Name="AddOn" ColumnName="AddOn" />
+          <ScalarProperty Name="ModBy" ColumnName="ModBy" />
+          <ScalarProperty Name="ModOn" ColumnName="ModOn" />
+          <ScalarProperty Name="FileID" ColumnName="FileID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Trans_LeveL_ApprovalNonInvoice">
+      <EntityTypeMapping TypeName="BMSModel.Trans_LeveL_ApprovalNonInvoice">
+        <MappingFragment StoreEntitySet="Trans_LeveL_ApprovalNonInvoice">
+          <ScalarProperty Name="CashReqAprv_levelNonInvoiceId" ColumnName="CashReqAprv_levelNonInvoiceId" />
+          <ScalarProperty Name="CashReq_NonInvoiceId" ColumnName="CashReq_NonInvoiceId" />
+          <ScalarProperty Name="Unit_Id" ColumnName="Unit_Id" />
+          <ScalarProperty Name="BugtTyp_Id" ColumnName="BugtTyp_Id" />
+          <ScalarProperty Name="Fin_Id" ColumnName="Fin_Id" />
+          <ScalarProperty Name="Bgt_Id" ColumnName="Bgt_Id" />
+          <ScalarProperty Name="Cap_TPbgt_Id" ColumnName="Cap_TPbgt_Id" />
+          <ScalarProperty Name="Req_Num" ColumnName="Req_Num" />
+          <ScalarProperty Name="NonInvoiceNumber" ColumnName="NonInvoiceNumber" />
+          <ScalarProperty Name="Level_Approver1" ColumnName="Level_Approver1" />
+          <ScalarProperty Name="Approv_Quantity1" ColumnName="Approv_Quantity1" />
+          <ScalarProperty Name="Bit_Approv1" ColumnName="Bit_Approv1" />
+          <ScalarProperty Name="Approvr1_remarks" ColumnName="Approvr1_remarks" />
+          <ScalarProperty Name="Level_Approver2" ColumnName="Level_Approver2" />
+          <ScalarProperty Name="Approv_Quantity2" ColumnName="Approv_Quantity2" />
+          <ScalarProperty Name="Bit_Approv2" ColumnName="Bit_Approv2" />
+          <ScalarProperty Name="Approvr2_remarks" ColumnName="Approvr2_remarks" />
+          <ScalarProperty Name="Level_Approver3" ColumnName="Level_Approver3" />
+          <ScalarProperty Name="Approv_Quantity13" ColumnName="Approv_Quantity13" />
+          <ScalarProperty Name="Bit_Approv3" ColumnName="Bit_Approv3" />
+          <ScalarProperty Name="Approvr3_remarks" ColumnName="Approvr3_remarks" />
+          <ScalarProperty Name="Level_Approver4" ColumnName="Level_Approver4" />
+          <ScalarProperty Name="Approv_Quantity4" ColumnName="Approv_Quantity4" />
+          <ScalarProperty Name="Bit_Approv4" ColumnName="Bit_Approv4" />
+          <ScalarProperty Name="Approvr4_remarks" ColumnName="Approvr4_remarks" />
+          <ScalarProperty Name="Level_Approver5" ColumnName="Level_Approver5" />
+          <ScalarProperty Name="Approv_Quantity5" ColumnName="Approv_Quantity5" />
+          <ScalarProperty Name="Bit_Approv5" ColumnName="Bit_Approv5" />
+          <ScalarProperty Name="Approvr5_remarks" ColumnName="Approvr5_remarks" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+          <ScalarProperty Name="AddBy" ColumnName="AddBy" />
+          <ScalarProperty Name="AddOn" ColumnName="AddOn" />
+          <ScalarProperty Name="ModBy" ColumnName="ModBy" />
+          <ScalarProperty Name="ModOn" ColumnName="ModOn" />
+          <ScalarProperty Name="FileID" ColumnName="FileID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Trans_RequsitionNumber">
+      <EntityTypeMapping TypeName="BMSModel.Trans_RequsitionNumber">
+        <MappingFragment StoreEntitySet="Trans_RequsitionNumber">
+          <ScalarProperty Name="Req_NumberId" ColumnName="Req_NumberId" />
+          <ScalarProperty Name="Unit_Id" ColumnName="Unit_Id" />
+          <ScalarProperty Name="Req_Num" ColumnName="Req_Num" />
+          <ScalarProperty Name="AddOn" ColumnName="AddOn" />
+          <ScalarProperty Name="AddBy" ColumnName="AddBy" />
+          <ScalarProperty Name="ModOn" ColumnName="ModOn" />
+          <ScalarProperty Name="ModBy" ColumnName="ModBy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Trans_Revnu_Expenditure_By_Unit">
+      <EntityTypeMapping TypeName="BMSModel.Trans_Revnu_Expenditure_By_Unit">
+        <MappingFragment StoreEntitySet="Trans_Revnu_Expenditure_By_Unit">
+          <ScalarProperty Name="Unit_RevExp_Id" ColumnName="Unit_RevExp_Id" />
+          <ScalarProperty Name="Unit_Id" ColumnName="Unit_Id" />
+          <ScalarProperty Name="Fin_Id" ColumnName="Fin_Id" />
+          <ScalarProperty Name="Head_Id" ColumnName="Head_Id" />
+          <ScalarProperty Name="Subhead_Id" ColumnName="Subhead_Id" />
+          <ScalarProperty Name="Lt_Fy_Exp" ColumnName="Lt_Fy_Exp" />
+          <ScalarProperty Name="Bgt_Id" ColumnName="Bgt_Id" />
+          <ScalarProperty Name="Lb_Pr_Paid" ColumnName="Lb_Pr_Paid" />
+          <ScalarProperty Name="Current_expdr" ColumnName="Current_expdr" />
+          <ScalarProperty Name="Total_Pmt" ColumnName="Total_Pmt" />
+          <ScalarProperty Name="Prob_Exp" ColumnName="Prob_Exp" />
+          <ScalarProperty Name="Total_Prop_Exp" ColumnName="Total_Prop_Exp" />
+          <ScalarProperty Name="Fst_Bdgt_Nxt_Fy" ColumnName="Fst_Bdgt_Nxt_Fy" />
+          <ScalarProperty Name="Fst_remarks" ColumnName="Fst_remarks" />
+          <ScalarProperty Name="Fst_Prop_Re_Curnt" ColumnName="Fst_Prop_Re_Curnt" />
+          <ScalarProperty Name="fst_Arop_BIT" ColumnName="fst_Arop_BIT" />
+          <ScalarProperty Name="Sec_Arop_BIT" ColumnName="Sec_Arop_BIT" />
+          <ScalarProperty Name="Prop_Re_Curnt" ColumnName="Prop_Re_Curnt" />
+          <ScalarProperty Name="Bdgt_Nxt_Fy" ColumnName="Bdgt_Nxt_Fy" />
+          <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+          <ScalarProperty Name="bit_Second_Aprov" ColumnName="bit_Second_Aprov" />
+          <ScalarProperty Name="Re_For_Current" ColumnName="Re_For_Current" />
+          <ScalarProperty Name="Bdgt_Amnt" ColumnName="Bdgt_Amnt" />
+          <ScalarProperty Name="Ho_Remarks" ColumnName="Ho_Remarks" />
+          <ScalarProperty Name="FileID" ColumnName="FileID" />
+          <ScalarProperty Name="bit_Aproved" ColumnName="bit_Aproved" />
+          <ScalarProperty Name="Addby" ColumnName="Addby" />
+          <ScalarProperty Name="Addon" ColumnName="Addon" />
+          <ScalarProperty Name="Modby" ColumnName="Modby" />
+          <ScalarProperty Name="Modon" ColumnName="Modon" />
+          <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TransCap_Wrk__LeveL_ApprovalInvoice">
+      <EntityTypeMapping TypeName="BMSModel.TransCap_Wrk__LeveL_ApprovalInvoice">
+        <MappingFragment StoreEntitySet="TransCap_Wrk__LeveL_ApprovalInvoice">
+          <ScalarProperty Name="Cap_wrk_CashReqAprv_levelId" ColumnName="Cap_wrk_CashReqAprv_levelId" />
+          <ScalarProperty Name="Cptl_Wrk_CashReq_Id" ColumnName="Cptl_Wrk_CashReq_Id" />
+          <ScalarProperty Name="Unit_Id" ColumnName="Unit_Id" />
+          <ScalarProperty Name="Fin_Id" ColumnName="Fin_Id" />
+          <ScalarProperty Name="Cap_Work_Bgt_Id" ColumnName="Cap_Work_Bgt_Id" />
+          <ScalarProperty Name="InvoiceNo" ColumnName="InvoiceNo" />
+          <ScalarProperty Name="Req_Num" ColumnName="Req_Num" />
+          <ScalarProperty Name="Level_Approver1" ColumnName="Level_Approver1" />
+          <ScalarProperty Name="Approv_Quantity1" ColumnName="Approv_Quantity1" />
+          <ScalarProperty Name="Bit_Approv1" ColumnName="Bit_Approv1" />
+          <ScalarProperty Name="Approvr1_remarks" ColumnName="Approvr1_remarks" />
+          <ScalarProperty Name="Level_Approver2" ColumnName="Level_Approver2" />
+          <ScalarProperty Name="Approv_Quantity2" ColumnName="Approv_Quantity2" />
+          <ScalarProperty Name="Bit_Approv2" ColumnName="Bit_Approv2" />
+          <ScalarProperty Name="Approvr2_remarks" ColumnName="Approvr2_remarks" />
+          <ScalarProperty Name="Level_Approver3" ColumnName="Level_Approver3" />
+          <ScalarProperty Name="Approv_Quantity13" ColumnName="Approv_Quantity13" />
+          <ScalarProperty Name="Bit_Approv3" ColumnName="Bit_Approv3" />
+          <ScalarProperty Name="Approvr3_remarks" ColumnName="Approvr3_remarks" />
+          <ScalarProperty Name="Level_Approver4" ColumnName="Level_Approver4" />
+          <ScalarProperty Name="Approv_Quantity4" ColumnName="Approv_Quantity4" />
+          <ScalarProperty Name="Bit_Approv4" ColumnName="Bit_Approv4" />
+          <ScalarProperty Name="Approvr4_remarks" ColumnName="Approvr4_remarks" />
+          <ScalarProperty Name="Level_Approver5" ColumnName="Level_Approver5" />
+          <ScalarProperty Name="Approv_Quantity5" ColumnName="Approv_Quantity5" />
+          <ScalarProperty Name="Bit_Approv5" ColumnName="Bit_Approv5" />
+          <ScalarProperty Name="Approvr5_remarks" ColumnName="Approvr5_remarks" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+          <ScalarProperty Name="AddBy" ColumnName="AddBy" />
+          <ScalarProperty Name="AddOn" ColumnName="AddOn" />
+          <ScalarProperty Name="ModBy" ColumnName="ModBy" />
+          <ScalarProperty Name="ModOn" ColumnName="ModOn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TransCap_Wrk__LeveL_ApprovalNonInvoice">
+      <EntityTypeMapping TypeName="BMSModel.TransCap_Wrk__LeveL_ApprovalNonInvoice">
+        <MappingFragment StoreEntitySet="TransCap_Wrk__LeveL_ApprovalNonInvoice">
+          <ScalarProperty Name="Cap_wrk_CashReqAprv_levelIdNoninvoice" ColumnName="Cap_wrk_CashReqAprv_levelIdNoninvoice" />
+          <ScalarProperty Name="Cap_wrk_CashReq_NonInvoiceId" ColumnName="Cap_wrk_CashReq_NonInvoiceId" />
+          <ScalarProperty Name="Fin_Id" ColumnName="Fin_Id" />
+          <ScalarProperty Name="Unit_Id" ColumnName="Unit_Id" />
+          <ScalarProperty Name="Cap_Work_Bgt_Id" ColumnName="Cap_Work_Bgt_Id" />
+          <ScalarProperty Name="Req_Num" ColumnName="Req_Num" />
+          <ScalarProperty Name="NonInvoiceNumber" ColumnName="NonInvoiceNumber" />
+          <ScalarProperty Name="Level_Approver1" ColumnName="Level_Approver1" />
+          <ScalarProperty Name="Approv_Quantity1" ColumnName="Approv_Quantity1" />
+          <ScalarProperty Name="Bit_Approv1" ColumnName="Bit_Approv1" />
+          <ScalarProperty Name="Approvr1_remarks" ColumnName="Approvr1_remarks" />
+          <ScalarProperty Name="Level_Approver2" ColumnName="Level_Approver2" />
+          <ScalarProperty Name="Approv_Quantity2" ColumnName="Approv_Quantity2" />
+          <ScalarProperty Name="Bit_Approv2" ColumnName="Bit_Approv2" />
+          <ScalarProperty Name="Approvr2_remarks" ColumnName="Approvr2_remarks" />
+          <ScalarProperty Name="Level_Approver3" ColumnName="Level_Approver3" />
+          <ScalarProperty Name="Approv_Quantity13" ColumnName="Approv_Quantity13" />
+          <ScalarProperty Name="Bit_Approv3" ColumnName="Bit_Approv3" />
+          <ScalarProperty Name="Approvr3_remarks" ColumnName="Approvr3_remarks" />
+          <ScalarProperty Name="Level_Approver4" ColumnName="Level_Approver4" />
+          <ScalarProperty Name="Approv_Quantity4" ColumnName="Approv_Quantity4" />
+          <ScalarProperty Name="Bit_Approv4" ColumnName="Bit_Approv4" />
+          <ScalarProperty Name="Approvr4_remarks" ColumnName="Approvr4_remarks" />
+          <ScalarProperty Name="Level_Approver5" ColumnName="Level_Approver5" />
+          <ScalarProperty Name="Approv_Quantity5" ColumnName="Approv_Quantity5" />
+          <ScalarProperty Name="Bit_Approv5" ColumnName="Bit_Approv5" />
+          <ScalarProperty Name="Approvr5_remarks" ColumnName="Approvr5_remarks" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+          <ScalarProperty Name="AddBy" ColumnName="AddBy" />
+          <ScalarProperty Name="AddOn" ColumnName="AddOn" />
+          <ScalarProperty Name="ModBy" ColumnName="ModBy" />
+          <ScalarProperty Name="ModOn" ColumnName="ModOn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Trns_Chng_Pwd_Log">
+      <EntityTypeMapping TypeName="BMSModel.Trns_Chng_Pwd_Log">
+        <MappingFragment StoreEntitySet="Trns_Chng_Pwd_Log">
+          <ScalarProperty Name="Cp_Id" ColumnName="Cp_Id" />
+          <ScalarProperty Name="Usr_Id" ColumnName="Usr_Id" />
+          <ScalarProperty Name="OTP" ColumnName="OTP" />
+          <ScalarProperty Name="Modby" ColumnName="Modby" />
+          <ScalarProperty Name="Modon" ColumnName="Modon" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Mst_User">
+      <EntityTypeMapping TypeName="BMSModel.Mst_User">
+        <MappingFragment StoreEntitySet="Mst_User">
+          <ScalarProperty Name="userid" ColumnName="userid" />
+          <ScalarProperty Name="unid" ColumnName="unid" />
+          <ScalarProperty Name="utyp" ColumnName="utyp" />
+          <ScalarProperty Name="roleid" ColumnName="roleid" />
+          <ScalarProperty Name="empnm" ColumnName="empnm" />
+          <ScalarProperty Name="unm" ColumnName="unm" />
+          <ScalarProperty Name="pwd" ColumnName="pwd" />
+          <ScalarProperty Name="mail" ColumnName="mail" />
+          <ScalarProperty Name="phn" ColumnName="phn" />
+          <ScalarProperty Name="isactive" ColumnName="isactive" />
+          <ScalarProperty Name="isdelete" ColumnName="isdelete" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Mst_Department">
+      <EntityTypeMapping TypeName="BMSModel.Mst_Department">
+        <MappingFragment StoreEntitySet="Mst_Department">
+          <ScalarProperty Name="modby" ColumnName="modby" />
+          <ScalarProperty Name="modon" ColumnName="modon" />
+          <ScalarProperty Name="addby" ColumnName="addby" />
+          <ScalarProperty Name="addon" ColumnName="addon" />
+          <ScalarProperty Name="isdelete" ColumnName="isdelete" />
+          <ScalarProperty Name="isactive" ColumnName="isactive" />
+          <ScalarProperty Name="Dept_Name" ColumnName="Dept_Name" />
+          <ScalarProperty Name="Dept_Code" ColumnName="Dept_Code" />
+          <ScalarProperty Name="Dept_ID" ColumnName="Dept_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Mst_Designation">
+      <EntityTypeMapping TypeName="BMSModel.Mst_Designation">
+        <MappingFragment StoreEntitySet="Mst_Designation">
+          <ScalarProperty Name="Dept_ID" ColumnName="Dept_ID" />
+          <ScalarProperty Name="modby" ColumnName="modby" />
+          <ScalarProperty Name="modon" ColumnName="modon" />
+          <ScalarProperty Name="addby" ColumnName="addby" />
+          <ScalarProperty Name="addon" ColumnName="addon" />
+          <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="Desg_Code" ColumnName="Desg_Code" />
+          <ScalarProperty Name="Designation_Name" ColumnName="Designation_Name" />
+          <ScalarProperty Name="Desg_ID" ColumnName="Desg_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="Head_MasterSelectAll" FunctionName="BMSModel.Store.Head_MasterSelectAll">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="BMSModel.Head_MasterSelectAll_Result">
+          <ScalarProperty Name="Head_Id" ColumnName="Head_Id" />
+          <ScalarProperty Name="hdnm" ColumnName="hdnm" />
+          <ScalarProperty Name="hdcode" ColumnName="hdcode" />
+          <ScalarProperty Name="BugtTyp_Id" ColumnName="BugtTyp_Id" />
+          <ScalarProperty Name="BgtTypNm" ColumnName="BgtTypNm" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="BankDetails_SelectAll" FunctionName="BMSModel.Store.BankDetails_SelectAll">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="BMSModel.BankDetails_SelectAll_Result">
+          <ScalarProperty Name="bnkid" ColumnName="bnkid" />
+          <ScalarProperty Name="Branch" ColumnName="Branch" />
+          <ScalarProperty Name="Acnt_holderName" ColumnName="Acnt_holderName" />
+          <ScalarProperty Name="IFSC_Code" ColumnName="IFSC_Code" />
+          <ScalarProperty Name="AccountType" ColumnName="AccountType" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Bnk_DtlsId" ColumnName="Bnk_DtlsId" />
+          <ScalarProperty Name="Account_Number" ColumnName="Account_Number" />
+          <ScalarProperty Name="Bank_Name" ColumnName="Bank_Name" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SubHeadMasterAll" FunctionName="BMSModel.Store.SubHeadMasterAll">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="BMSModel.SubHeadMasterAll_Result">
+          <ScalarProperty Name="SubHead_Id" ColumnName="SubHead_Id" />
+          <ScalarProperty Name="Head_Id" ColumnName="Head_Id" />
+          <ScalarProperty Name="hdnm" ColumnName="hdnm" />
+          <ScalarProperty Name="BugtTyp_Id" ColumnName="BugtTyp_Id" />
+          <ScalarProperty Name="BgtTypNm" ColumnName="BgtTypNm" />
+          <ScalarProperty Name="SubHead_Name" ColumnName="SubHead_Name" />
+          <ScalarProperty Name="SubHead_Code" ColumnName="SubHead_Code" />
+          <ScalarProperty Name="AddOn" ColumnName="AddOn" />
+          <ScalarProperty Name="AddBy" ColumnName="AddBy" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="Trans_Salary">
+      <EntityTypeMapping TypeName="BMSModel.Trans_Salary">
+        <MappingFragment StoreEntitySet="Trans_Salary">
+          <ScalarProperty Name="ModOn" ColumnName="ModOn" />
+          <ScalarProperty Name="ModBy" ColumnName="ModBy" />
+          <ScalarProperty Name="AddOn" ColumnName="AddOn" />
+          <ScalarProperty Name="AddBy" ColumnName="AddBy" />
+          <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+          <ScalarProperty Name="ApproveAmountByHo" ColumnName="ApproveAmountByHo" />
+          <ScalarProperty Name="bit_Approve" ColumnName="bit_Approve" />
+          <ScalarProperty Name="DeductionRealsedtoUnit" ColumnName="DeductionRealsedtoUnit" />
+          <ScalarProperty Name="ReductionRtainByHo" ColumnName="ReductionRtainByHo" />
+          <ScalarProperty Name="Others" ColumnName="Others" />
+          <ScalarProperty Name="Gsli" ColumnName="Gsli" />
+          <ScalarProperty Name="Pf" ColumnName="Pf" />
+          <ScalarProperty Name="Req_Amount" ColumnName="Req_Amount" />
+          <ScalarProperty Name="Fin_Id" ColumnName="Fin_Id" />
+          <ScalarProperty Name="Unit_Id" ColumnName="Unit_Id" />
+          <ScalarProperty Name="Bgt_Id" ColumnName="Bgt_Id" />
+          <ScalarProperty Name="monthid" ColumnName="monthid" />
+          <ScalarProperty Name="SubHead_Id" ColumnName="SubHead_Id" />
+          <ScalarProperty Name="Salary_Id" ColumnName="Salary_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Mst_SubHead">
+      <EntityTypeMapping TypeName="BMSModel.Mst_SubHead">
+        <MappingFragment StoreEntitySet="Mst_SubHead">
+          <ScalarProperty Name="ModBy" ColumnName="ModBy" />
+          <ScalarProperty Name="ModOn" ColumnName="ModOn" />
+          <ScalarProperty Name="AddBy" ColumnName="AddBy" />
+          <ScalarProperty Name="AddOn" ColumnName="AddOn" />
+          <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="SubHead_Code" ColumnName="SubHead_Code" />
+          <ScalarProperty Name="SubHead_Name" ColumnName="SubHead_Name" />
+          <ScalarProperty Name="Head_Id" ColumnName="Head_Id" />
+          <ScalarProperty Name="BugtTyp_Id" ColumnName="BugtTyp_Id" />
+          <ScalarProperty Name="SubHead_Id" ColumnName="SubHead_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Trans_Assign_User_ToApprov">
+      <EntityTypeMapping TypeName="BMSModel.Trans_Assign_User_ToApprov">
+        <MappingFragment StoreEntitySet="Trans_Assign_User_ToApprov">
+          <ScalarProperty Name="Modby" ColumnName="Modby" />
+          <ScalarProperty Name="Modon" ColumnName="Modon" />
+          <ScalarProperty Name="Addby" ColumnName="Addby" />
+          <ScalarProperty Name="Addon" ColumnName="Addon" />
+          <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="ToDate" ColumnName="ToDate" />
+          <ScalarProperty Name="FromDt" ColumnName="FromDt" />
+          <ScalarProperty Name="Aprov_Type_ID" ColumnName="Aprov_Type_ID" />
+          <ScalarProperty Name="Usr_Id" ColumnName="Usr_Id" />
+          <ScalarProperty Name="Unit_Id" ColumnName="Unit_Id" />
+          <ScalarProperty Name="Asgn_usr_Aprv_ID" ColumnName="Asgn_usr_Aprv_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="User_Create_Details" FunctionName="BMSModel.Store.User_Create_Details">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="BMSModel.User_Create_Details_Result">
+          <ScalarProperty Name="Usr_Id" ColumnName="Usr_Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="EmpCode" ColumnName="EmpCode" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Usr_Nm" ColumnName="Usr_Nm" />
+          <ScalarProperty Name="RoleDesc" ColumnName="RoleDesc" />
+          <ScalarProperty Name="Dept_Name" ColumnName="Dept_Name" />
+          <ScalarProperty Name="Designation_Name" ColumnName="Designation_Name" />
+          <ScalarProperty Name="Unit_Name" ColumnName="Unit_Name" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="StateSelectAll" FunctionName="BMSModel.Store.StateSelectAll">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="BMSModel.StateSelectAll_Result">
+          <ScalarProperty Name="St_Id" ColumnName="St_Id" />
+          <ScalarProperty Name="St_Nm" ColumnName="St_Nm" />
+          <ScalarProperty Name="Con_Id" ColumnName="Con_Id" />
+          <ScalarProperty Name="Con_Nm" ColumnName="Con_Nm" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="DistrictSelectAll" FunctionName="BMSModel.Store.DistrictSelectAll">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="BMSModel.DistrictSelectAll_Result">
+          <ScalarProperty Name="Dst_Id" ColumnName="Dst_Id" />
+          <ScalarProperty Name="Dst_Nm" ColumnName="Dst_Nm" />
+          <ScalarProperty Name="St_Id" ColumnName="St_Id" />
+          <ScalarProperty Name="St_Nm" ColumnName="St_Nm" />
+          <ScalarProperty Name="Con_Id" ColumnName="Con_Id" />
+          <ScalarProperty Name="Con_Nm" ColumnName="Con_Nm" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="AssignCircleDivisonAll" FunctionName="BMSModel.Store.AssignCircleDivisonAll">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="BMSModel.AssignCircleDivisonAll_Result">
+          <ScalarProperty Name="AssignCircleDivisonid" ColumnName="AssignCircleDivisonid" />
+          <ScalarProperty Name="circleid" ColumnName="circleid" />
+          <ScalarProperty Name="divisonid" ColumnName="divisonid" />
+          <ScalarProperty Name="circlename" ColumnName="circlename" />
+          <ScalarProperty Name="divisonname" ColumnName="divisonname" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="AssignUnitBankAll" FunctionName="BMSModel.Store.AssignUnitBankAll">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="BMSModel.AssignUnitBankAll_Result">
+          <ScalarProperty Name="Assg_unitbnkid" ColumnName="Assg_unitbnkid" />
+          <ScalarProperty Name="Unit_Id" ColumnName="Unit_Id" />
+          <ScalarProperty Name="bnkid" ColumnName="bnkid" />
+          <ScalarProperty Name="Unit_Name" ColumnName="Unit_Name" />
+          <ScalarProperty Name="Bank_Name" ColumnName="Bank_Name" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="AssigneToUser_SelectAll" FunctionName="BMSModel.Store.AssigneToUser_SelectAll">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="BMSModel.AssigneToUser_SelectAll_Result">
+          <ScalarProperty Name="Asgn_usr_Aprv_ID" ColumnName="Asgn_usr_Aprv_ID" />
+          <ScalarProperty Name="Unit_Id" ColumnName="Unit_Id" />
+          <ScalarProperty Name="Usr_Id" ColumnName="Usr_Id" />
+          <ScalarProperty Name="Aprov_Type_ID" ColumnName="Aprov_Type_ID" />
+          <ScalarProperty Name="FromDt" ColumnName="FromDt" />
+          <ScalarProperty Name="ToDate" ColumnName="ToDate" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="EmpCode" ColumnName="EmpCode" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Unit_Name" ColumnName="Unit_Name" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="User_SelectById" FunctionName="BMSModel.Store.User_SelectById">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="BMSModel.User_SelectById_Result">
+          <ScalarProperty Name="Usr_Nm" ColumnName="Usr_Nm" />
+          <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+          <ScalarProperty Name="Dept_ID" ColumnName="Dept_ID" />
+          <ScalarProperty Name="Desg_ID" ColumnName="Desg_ID" />
+          <ScalarProperty Name="Unit_Id" ColumnName="Unit_Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ProfileName" ColumnName="ProfileName" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="EmpCode" ColumnName="EmpCode" />
+          <ScalarProperty Name="Usr_Id" ColumnName="Usr_Id" />
+          <ScalarProperty Name="Pwd" ColumnName="Pwd" />
+          <ScalarProperty Name="Dept_Name" ColumnName="Dept_Name" />
+          <ScalarProperty Name="RoleDesc" ColumnName="RoleDesc" />
+          <ScalarProperty Name="Designation_Name" ColumnName="Designation_Name" />
+          <ScalarProperty Name="Unit_Name" ColumnName="Unit_Name" />
+          <ScalarProperty Name="Unit_Code" ColumnName="Unit_Code" />
+          <ScalarProperty Name="zoneid" ColumnName="zoneid" />
+          <ScalarProperty Name="circleid" ColumnName="circleid" />
+          <ScalarProperty Name="divisonid" ColumnName="divisonid" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SelectAllByUnitAll" FunctionName="BMSModel.Store.SelectAllByUnitAll">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="BMSModel.SelectAllByUnitAll_Result">
+          <ScalarProperty Name="Unit_RevExp_Id" ColumnName="Unit_RevExp_Id" />
+          <ScalarProperty Name="Bgt_Id" ColumnName="Bgt_Id" />
+          <ScalarProperty Name="Head_Id" ColumnName="Head_Id" />
+          <ScalarProperty Name="SubHead_Id" ColumnName="SubHead_Id" />
+          <ScalarProperty Name="Fin_Id" ColumnName="Fin_Id" />
+          <ScalarProperty Name="Unit_Id" ColumnName="Unit_Id" />
+          <ScalarProperty Name="Lt_Fy_Exp" ColumnName="Lt_Fy_Exp" />
+          <ScalarProperty Name="Lb_Pr_Paid" ColumnName="Lb_Pr_Paid" />
+          <ScalarProperty Name="Total_Pmt" ColumnName="Total_Pmt" />
+          <ScalarProperty Name="Prob_Exp" ColumnName="Prob_Exp" />
+          <ScalarProperty Name="Total_Prop_Exp" ColumnName="Total_Prop_Exp" />
+          <ScalarProperty Name="Bdgt_Nxt_Fy" ColumnName="Bdgt_Nxt_Fy" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+          <ScalarProperty Name="Ho_Remarks" ColumnName="Ho_Remarks" />
+          <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+          <ScalarProperty Name="Prop_Re_Curnt" ColumnName="Prop_Re_Curnt" />
+          <ScalarProperty Name="Re_For_Current" ColumnName="Re_For_Current" />
+          <ScalarProperty Name="Bdgt_Amnt" ColumnName="Bdgt_Amnt" />
+          <ScalarProperty Name="Fst_Prop_Re_Curnt" ColumnName="Fst_Prop_Re_Curnt" />
+          <ScalarProperty Name="Fst_Bdgt_Nxt_Fy" ColumnName="Fst_Bdgt_Nxt_Fy" />
+          <ScalarProperty Name="Fst_remarks" ColumnName="Fst_remarks" />
+          <ScalarProperty Name="hdnm" ColumnName="hdnm" />
+          <ScalarProperty Name="hdcode" ColumnName="hdcode" />
+          <ScalarProperty Name="SubHead_Name" ColumnName="SubHead_Name" />
+          <ScalarProperty Name="SubHead_Code" ColumnName="SubHead_Code" />
+          <ScalarProperty Name="Current_Bgt_Amt" ColumnName="Current_Bgt_Amt" />
+          <ScalarProperty Name="Current_expdr" ColumnName="Current_expdr" />
+          <ScalarProperty Name="Prop_Amnt" ColumnName="Prop_Amnt" />
+          <ScalarProperty Name="Fin_Yr" ColumnName="Fin_Yr" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Update_BudgetexpByUnit" FunctionName="BMSModel.Store.Update_BudgetexpByUnit" />
+    <FunctionImportMapping FunctionImportName="Update_CapitalTPBudgetByUnit" FunctionName="BMSModel.Store.Update_CapitalTPBudgetByUnit" />
+    <FunctionImportMapping FunctionImportName="UpdateBudgetexpByUnit" FunctionName="BMSModel.Store.UpdateBudgetexpByUnit" />
+    <FunctionImportMapping FunctionImportName="BudgetSelectAll" FunctionName="BMSModel.Store.BudgetSelectAll">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="BMSModel.BudgetSelectAll_Result">
+          <ScalarProperty Name="Unit_RevExp_Id" ColumnName="Unit_RevExp_Id" />
+          <ScalarProperty Name="Unit_Id" ColumnName="Unit_Id" />
+          <ScalarProperty Name="Fin_Id" ColumnName="Fin_Id" />
+          <ScalarProperty Name="Head_Id" ColumnName="Head_Id" />
+          <ScalarProperty Name="Subhead_Id" ColumnName="Subhead_Id" />
+          <ScalarProperty Name="Lt_Fy_Exp" ColumnName="Lt_Fy_Exp" />
+          <ScalarProperty Name="Bgt_Id" ColumnName="Bgt_Id" />
+          <ScalarProperty Name="Lb_Pr_Paid" ColumnName="Lb_Pr_Paid" />
+          <ScalarProperty Name="Current_expdr" ColumnName="Current_expdr" />
+          <ScalarProperty Name="Total_Pmt" ColumnName="Total_Pmt" />
+          <ScalarProperty Name="Prob_Exp" ColumnName="Prob_Exp" />
+          <ScalarProperty Name="Total_Prop_Exp" ColumnName="Total_Prop_Exp" />
+          <ScalarProperty Name="Fst_Bdgt_Nxt_Fy" ColumnName="Fst_Bdgt_Nxt_Fy" />
+          <ScalarProperty Name="Fst_remarks" ColumnName="Fst_remarks" />
+          <ScalarProperty Name="Fst_Prop_Re_Curnt" ColumnName="Fst_Prop_Re_Curnt" />
+          <ScalarProperty Name="fst_Arop_BIT" ColumnName="fst_Arop_BIT" />
+          <ScalarProperty Name="Sec_Arop_BIT" ColumnName="Sec_Arop_BIT" />
+          <ScalarProperty Name="Prop_Re_Curnt" ColumnName="Prop_Re_Curnt" />
+          <ScalarProperty Name="Bdgt_Nxt_Fy" ColumnName="Bdgt_Nxt_Fy" />
+          <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+          <ScalarProperty Name="bit_Second_Aprov" ColumnName="bit_Second_Aprov" />
+          <ScalarProperty Name="Re_For_Current" ColumnName="Re_For_Current" />
+          <ScalarProperty Name="Bdgt_Amnt" ColumnName="Bdgt_Amnt" />
+          <ScalarProperty Name="Ho_Remarks" ColumnName="Ho_Remarks" />
+          <ScalarProperty Name="FileID" ColumnName="FileID" />
+          <ScalarProperty Name="bit_Aproved" ColumnName="bit_Aproved" />
+          <ScalarProperty Name="Addby" ColumnName="Addby" />
+          <ScalarProperty Name="Addon" ColumnName="Addon" />
+          <ScalarProperty Name="Modby" ColumnName="Modby" />
+          <ScalarProperty Name="Modon" ColumnName="Modon" />
+          <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SelectAllByUnitAllbyId" FunctionName="BMSModel.Store.SelectAllByUnitAllbyId">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="BMSModel.SelectAllByUnitAllbyId_Result">
+          <ScalarProperty Name="Unit_RevExp_Id" ColumnName="Unit_RevExp_Id" />
+          <ScalarProperty Name="Bgt_Id" ColumnName="Bgt_Id" />
+          <ScalarProperty Name="Head_Id" ColumnName="Head_Id" />
+          <ScalarProperty Name="SubHead_Id" ColumnName="SubHead_Id" />
+          <ScalarProperty Name="Fin_Id" ColumnName="Fin_Id" />
+          <ScalarProperty Name="Unit_Id" ColumnName="Unit_Id" />
+          <ScalarProperty Name="Lt_Fy_Exp" ColumnName="Lt_Fy_Exp" />
+          <ScalarProperty Name="Lb_Pr_Paid" ColumnName="Lb_Pr_Paid" />
+          <ScalarProperty Name="Total_Pmt" ColumnName="Total_Pmt" />
+          <ScalarProperty Name="Prob_Exp" ColumnName="Prob_Exp" />
+          <ScalarProperty Name="Total_Prop_Exp" ColumnName="Total_Prop_Exp" />
+          <ScalarProperty Name="Bdgt_Nxt_Fy" ColumnName="Bdgt_Nxt_Fy" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+          <ScalarProperty Name="Ho_Remarks" ColumnName="Ho_Remarks" />
+          <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+          <ScalarProperty Name="Prop_Re_Curnt" ColumnName="Prop_Re_Curnt" />
+          <ScalarProperty Name="Re_For_Current" ColumnName="Re_For_Current" />
+          <ScalarProperty Name="Bdgt_Amnt" ColumnName="Bdgt_Amnt" />
+          <ScalarProperty Name="Fst_Prop_Re_Curnt" ColumnName="Fst_Prop_Re_Curnt" />
+          <ScalarProperty Name="Fst_Bdgt_Nxt_Fy" ColumnName="Fst_Bdgt_Nxt_Fy" />
+          <ScalarProperty Name="Fst_remarks" ColumnName="Fst_remarks" />
+          <ScalarProperty Name="hdnm" ColumnName="hdnm" />
+          <ScalarProperty Name="hdcode" ColumnName="hdcode" />
+          <ScalarProperty Name="SubHead_Name" ColumnName="SubHead_Name" />
+          <ScalarProperty Name="SubHead_Code" ColumnName="SubHead_Code" />
+          <ScalarProperty Name="Current_Bgt_Amt" ColumnName="Current_Bgt_Amt" />
+          <ScalarProperty Name="Current_expdr" ColumnName="Current_expdr" />
+          <ScalarProperty Name="Prop_Amnt" ColumnName="Prop_Amnt" />
+          <ScalarProperty Name="Fin_Yr" ColumnName="Fin_Yr" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SelectAllByUnitAllbyIdd" FunctionName="BMSModel.Store.SelectAllByUnitAllbyIdd">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="BMSModel.SelectAllByUnitAllbyIdd_Result">
+          <ScalarProperty Name="Unit_RevExp_Id" ColumnName="Unit_RevExp_Id" />
+          <ScalarProperty Name="Bgt_Id" ColumnName="Bgt_Id" />
+          <ScalarProperty Name="Head_Id" ColumnName="Head_Id" />
+          <ScalarProperty Name="SubHead_Id" ColumnName="SubHead_Id" />
+          <ScalarProperty Name="Fin_Id" ColumnName="Fin_Id" />
+          <ScalarProperty Name="Unit_Id" ColumnName="Unit_Id" />
+          <ScalarProperty Name="Lt_Fy_Exp" ColumnName="Lt_Fy_Exp" />
+          <ScalarProperty Name="Lb_Pr_Paid" ColumnName="Lb_Pr_Paid" />
+          <ScalarProperty Name="Total_Pmt" ColumnName="Total_Pmt" />
+          <ScalarProperty Name="Prob_Exp" ColumnName="Prob_Exp" />
+          <ScalarProperty Name="Total_Prop_Exp" ColumnName="Total_Prop_Exp" />
+          <ScalarProperty Name="Bdgt_Nxt_Fy" ColumnName="Bdgt_Nxt_Fy" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+          <ScalarProperty Name="Ho_Remarks" ColumnName="Ho_Remarks" />
+          <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+          <ScalarProperty Name="Prop_Re_Curnt" ColumnName="Prop_Re_Curnt" />
+          <ScalarProperty Name="Re_For_Current" ColumnName="Re_For_Current" />
+          <ScalarProperty Name="Bdgt_Amnt" ColumnName="Bdgt_Amnt" />
+          <ScalarProperty Name="Fst_Prop_Re_Curnt" ColumnName="Fst_Prop_Re_Curnt" />
+          <ScalarProperty Name="Fst_Bdgt_Nxt_Fy" ColumnName="Fst_Bdgt_Nxt_Fy" />
+          <ScalarProperty Name="Fst_remarks" ColumnName="Fst_remarks" />
+          <ScalarProperty Name="FileID" ColumnName="FileID" />
+          <ScalarProperty Name="hdnm" ColumnName="hdnm" />
+          <ScalarProperty Name="hdcode" ColumnName="hdcode" />
+          <ScalarProperty Name="SubHead_Name" ColumnName="SubHead_Name" />
+          <ScalarProperty Name="SubHead_Code" ColumnName="SubHead_Code" />
+          <ScalarProperty Name="Current_Bgt_Amt" ColumnName="Current_Bgt_Amt" />
+          <ScalarProperty Name="Current_expdr" ColumnName="Current_expdr" />
+          <ScalarProperty Name="Prop_Amnt" ColumnName="Prop_Amnt" />
+          <ScalarProperty Name="Fin_Yr" ColumnName="Fin_Yr" />
+          <ScalarProperty Name="Data" ColumnName="Data" />
+          <ScalarProperty Name="FileName" ColumnName="FileName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetAllRevenueHeadForFstLvl" FunctionName="BMSModel.Store.GetAllRevenueHeadForFstLvl">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="BMSModel.GetAllRevenueHeadForFstLvl_Result">
+          <ScalarProperty Name="Head_Id" ColumnName="Head_Id" />
+          <ScalarProperty Name="Fin_Id" ColumnName="Fin_Id" />
+          <ScalarProperty Name="Unit_Id" ColumnName="Unit_Id" />
+          <ScalarProperty Name="FileID" ColumnName="FileID" />
+          <ScalarProperty Name="hdnm" ColumnName="hdnm" />
+          <ScalarProperty Name="hdcode" ColumnName="hdcode" />
+          <ScalarProperty Name="Fin_Yr" ColumnName="Fin_Yr" />
+          <ScalarProperty Name="Unit_Name" ColumnName="Unit_Name" />
+          <ScalarProperty Name="Data" ColumnName="Data" />
+          <ScalarProperty Name="FileName" ColumnName="FileName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ExpenditureSelectAllByUnit" FunctionName="BMSModel.Store.ExpenditureSelectAllByUnit">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="BMSModel.ExpenditureSelectAllByUnit_Result">
+          <ScalarProperty Name="Bgt_Id" ColumnName="Bgt_Id" />
+          <ScalarProperty Name="Head_Id" ColumnName="Head_Id" />
+          <ScalarProperty Name="SubHead_Id" ColumnName="SubHead_Id" />
+          <ScalarProperty Name="Fin_Id" ColumnName="Fin_Id" />
+          <ScalarProperty Name="Unit_Id" ColumnName="Unit_Id" />
+          <ScalarProperty Name="Lt_Fy_Exp" ColumnName="Lt_Fy_Exp" />
+          <ScalarProperty Name="Lb_Pr_Paid" ColumnName="Lb_Pr_Paid" />
+          <ScalarProperty Name="Total_Pmt" ColumnName="Total_Pmt" />
+          <ScalarProperty Name="Prob_Exp" ColumnName="Prob_Exp" />
+          <ScalarProperty Name="Prop_Re_Curnt" ColumnName="Prop_Re_Curnt" />
+          <ScalarProperty Name="Total_Prop_Exp" ColumnName="Total_Prop_Exp" />
+          <ScalarProperty Name="Bdgt_Nxt_Fy" ColumnName="Bdgt_Nxt_Fy" />
+          <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+          <ScalarProperty Name="FileID" ColumnName="FileID" />
+          <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+          <ScalarProperty Name="hdnm" ColumnName="hdnm" />
+          <ScalarProperty Name="hdcode" ColumnName="hdcode" />
+          <ScalarProperty Name="SubHead_Name" ColumnName="SubHead_Name" />
+          <ScalarProperty Name="SubHead_Code" ColumnName="SubHead_Code" />
+          <ScalarProperty Name="Fin_Yr" ColumnName="Fin_Yr" />
+          <ScalarProperty Name="Fin_Yrlast" ColumnName="Fin_Yrlast" />
+          <ScalarProperty Name="Fin_Yrnext" ColumnName="Fin_Yrnext" />
+          <ScalarProperty Name="Unit_Name" ColumnName="Unit_Name" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetAllRevenueHeadForSecLvl" FunctionName="BMSModel.Store.GetAllRevenueHeadForSecLvl">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="BMSModel.GetAllRevenueHeadForSecLvl_Result">
+          <ScalarProperty Name="Head_Id" ColumnName="Head_Id" />
+          <ScalarProperty Name="Fin_Id" ColumnName="Fin_Id" />
+          <ScalarProperty Name="Unit_Id" ColumnName="Unit_Id" />
+          <ScalarProperty Name="FileID" ColumnName="FileID" />
+          <ScalarProperty Name="hdnm" ColumnName="hdnm" />
+          <ScalarProperty Name="hdcode" ColumnName="hdcode" />
+          <ScalarProperty Name="Fin_Yr" ColumnName="Fin_Yr" />
+          <ScalarProperty Name="Unit_Name" ColumnName="Unit_Name" />
+          <ScalarProperty Name="Data" ColumnName="Data" />
+          <ScalarProperty Name="FileName" ColumnName="FileName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ExpendSelectAllForHoApprove" FunctionName="BMSModel.Store.ExpendSelectAllForHoApprove">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="BMSModel.ExpendSelectAllForHoApprove_Result">
+          <ScalarProperty Name="Bgt_Id" ColumnName="Bgt_Id" />
+          <ScalarProperty Name="Head_Id" ColumnName="Head_Id" />
+          <ScalarProperty Name="SubHead_Id" ColumnName="SubHead_Id" />
+          <ScalarProperty Name="Fin_Id" ColumnName="Fin_Id" />
+          <ScalarProperty Name="Unit_Id" ColumnName="Unit_Id" />
+          <ScalarProperty Name="Lt_Fy_Exp" ColumnName="Lt_Fy_Exp" />
+          <ScalarProperty Name="Lb_Pr_Paid" ColumnName="Lb_Pr_Paid" />
+          <ScalarProperty Name="Total_Pmt" ColumnName="Total_Pmt" />
+          <ScalarProperty Name="Prob_Exp" ColumnName="Prob_Exp" />
+          <ScalarProperty Name="Prop_Re_Curnt" ColumnName="Prop_Re_Curnt" />
+          <ScalarProperty Name="Total_Prop_Exp" ColumnName="Total_Prop_Exp" />
+          <ScalarProperty Name="Bdgt_Nxt_Fy" ColumnName="Bdgt_Nxt_Fy" />
+          <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+          <ScalarProperty Name="FileID" ColumnName="FileID" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+          <ScalarProperty Name="hdnm" ColumnName="hdnm" />
+          <ScalarProperty Name="hdcode" ColumnName="hdcode" />
+          <ScalarProperty Name="SubHead_Name" ColumnName="SubHead_Name" />
+          <ScalarProperty Name="SubHead_Code" ColumnName="SubHead_Code" />
+          <ScalarProperty Name="First_Lvl_Re_For_Current" ColumnName="First_Lvl_Re_For_Current" />
+          <ScalarProperty Name="fst_Aprov_Bdgt_Amnt" ColumnName="fst_Aprov_Bdgt_Amnt" />
+          <ScalarProperty Name="fst_Arop_Remarks" ColumnName="fst_Arop_Remarks" />
+          <ScalarProperty Name="Fin_Yr" ColumnName="Fin_Yr" />
+          <ScalarProperty Name="Fin_Yrlast" ColumnName="Fin_Yrlast" />
+          <ScalarProperty Name="Fin_Yrnext" ColumnName="Fin_Yrnext" />
+          <ScalarProperty Name="Unit_Name" ColumnName="Unit_Name" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="RevenueBudgetSelectAllHead" FunctionName="BMSModel.Store.RevenueBudgetSelectAllHead">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="BMSModel.RevenueBudgetSelectAllHead_Result">
+          <ScalarProperty Name="Head_Id" ColumnName="Head_Id" />
+          <ScalarProperty Name="Fin_Id" ColumnName="Fin_Id" />
+          <ScalarProperty Name="Unit_Id" ColumnName="Unit_Id" />
+          <ScalarProperty Name="FileID" ColumnName="FileID" />
+          <ScalarProperty Name="hdnm" ColumnName="hdnm" />
+          <ScalarProperty Name="hdcode" ColumnName="hdcode" />
+          <ScalarProperty Name="Fin_Yr" ColumnName="Fin_Yr" />
+          <ScalarProperty Name="Unit_Name" ColumnName="Unit_Name" />
+          <ScalarProperty Name="Data" ColumnName="Data" />
+          <ScalarProperty Name="FileName" ColumnName="FileName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ExpenditureSelectAllByUnitForFinal" FunctionName="BMSModel.Store.ExpenditureSelectAllByUnitForFinal">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="BMSModel.ExpenditureSelectAllByUnitForFinal_Result">
+          <ScalarProperty Name="Bgt_Id" ColumnName="Bgt_Id" />
+          <ScalarProperty Name="Head_Id" ColumnName="Head_Id" />
+          <ScalarProperty Name="SubHead_Id" ColumnName="SubHead_Id" />
+          <ScalarProperty Name="Fin_Id" ColumnName="Fin_Id" />
+          <ScalarProperty Name="Unit_Id" ColumnName="Unit_Id" />
+          <ScalarProperty Name="Lt_Fy_Exp" ColumnName="Lt_Fy_Exp" />
+          <ScalarProperty Name="Lb_Pr_Paid" ColumnName="Lb_Pr_Paid" />
+          <ScalarProperty Name="Total_Pmt" ColumnName="Total_Pmt" />
+          <ScalarProperty Name="Prob_Exp" ColumnName="Prob_Exp" />
+          <ScalarProperty Name="Prop_Re_Curnt" ColumnName="Prop_Re_Curnt" />
+          <ScalarProperty Name="Total_Prop_Exp" ColumnName="Total_Prop_Exp" />
+          <ScalarProperty Name="Bdgt_Nxt_Fy" ColumnName="Bdgt_Nxt_Fy" />
+          <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+          <ScalarProperty Name="FileID" ColumnName="FileID" />
+          <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+          <ScalarProperty Name="hdnm" ColumnName="hdnm" />
+          <ScalarProperty Name="hdcode" ColumnName="hdcode" />
+          <ScalarProperty Name="SubHead_Name" ColumnName="SubHead_Name" />
+          <ScalarProperty Name="SubHead_Code" ColumnName="SubHead_Code" />
+          <ScalarProperty Name="First_Lvl_Re_For_Current" ColumnName="First_Lvl_Re_For_Current" />
+          <ScalarProperty Name="fst_Aprov_Bdgt_Amnt" ColumnName="fst_Aprov_Bdgt_Amnt" />
+          <ScalarProperty Name="fst_Arop_Remarks" ColumnName="fst_Arop_Remarks" />
+          <ScalarProperty Name="Sec_Lvl_Re_For_Current" ColumnName="Sec_Lvl_Re_For_Current" />
+          <ScalarProperty Name="Sec_Aprov_Bdgt_Amnt" ColumnName="Sec_Aprov_Bdgt_Amnt" />
+          <ScalarProperty Name="Sec_Arop_Remarks" ColumnName="Sec_Arop_Remarks" />
+          <ScalarProperty Name="Fin_Yr" ColumnName="Fin_Yr" />
+          <ScalarProperty Name="Unit_Name" ColumnName="Unit_Name" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetRevenueHeadforProposalByUnit" FunctionName="BMSModel.Store.GetRevenueHeadforProposalByUnit">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="BMSModel.GetRevenueHeadforProposalByUnit_Result">
+          <ScalarProperty Name="Head_Id" ColumnName="Head_Id" />
+          <ScalarProperty Name="Fin_Id" ColumnName="Fin_Id" />
+          <ScalarProperty Name="Unit_Id" ColumnName="Unit_Id" />
+          <ScalarProperty Name="FileID" ColumnName="FileID" />
+          <ScalarProperty Name="hdnm" ColumnName="hdnm" />
+          <ScalarProperty Name="hdcode" ColumnName="hdcode" />
+          <ScalarProperty Name="Fin_Yr" ColumnName="Fin_Yr" />
+          <ScalarProperty Name="Unit_Name" ColumnName="Unit_Name" />
+          <ScalarProperty Name="Data" ColumnName="Data" />
+          <ScalarProperty Name="FileName" ColumnName="FileName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+  </EntityContainerMapping>
+</Mapping>

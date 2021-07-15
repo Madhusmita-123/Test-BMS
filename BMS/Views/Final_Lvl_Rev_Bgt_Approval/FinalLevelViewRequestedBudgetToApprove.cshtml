@@ -1,0 +1,370 @@
+﻿@model BMS.Models.RevenueProposalByUnitModel
+@{
+    ViewBag.Title = "FinalLevelViewRequestedBudgetToApprove";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<style>
+    .ks {
+        max-width: 100% !important;
+        width: 100%;
+        padding: 4px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+
+    .btnn {
+        color: white;
+        padding: 6px 9px;
+        margin: 8px 0;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    input[type=submit]:hover {
+        background-color: #45a049;
+    }
+
+    table {
+        width: 100%;
+    }
+
+    #example_filter {
+        float: right;
+    }
+
+    #example_paginate {
+        float: right;
+    }
+
+    label {
+        display: inline-flex;
+        margin-bottom: .5rem;
+        margin-top: .5rem;
+    }
+</style>
+
+@{string confirmMessage = Convert.ToString(TempData["Message"]); }
+<div class="content-wrapper">
+    <div class="container-fluid">
+        <div class="container" id="page">
+            @using (Html.BeginForm("SecondLevelViewRequestedBudgetToApprove", "Sec_Lvl_Rev_Bgt_Approval", FormMethod.Post, new { enctype = "multipart/form-data", data_ajax = "false", role = "form" }))
+            {
+                @Html.AntiForgeryToken()
+                <div class="row">
+                    <div class="col-lg-12 col-xs-12 col-sm-12">
+                        @*@Html.HiddenFor(x => x.Revenue.Unit_Id, new { @id = "Unit_Id" })*@
+                        @Html.HiddenFor(x => x.Revenue.Fin_Id, new { @id = "Fin_Id" })
+                        @Html.HiddenFor(x => x.Revenue.Head_Id, new { @id = "Head_Id" })
+                        <div class="card-box ribbon-box">
+                            <div class="ribbon ribbon-custom">Budget Approve</div>
+                            <div class="col-lg-12 col-xs-12 col-sm-12 box bb" id="griddata" style="margin-top: 50px;">
+                                <div class="main">
+                                    <div class="row hd_titl">
+                                        <div class="col-sm-6">
+                                            Financial Year: <span id="lbl_FyName"></span>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <span> Unit Name: </span>&nbsp;&nbsp;
+                                            @Html.HiddenFor(x => x.Revenue.Unit_RevExp_Id, new { @id = "revenuid" })
+                                            @{
+                                                var unitlist = new SelectList(Model.Unit, "Unit_Id", "Unit_Name").ToList();
+                                                unitlist.Insert(0, new SelectListItem() { Value = "0", Text = "-- Select One --" });
+                                            }
+                                            @*@Html.DropDownListFor(x => x.Revenue.Unit_Id, unitlist, new { @required = "true", @class = "form-control",
+
+                                                })*@
+                                            @Html.DropDownListFor(x => x.Revenue.Unit_Id, unitlist, new { @required = "true", @class = "form-control", @id = "Unit_Id", @Onchange = "BindBudget()" })
+                                        </div>
+                                    </div>
+                                    <input type="hidden" id="hf_fyrid" value="" />
+                                    <div style="overflow-x:auto;">
+
+                                        <table id="tbl_RevenueBudget" class="table table-bordered table-sm" style="width:100%"></table>
+                                    </div>
+                                </div>
+                                <div class="row pt-4 pb-3">
+                                    <div class="col-lg-12">
+                                        @{confirmMessage = Convert.ToString(TempData["Message"]);}
+                                        @if (!string.IsNullOrEmpty(confirmMessage))
+                                        {
+                                            <div class="alert alert-success alert-dismissable" id="divSuccessMessage">
+                                                @confirmMessage
+                                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                                            </div>
+                                        }
+                                        <div class="card">
+                                            <div class="card-header">
+
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <i class="fa fa-table"></i> Second Level Revenue Details List
+                                                    </div>
+                                                    @*<div class="col-md-6 text-md-right">
+                                                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal"><i class="fa fa-plus"></i>  Add</button>
+
+
+
+                                                        </div>*@
+                                                </div>
+
+                                            </div>
+                                            @*@if (ViewBag.GridData == null)
+                                                {
+                                                    <div class="box-body">
+                                                        <div id="FormOne">
+                                                            <div class="row">
+                                                                <div class="col-md-12">No Application found.</div>
+                                                                @Html.ValidationSummary()
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                }
+                                                else
+                                                {*@
+                                            <div class="card-body">
+                                                <div class="table-responsive">
+                                                    <div id="default-datatable_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4">
+
+                                                        <div class="row">
+                                                            <div class="table-responsive">
+                                                                <table id="tbl_RevenueBudget" class="table table-bordered">
+                                                                    <thead>
+                                                                        <tr>
+
+                                                                            <th>Select</th>
+                                                                            <th>Head name</th>
+                                                                            <th>SubHead Name</th>
+                                                                            <th>SubHead Code</th>
+
+                                                                            <th>Late Financial Expenditure</th>
+                                                                            <th>Lb Pr Paid</th>
+
+                                                                            <th>Total Payment</th>
+                                                                            <th>Probable Expenditure</th>
+                                                                            <th>Total Probable Expenditure</th>
+                                                                            <th>RE For Current Year</th>
+
+                                                                            <th>Budget For Next Financial</th>
+
+                                                                            <th>Sanction Budget</th>
+
+                                                                            <th>Remarks</th>
+
+                                                                            <th>Attached File</th>
+                                                                            <th>Download</th>
+                                                                        </tr>
+                                                                    </thead>
+                                                                    <tbody id="tbl_RevenueBudget1"></tbody>
+                                                                </table>
+
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            @*}*@
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-12 col-lg-7 col-xs-12 "></div>
+                                    <div class="col-sm-12 col-lg-3 col-xs-12">
+                                        <input type="button" id="btn_ViewallBudget" value="View Sanctioned Budgets" class="newdesg" style="" onclick="gotoview()" />
+
+                                    </div>
+
+                                    <div class="col-sm-12 col-lg-2 col-xs-12">
+                                        <button type="button" value="Submit" id="btn_AddBudget" class="btnn btnsbmt">Submit</button>
+
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+    }
+<script src="~/assets/js/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $(function () {
+
+            $.ajax({
+                type: "GET",
+                url: "/Finance/GetUnitDetails",
+                //data: { Usr_Id: Usr_Id },
+                dataType: "json",
+                success: function (response) {
+
+
+                    $('#lbl_Unitname').text(response.Unit_Name);
+                    $("#lbl_UnitCode").text(response.Unit_Code);
+                    $("#Unit_Id").val(response.Unit_Id);
+
+                },
+                failure: function (response) {
+                    alert(response);
+                },
+                error: function (response) {
+                    alert(response);
+                }
+            });
+        });
+        $(function () {
+
+            $.ajax({
+                type: "GET",
+                url: "/Finance/GetActivefyr",
+                dataType: "json",
+                success: function (response) {
+
+
+                    $('#lbl_FyName').text(response.Fin_Yr);
+
+                    $("#Fin_Id").val(response.Fin_Id);
+
+                },
+                failure: function (response) {
+                    alert(response);
+                },
+                error: function (response) {
+                    alert(response);
+                }
+            });
+        });
+
+
+
+
+    });
+    function get_alert(FileID) {
+        //var file = $("#fileid").val();
+
+        window.location = '/Sec_Lvl_Rev_Bgt_Approval/DownloadFile?FileID=' + FileID;
+
+    }
+    function BindBudget() {
+        debugger;
+        var id = $("#Unit_Id").val();
+
+
+        $.ajax({
+            type: "POST",
+            url: "/Final_Lvl_Rev_Bgt_Approval/GetrevenuehofinallvlDetailsdata",
+            data: { Fin_Id: $("#Fin_Id").val(), Unit_Id: id, Head_Id: $("#Head_Id").val() },
+            dataType: "json",
+            success: function (response) {
+                var dataaa = response;
+                debugger;
+                $("#tbl_RevenueBudget1").html('');
+                var data = '';
+
+                if (dataaa != null) {
+                    for (var i = 0; i < dataaa.length; i++) {
+                        data += '<tr>';
+                        data += '<td><input type="checkbox" class="receqwfdwford" value=' + dataaa[i].Bgt_Id + ' /></td>';
+                        data += '<td>' + dataaa[i].hdnm + '</td>';
+                        data += '<td>' + dataaa[i].SubHead_Name + '</td>';
+                        data += '<td>' + dataaa[i].SubHead_Code + '</td>';
+                        data += '<td>' + dataaa[i].Lt_Fy_Exp + '</td>';
+                        data += '<td>' + dataaa[i].Lb_Pr_Paid + '</td>';
+                        data += '<td>' + dataaa[i].Total_Pmt + '</td>';
+                        data += '<td>' + dataaa[i].Prob_Exp + '</td>';
+                        data += '<td>' + dataaa[i].Total_Prop_Exp + '</td>';
+                       
+
+                        data += '<td id="dataaa[i].Unit_RevExp_Id" ><input type="text" id="Re_For_Current' + dataaa[i].Bgt_Id + '" value=' + dataaa[i].Sec_Lvl_Re_For_Current + ' /></td>';
+                        data += '<td>' + dataaa[i].Bdgt_Nxt_Fy + '</td>';
+                        data += '<td><input type="text" id="Bdgt_Amnt' + dataaa[i].Bgt_Id + '" value=' + dataaa[i].Sec_Aprov_Bdgt_Amnt + ' /></td>';
+                        data += '<td><input type="text" id="Remarks' + dataaa[i].Bgt_Id + '"/></td>';
+                        data += '<td>' + dataaa[i].FileID + '</td>';
+
+                        data += '<td><a onclick="get_alert(\'' + dataaa[i].FileID.trim() + '\')" href = "../../../../FileUploaded/' + dataaa[i].FileID.trim() + '" target="_blank">' + dataaa[i].FileID + '</a></td>'
+                        data += '</tr>';
+
+                    }
+                }
+
+                $("#tbl_RevenueBudget1").append(data);
+            },
+            failure: function (response) {
+                alert(response);
+            },
+            error: function (response) {
+                alert(response);
+            }
+        });
+    }
+    var Budget = [];
+
+    $("#btn_AddBudget").on('click', function () {
+
+        debugger;
+        var data = document.getElementsByClassName('receqwfdwford');
+
+
+        for (var i = 0; i < data.length; i++) {
+            if (data[i].checked == true) {
+                debugger;
+                var item = {};
+
+                var id = data[i].value;
+                item["id"] = data[i].value;
+                item["Fin_Id"] = $("#Fin_Id").val();
+                item["Unit_Id"] = $("#Unit_Id").val();
+                item["Head_Id"] = $("#Head_Id").val();
+                item["Subhead_Id"] = $("#Subhead_Id").val();
+                var Bdgt_Amnt = $("#Bdgt_Amnt" + id);
+                var Avlb_Amnt = $("#Bdgt_Amnt" + id);
+                var Re_For_Current = $("#Re_For_Current" + id);
+                var Remarks = $("#Remarks" + id);
+
+                debugger;
+                item["Bdgt_Amnt"] = Bdgt_Amnt[0].value;
+                item["Bdgt_Amnt"] = Avlb_Amnt[0].value;
+                item["Re_For_Current"] = Re_For_Current[0].value;
+                item["Remarks"] = Remarks[0].value;
+
+
+
+                debugger;
+                Budget.push(item);
+
+            }
+        }
+
+        if (data.length != 0) {
+
+
+            $.ajax({
+                type: 'POST',
+                url: "/Final_Lvl_Rev_Bgt_Approval/UpdateRevenueListholevelfinal",
+                data: { customers: Budget, id },
+                dataType: "json",
+                success: function (resultData) {
+                    if (resultData == true) {
+                        alert("Revenue updated successfully");
+
+                    }
+                }
+            })
+        }
+
+
+        else {
+            alert("Please Select the row you want to submit");
+        }
+
+    });
+</script>

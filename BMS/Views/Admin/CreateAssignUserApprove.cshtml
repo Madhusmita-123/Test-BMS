@@ -1,0 +1,388 @@
+﻿@model BMS.Models.AssignUserApprovalMappingModel
+@{
+    ViewBag.Title = "CreateAssignUserApprove";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+
+<style>
+    .form-control1 {
+        border: 1px solid #f11111 !important;
+    }
+</style>
+<div class="clearfix"></div>
+@{string confirmMessage = Convert.ToString(TempData["Message"]); }
+<div class="content-wrapper">
+    <div class="container-fluid">
+        <div class="modal fade" id="myModal" role="dialog">
+            <div class="modal-dialog">
+                @using (Html.BeginForm("CreateAssignUserApprove", "Admin", FormMethod.Post, new { enctype = "multipart/form-data", data_ajax = "false", role = "form" }))
+                {
+                    @Html.AntiForgeryToken()
+
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <label>Unit:</label>
+                                        @{
+                                            @Html.HiddenFor(x => x.Assignusertoapprove.Asgn_usr_Aprv_ID, new { @id = "Assignid" })
+                                            var cnt1 = new SelectList(Model.Unit, "Unit_Id", "Unit_Name").ToList();
+                                            cnt1.Insert(0, new SelectListItem() { Value = "0", Text = "-- Select One --" });
+                                        }
+                                        @Html.DropDownListFor(x => x.Assignusertoapprove.Unit_Id, cnt1, new { @required = "true", @class = "form-control", @id = "unit", @onchange = "BindName()" })
+
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label>Name:</label>
+                                        @{
+                                            var cnt = new SelectList(Model.Usernew, "Usr_Id", "Name").ToList();
+                                            cnt.Insert(0, new SelectListItem() { Value = "0", Text = "-- Select One --" });
+                                        }
+                                        @Html.DropDownListFor(x => x.Assignusertoapprove.Usr_Id, cnt, new { @required = "true", @class = "form-control", @id = "Name",@disabled = "disabled",@onchange= "BindEmpCode()" })
+
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label>EmpCode:</label>
+                                        
+                                        @Html.TextBoxFor(x => x.Assignusertoapprove.Usr_Id, new { @required = "true", @class = "form-control", @id = "Empcode" , @readonly="readonly" })
+
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label>Approve Level:</label>
+                                        @{
+                                            var aprv = new SelectList(Model.Approvetype, "Aprov_Type_ID", "Description").ToList();
+                                            aprv.Insert(0, new SelectListItem() { Value = "0", Text = "-- Select One --" });
+                                        }
+                                        @Html.DropDownListFor(x => x.Assignusertoapprove.Aprov_Type_ID, aprv, new { @required = "true", @class = "form-control", @id = "aprv" })
+
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label>From Date:</label>
+
+                                        @*@Html.TextBoxFor(m => m.Assignusertoapprove.FromDt, new { @required = "true", @id = "frmdt", @class = "form-control", @placeholder = "From Date", @autocomplete = "off" })*@
+                                        @Html.TextBoxFor(x => x.Assignusertoapprove.FromDt, "{0:yyyy-MM-dd}", new { @id = "frmdt",@required = "true", placeholder = "From Date", @class = "form-control" })
+                                    </div>
+                                    
+                                    
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-danger" id="Submit">Submit</button>
+                            <button type="button" class="btn btn-danger" onclick="location.reload()" style="float:right">Cancel</button>
+                        </div>
+                    </div>
+                }
+
+            </div>
+
+        </div>
+        @*<div class="modal fade" id="myModal1" role="dialog">
+            hgfdff
+            </div>*@
+        <!-- Breadcrumb-->
+        <!-- End Breadcrumb-->
+        <div class="row pt-4 pb-3">
+            <div class="col-lg-12">
+                @{confirmMessage = Convert.ToString(TempData["Message"]);}
+                @if (!string.IsNullOrEmpty(confirmMessage))
+                {
+                    <div class="alert alert-success alert-dismissable" id="divSuccessMessage">
+                        @confirmMessage
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                    </div>
+                }
+                <div class="card">
+                    <div class="card-header">
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <i class="fa fa-table"></i> Assign User Approve List
+                            </div>
+                            <div class="col-md-6 text-md-right">
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal"><i class="fa fa-plus"></i>  Add</button>
+
+
+                                <!-- Modal -->
+
+
+                            </div>
+                        </div>
+
+                    </div>
+                    @if (ViewBag.GridData == null)
+                    {
+                        <div class="box-body">
+                            <div id="FormOne">
+                                <div class="row">
+                                    <div class="col-md-12">No Application found.</div>
+                                    @Html.ValidationSummary()
+                                </div>
+                            </div>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <div id="default-datatable_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4">
+
+                                    <div class="row">
+                                        <div class="table-responsive">
+                                            <table id="default-datatable" class="table table-bordered">
+                                                <thead>
+                                                    <tr>
+
+                                                        <th>Unit Name</th>
+                                                        <th>Name</th>
+                                                        <td>EmpCode</td>
+                                                        <td>Approve Level</td>
+                                                        <td> frmdt</td>
+                                                        <td>Edit</td>
+                                                        <td>Delete</td>
+
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    @foreach (var d in ViewBag.GridData)
+                                                    {
+                                                    <tr>
+
+                                                        <td>@d.Unit_Name</td>
+                                                            <td>@d.Name</td>
+                                                        <td>@d.EmpCode</td>
+                                                        <td>@d.Description</td>
+                                                        <td>@d.FromDt</td>
+                                                        <td>
+                                                            <a href="#" data-toggle="modal" data-target="#myModal" class='btn btn-primary' style='cursor:pointer;' onclick="EditAssignUserApprove(@d.Asgn_usr_Aprv_ID)">
+                                                                <i class='fa fa-edit'></i>
+                                                            </a>
+                                                        </td>
+                                                        <td><button class="btn btn-danger" onclick="DeleteAssignUserApprove(@d.Asgn_usr_Aprv_ID)"> <i class="fa fa-trash"></i></button></td>
+
+                                                    </tr>
+                                                    }
+                                                </tbody>
+                                            </table>
+
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+                    }
+                </div>
+            </div>
+        </div><!-- End Row-->
+
+
+
+
+    </div>
+    <!-- End container-fluid-->
+
+</div><!--End content-wrapper-->
+}
+<div id="myModal1" class="modal fade bs-example-modal-md" tabindex="-1" role="dialog" aria-labelledby="SmallModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-md">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="box">
+                    <div class="box-header with-border">
+                        @Html.HiddenFor(m => m.Assignusertoapprove.Asgn_usr_Aprv_ID, new { @id = "Assignid", @name = "Assignid" })
+
+                        <h4 class="box-title">CONFIRM DELETE USER</h4>
+                    </div>
+                    <div class="box-body">
+                        <div class="col-sm-12">
+                            Are you sure you want to delete this user?
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <input type="submit" id="btnDelete" value="Yes" class="btn btn-primary btnsbmt1" />
+                <a href="#" class="btn btn-danger btn-sm" data-dismiss="modal">No</a>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/assets/js/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+
+        $("#Name").html('');
+        $("#Name").append("<option value='0'>--Select One--</option>");
+        //$("#Empcode").html('');
+        //$("#Empcode").append("<input type='textbox'>");
+    })
+    $("#Submit").click(function (e) {
+        debugger;
+        var pcount = 0;
+
+        if ($("#unit").val() == "0") { $("#unit").addClass('form-control1'); pcount = 1; }
+        //if ($("#Name").val() == "0") { $("#Name").addClass('form-control1'); pcount = 1; }
+        //if ($("#Empcode").val() == "0") { $("#Empcode").addClass('form-control1'); pcount = 1;}
+        if ($("#aprv").val() == "0") { $("#aprv").addClass('form-control1'); pcount = 1; }
+        if ($("#frmdt").val() == "0") { $("#frmdt").addClass('form-control1'); pcount = 1; }
+        if (pcount != 0) {
+            e.preventDefault();
+            return false;
+        }
+        else {
+            return true;
+        }
+    });
+
+  
+
+    function BindName() {
+        debugger;
+        $.ajax({
+            type: 'POST',
+            url: "/Admin/BindName",
+            data: { unitid: $("#unit").val() },
+            dataType: "json",
+            success: function (resultData) {
+                debugger;
+                var data = "";
+                $("#Name").html('');
+                $("#Name").append("<option value='0'>--Select One--</option>");
+                if (resultData != null) {
+                    $("#Name").prop('disabled', false);
+                    for (var i = 0; i < resultData.length; i++) {
+                        data += "<option value=" + resultData[i].Usr_Id + ">" + resultData[i].Name + "</option>";
+
+                    }
+
+                }
+                $("#Name").append(data);
+            }
+        })
+    }
+ 
+    function BindNameedit(id) {
+        debugger;
+        $.ajax({
+            async: false,
+            type: 'POST',
+            url: "/Admin/BindName",
+            data: { unitid: id },
+            dataType: "json",
+            success: function (resultData) {
+                debugger;
+                var data = "";
+                $("#Name").html('');
+                $("#Name").append("<option value='0'>--Select One--</option>");
+                if (resultData != null) {
+                    $("#Name").prop('disabled', false);
+                    for (var i = 0; i < resultData.length; i++) {
+                        data += "<option value=" + resultData[i].Usr_Id + ">" + resultData[i].Name + "</option>";
+                    }
+                }
+                $("#Name").append(data);
+            }
+        })
+    }
+    function BindEmpCode() {
+        debugger;
+        $.ajax({
+            async: false,
+            type: 'POST',
+            url: "/Admin/BindEmpCode",
+            data: { userid: $("#Name").val() },
+            dataType: "json",
+            success: function (resultData) {
+                debugger;
+
+                $("#Empcode").val(resultData);
+            }
+        })
+    }
+
+    function EditAssignUserApprove(id) {
+        debugger;
+        $.ajax({
+            async: false,
+            type: 'POST',
+            url: "/Admin/EditAssignUserApprove",
+            data: { cid: id },
+            dataType: "json",
+            success: function (resultData) {
+                $("#Name").prop('disabled', false);
+                $.ajax({
+                    async: false,
+                    type: 'POST',
+                    url: "/Admin/BindName",
+                    data: { unitid: resultData.data.Unit_Id },
+                    dataType: "json",
+                    success: function (resultData2) {
+                        var data = "";
+                        $("#Name").html('');
+                        $("#Name").append("<option value='0'>--Select One--</option>");
+                        if (resultData2 != null) {
+                            $("#Name").prop('disabled', false);
+                            for (var i = 0; i < resultData2.length; i++) {
+                                data += "<option value=" + resultData2[i].Usr_Id + ">" + resultData2[i].Name + "</option>";
+                            }
+                        }
+                        $("#Name").append(data);
+                    }
+                })
+                debugger
+                var num = resultData.data.FromDt.match(/\d+/g); //regex to extract numbers 
+                var date = new Date(parseFloat(num)); //converting to date
+                var month = date.getMonth() + 1;
+                var res = date.getDate() + '-' + month + "-" + date.getFullYear();
+                $("#Empcode").attr('readonly', 'readonly');
+                $("#Assignid").val(resultData.data.Asgn_usr_Aprv_ID);
+                $("#unit").val(resultData.data.Unit_Id);
+                $("#Name").val(resultData.data.Usr_Id);
+                $("#aprv").val(resultData.data.Aprov_Type_ID);
+                $("#frmdt").val(res);
+                $("#frmdt").attr('readonly', true);
+                $("#Empcode").val(resultData.data1.EmpCode);
+                $("#Submit").text("Update");
+            }
+        })
+    }
+    function DeleteAssignUserApprove(id) {
+        debugger;
+        if (confirm("Are You sure to delete this record..?")) {
+            $.ajax({
+
+                type: 'POST',
+                url: "/Admin/DeleteAssignUserApprove",
+                data: { id: id },
+                dataType: "json",
+                success: function (resultData) {
+                    if (resultData == true) {
+
+                        alert("Data Deleted successfully..");
+                        location.href = "/Admin/CreateAssignUserApprove";
+                        window.location.reload();
+
+                    }
+                }
+
+            })
+        }
+    }
+
+
+</script>
+
+
+
+
+

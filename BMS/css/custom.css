@@ -1,0 +1,70 @@
+.badge-counter {
+    position: absolute;
+    transform: scale(.7);
+    transform-origin: top right;
+    right: 1.1rem;
+    margin-top: -.25rem;
+}
+.linka2 a {
+    color: #2acb91;
+    text-decoration: none;
+    background-color: transparent;
+}
+
+.linka2 a:hover {
+    color: #0f8e60;
+}
+.linka3 a {
+    color: #36b9cc;
+    text-decoration: none;
+    background-color: transparent;
+}
+
+.linka3 a:hover {
+    color: #147b8a;
+}
+.linka4 a {
+    color: #f6c23e;
+    text-decoration: none;
+    background-color: transparent;
+}
+
+.linka4 a:hover {
+    color: #b38b27;
+}
+.bg-white1 {
+    background-color: #e8e7e4!important;
+}
+
+.cloblack{
+    color: #696969;
+}
+
+.bg{
+    background-color: #e2b436;
+}
+
+.bg tr th{
+    color:#fff;
+    font-size: 14px;
+}
+
+.bg1{
+    font-size: 14px;
+}
+
+.bg-gradient-primary1 {
+    background-color: #ffc33c;
+}
+
+.btn-primary1 {
+    color: #fff;
+    background-color: #f3b62d;
+    border-color: #f3b62d;
+}
+
+.btn-primary1:hover {
+    color: #fff;
+    background-color: #e2a110;
+    border-color: #e2a110;
+}

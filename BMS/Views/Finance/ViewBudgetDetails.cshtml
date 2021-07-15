@@ -1,0 +1,257 @@
+﻿@model BMS.Models.RevenueProposalByUnitModel
+@{
+    ViewBag.Title = "ViewBudgetDetails";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<style>
+    .ks {
+        max-width: 100% !important;
+        width: 100%;
+        padding: 2px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+        margin-top: 0px;
+    }
+</style>
+@{string confirmMessage = Convert.ToString(TempData["Message"]); }
+<div class="content-wrapper">
+    <div class="container-fluid">
+        <div class="container">
+            @using (Html.BeginForm("ViewBudgetDetails", "Finance", FormMethod.Post, new { enctype = "multipart/form-data", data_ajax = "false", role = "form" }))
+            {
+                @Html.AntiForgeryToken()
+                <div class="row">
+                    <div class="col-lg-12 ">
+                        
+                        @Html.HiddenFor(x => x.Revenue.Unit_Id, new { @id = "usrid" })
+                        @Html.HiddenFor(x => x.Revenue.Fin_Id, new { @id = "finid" })
+                        <h2></h2>
+                        <div class="card-box ribbon-box">
+                            <div class="ribbon ribbon-custom">View Budget Requisition Details of unit</div>
+
+                            <div class="col-lg-12 box bb">
+                                <div>
+                                    <input type="hidden" id="Fyr_Id" value="" />
+                                    <input type="hidden" id="Unit_Id" value="" />
+                                    <input type="hidden" id="hf_divID" value="" />
+                                    <input type="hidden" id="hf_CirId" value="" />
+                                    <input type="hidden" id="hf_ZonId" value="" />
+                                    <div class="row hd_titl">
+                                        <div class="col-lg-4 col-xs-12 col-sm-12" id="myform">
+                                            Financial Year:
+                                            <span id="lbl_Fyrname" style="color:deeppink"></span>
+                                        </div>
+                                        <div class="col-lg-7 col-xs-12 col-sm-12" id="myform">
+                                            Unit Name:
+                                            <span id="lbl_Unitname" style="color:deeppink"></span>
+
+                                        </div>
+                                    </div>
+                                    <div class="row hd_titl">
+                                        <div class="col-lg-4 col-xs-12 col-sm-12" id="myform">
+                                            Unit Code:
+                                            <span id="lbl_UnitCode" style="color:deeppink"></span>
+                                        </div>
+                                        <div class="col-lg-7 col-xs-12 col-sm-12" id="myform">
+                                          Unit Name:
+                                            @Html.HiddenFor(x => x.Revenue.Unit_RevExp_Id, new { @id = "revenuid" })
+                                            @{
+                                                var unitlist = new SelectList(Model.Unit, "Unit_Id", "Unit_Name").ToList();
+                                                unitlist.Insert(0, new SelectListItem() { Value = "0", Text = "-- Select One --" });
+                                            }
+                                            @Html.DropDownListFor(x => x.Revenue.Unit_Id, unitlist, new { @required = "true", @class = "form-control", })
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                                <table id="TblUnit"></table>
+                                <div id="budgetpager"></div>
+                                <div class="row">
+                                    <div class="col-lg-9 col-sm-12 col-xs-12"></div>
+                                    <div class="col-lg-3 col-sm-12 col-xs-12">
+                                        <input type="button" id="btn_GotoAddBudget" value="Add Budget Requisition" class="newdesg" onclick="gotoaddbudget()" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row pt-4 pb-3">
+                            <div class="col-lg-12">
+                                @{confirmMessage = Convert.ToString(TempData["Message"]);}
+                                @if (!string.IsNullOrEmpty(confirmMessage))
+                                {
+                                    <div class="alert alert-success alert-dismissable" id="divSuccessMessage">
+                                        @confirmMessage
+                                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                                    </div>
+                                }
+                                <div class="card">
+                                    <div class="card-header">
+
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <i class="fa fa-table"></i> Revenue Details List
+                                            </div>
+                                            @*<div class="col-md-6 text-md-right">
+                                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal"><i class="fa fa-plus"></i>  Add</button>
+                                             
+
+
+                                            </div>*@
+                                        </div>
+
+                                    </div>
+                                    @if (ViewBag.GridData == null)
+                                    {
+                                        <div class="box-body">
+                                            <div id="FormOne">
+                                                <div class="row">
+                                                    <div class="col-md-12">No Application found.</div>
+                                                    @Html.ValidationSummary()
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <div class="card-body">
+                                            <div class="table-responsive">
+                                                <div id="default-datatable_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4">
+
+                                                    <div class="row">
+                                                        <div class="table-responsive">
+                                                            <table id="default-datatable" class="table table-bordered">
+                                                                <thead>
+                                                                    <tr>
+
+                                                                        <th>Head name</th>
+                                                                        <th>SubHead Name</th>
+                                                                        <th>SubHead Code</th>
+                                                                        <th>Current BE</th>
+                                                                        <th>Expences for last financial Year</th>
+                                                                        <th>Liability of current Financial year</th>
+                                                                        <th>Current Year expenditure</th>
+                                                                        <th>Total Payment</th>
+                                                                        <th>Probable Exp.</th>
+                                                                        <th>Total Exp. of Current Year</th>
+                                                                        <th>Creator RE For Current</th>
+                                                                        <th>Prop RE Of Current Year</th>
+                                                                        <th>RE Of Current Year</th>
+                                                                        <th>Creator Budget For Next Fy</th>
+                                                                        <th>Creator remarks</th>
+                                                                        <th>Requested Budget nxt Year</th>
+                                                                        <th>Remarks</th>
+                                                                        <th>Approve Budget for Next Year</th>
+                                                                        <th>HO Remarks</th>
+                                                                       
+
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                    @foreach (var d in ViewBag.GridData)
+                                                                    {
+                                                                        <tr>
+
+                                                                            <td>@d.hdnm</td>
+                                                                            <td>@d.SubHead_Name</td>
+                                                                            <td>@d.SubHead_Code</td>
+                                                                            <td>@d.Current_Bgt_Amt</td>
+                                                                            <td>@d.Lt_Fy_Exp</td>
+                                                                            <td>@d.Lb_Pr_Paid</td>
+                                                                            <td>@d.Current_expdr</td>
+                                                                            <td>@d.Total_Pmt</td>
+                                                                            <td>@d.Prob_Exp</td>
+                                                                            <td>@d.Total_Prop_Exp</td>
+                                                                            <td>@d.Fst_Prop_Re_Curnt</td>
+                                                                            <td>@d.Prop_Re_Curnt</td>
+                                                                            <td>@d.Re_For_Current</td>
+                                                                            <td>@d.Fst_Bdgt_Nxt_Fy</td>
+                                                                            <td>@d.Fst_remarks</td>
+                                                                            <td>@d.Bdgt_Nxt_Fy</td>
+                                                                            <td>@d.Fst_remarks</td>
+                                                                            <td>@d.Bdgt_Amnt</td>
+                                                                            <td>@d.Ho_Remarks</td>
+
+                                                                          
+                                                                        </tr>
+                                                                    }
+                                                                </tbody>
+                                                            </table>
+
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+}
+<script src="~/assets/js/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $(function () {
+
+            $.ajax({
+                type: "GET",
+                url: "/Finance/GetUnitDetails",
+                //data: { Usr_Id: Usr_Id },
+                dataType: "json",
+                success: function (response) {
+
+
+                    $('#lbl_Unitname').text(response.Unit_Name);
+                    $("#lbl_UnitCode").text(response.Unit_Code);
+                    $("#Unit_Id").val(response.Unit_Id);
+
+
+                },
+                failure: function (response) {
+                    alert(response);
+                },
+                error: function (response) {
+                    alert(response);
+                }
+            });
+        });
+        $(function () {
+
+            $.ajax({
+                type: "GET",
+                url: "/Finance/GetActivefyr",
+                dataType: "json",
+                success: function (response) {
+
+
+                    $('#lbl_Fyrname').text(response.Fin_Yr);
+
+                    $("#Fin_Id").val(response.Fin_Id);
+
+
+                },
+                failure: function (response) {
+                    alert(response);
+                },
+                error: function (response) {
+                    alert(response);
+                }
+            });
+        });
+    });
+    function gotoaddbudget() {
+        window.location.href = "/Finance/RevenueProposalByUnit";
+    }
+</script>

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="dc952c1a9eb6445f952837cb619667dd" Name="Diagram1" ZoomLevel="62">
+        <EntityTypeShape EntityType="BMSModel.BudgetType" Width="1.5" PointX="5.75" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="BMSModel.File" Width="1.5" PointX="5.75" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="BMSModel.Financial_Year" Width="1.5" PointX="0.75" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="BMSModel.Head_Master" Width="1.5" PointX="7.75" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="BMSModel.Mst_ApproveType" Width="1.5" PointX="3.75" PointY="15.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BMSModel.Mst_Assign_Designation" Width="1.5" PointX="7.75" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="BMSModel.Mst_AssignCircleDivison" Width="1.5" PointX="13.75" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="BMSModel.Mst_AssignUnitToBank" Width="1.5" PointX="3" PointY="10.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BMSModel.Mst_AssignZoneCircle" Width="1.5" PointX="13.75" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="BMSModel.Mst_Bank" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BMSModel.Mst_BnkDtls" Width="1.5" PointX="5.75" PointY="15.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="BMSModel.Mst_Capital_Works_Detail" Width="1.5" PointX="13.75" PointY="10.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="BMSModel.Mst_Circle" Width="1.5" PointX="13.75" PointY="15.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="BMSModel.Mst_Country" Width="1.5" PointX="15.75" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="BMSModel.Mst_District" Width="1.5" PointX="15.75" PointY="14.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="BMSModel.Mst_Divison" Width="1.5" PointX="15.75" PointY="18.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="BMSModel.Mst_InnerSubHead" Width="1.5" PointX="17.75" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="BMSModel.Mst_month" Width="1.5" PointX="0.75" PointY="17.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BMSModel.Mst_SalaryHeads" Width="1.5" PointX="17.75" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="BMSModel.Mst_State" Width="1.5" PointX="17.75" PointY="10.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="BMSModel.Mst_Unit" Width="1.5" PointX="0.75" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="BMSModel.Mst_Zone" Width="1.5" PointX="17.75" PointY="14.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="BMSModel.Page" Width="1.5" PointX="17.75" PointY="18.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="BMSModel.Permission" Width="1.5" PointX="5.75" PointY="20.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="BMSModel.Role" Width="1.5" PointX="19.75" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="BMSModel.Tarn_Add_Budget" Width="1.5" PointX="0.75" PointY="24.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="BMSModel.Tran_Cap_TP_Budget" Width="1.5" PointX="8.75" PointY="16.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="BMSModel.Tran_CWRequistionNumber" Width="1.5" PointX="19.75" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="BMSModel.Tran_User_Creation" Width="1.5" PointX="3.75" PointY="23.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BMSModel.Trans_Additional_Allotment" Width="1.5" PointX="11" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BMSModel.Trans_Additional_allotment_Work" Width="1.5" PointX="19.75" PointY="10.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="BMSModel.Trans_Cap_Work_Bgt_Requsion_Unit" Width="1.5" PointX="19.75" PointY="16.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="BMSModel.Trans_Cap_Work_Budget" Width="1.5" PointX="13.75" PointY="22.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="BMSModel.Trans_Cap_Wrk_CashRequistionInvoice" Width="1.5" PointX="19.75" PointY="22.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="BMSModel.Trans_Capital_TPBgt_Prop_By_Unit" Width="1.5" PointX="21.75" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="BMSModel.Trans_CashRequistionInvoice" Width="1.5" PointX="21.75" PointY="10.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="BMSModel.Trans_CashRequstionNonInvoice" Width="1.5" PointX="11" PointY="10.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BMSModel.Trans_Cptl_wrk_CashRequstionNonInvoice" Width="1.5" PointX="15.75" PointY="23.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="BMSModel.Trans_LeveL_ApprovalInvoice" Width="1.5" PointX="11" PointY="19.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BMSModel.Trans_LeveL_ApprovalNonInvoice" Width="1.5" PointX="11" PointY="28.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BMSModel.Trans_RequsitionNumber" Width="1.5" PointX="3" PointY="19.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="BMSModel.Trans_Revnu_Expenditure_By_Unit" Width="1.5" PointX="21.75" PointY="21.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="BMSModel.TransCap_Wrk__LeveL_ApprovalInvoice" Width="1.5" PointX="23.75" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="BMSModel.TransCap_Wrk__LeveL_ApprovalNonInvoice" Width="1.5" PointX="5.75" PointY="25.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="BMSModel.Trns_Chng_Pwd_Log" Width="1.5" PointX="7.75" PointY="25.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="BMSModel.Mst_User" Width="1.5" PointX="23.75" PointY="11.25" IsExpanded="true" />
+        <AssociationConnector Association="BMSModel.FK_Mst_AssignUnitToBank_Mst_Bank" ManuallyRouted="false" />
+        <AssociationConnector Association="BMSModel.FK_Mst_AssignUnitToBank_Mst_Unit" ManuallyRouted="false" />
+        <AssociationConnector Association="BMSModel.FK_Trans_RequsitionNumber_Mst_Unit" ManuallyRouted="false" />
+        <AssociationConnector Association="BMSModel.FK_Trans_Additional_Allotment_BudgetType" ManuallyRouted="false" />
+        <AssociationConnector Association="BMSModel.FK_Trans_CashRequstionNonInvoice_Tran_Cap_TP_Budget" ManuallyRouted="false" />
+        <AssociationConnector Association="BMSModel.FK_Trans_LeveL_ApprovalInvoice_Tran_Cap_TP_Budget" ManuallyRouted="false" />
+        <AssociationConnector Association="BMSModel.FK_Trans_LeveL_ApprovalNonInvoice_Tran_Cap_TP_Budget" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="BMSModel.Mst_Department" Width="1.5" PointX="24.375" PointY="15.75" />
+        <EntityTypeShape EntityType="BMSModel.Mst_Designation" Width="1.5" PointX="24.375" PointY="19.75" />
+        <EntityTypeShape EntityType="BMSModel.Trans_Salary" Width="1.5" PointX="3" PointY="3.375" />
+        <AssociationConnector Association="BMSModel.FK_Trans_Salary_Financial_Year" />
+        <AssociationConnector Association="BMSModel.FK_Trans_Salary_Mst_month" />
+        <AssociationConnector Association="BMSModel.FK_Trans_Salary_Mst_Unit" />
+        <AssociationConnector Association="BMSModel.FK_Trans_Salary_Tarn_Add_Budget" />
+        <EntityTypeShape EntityType="BMSModel.Mst_SubHead" Width="1.5" PointX="24.375" PointY="23.75" />
+        <EntityTypeShape EntityType="BMSModel.Trans_Assign_User_ToApprov" Width="1.5" PointX="5.375" PointY="9.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

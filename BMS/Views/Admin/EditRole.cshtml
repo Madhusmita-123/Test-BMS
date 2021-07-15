@@ -1,0 +1,35 @@
+﻿@model BMS.Models.RoleModel
+<div class="modal-dialog">
+    @using (Html.BeginForm("CreateRole", "Admin", FormMethod.Post, new { enctype = "multipart/form-data", data_ajax = "false", role = "form" }))
+    {
+        @Html.AntiForgeryToken()
+        string confirmMessage = Convert.ToString(TempData["Message"]);
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label>Role:</label>
+                            @Html.HiddenFor(x => x.Role.RoleID, new { @id = "roleid" })
+                            @Html.TextBoxFor(m => m.Role.RoleDesc, new { @id = "rollname", @class = "form-control required", @placeholder = "Name", @autocomplete = "off" })
+                            @Html.ValidationMessageFor(m => m.Role.RoleDesc, "", new { @class = "error" })
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-danger" id="Submit">Submit</button>
+                <button type="button" class="btn btn-danger" onclick="location.reload()" style="float:right">Cancel</button>
+            </div>
+        </div>
+    }
+
+</div>

@@ -1,0 +1,350 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>BMS | Odisha</title>
+    <!--favicon-->
+    <link rel="icon" href="~/assets/images/kd.png" type="image/x-icon">
+    <!-- notifications css -->
+    <link rel="stylesheet" href="~/assets/plugins/notifications/css/lobibox.min.css" />
+    <!-- Vector CSS -->
+    <link href="~/assets/plugins/vectormap/jquery-jvectormap-2.0.2.css" rel="stylesheet" />
+    <!-- simplebar CSS-->
+    <link href="~/assets/plugins/simplebar/css/simplebar.css" rel="stylesheet" />
+    <!-- Bootstrap core CSS-->
+    <link href="~/assets/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- animate CSS-->
+    <link href="~/assets/css/animate.css" rel="stylesheet" type="text/css" />
+    <!-- Icons CSS-->
+    <link href="~/assets/css/icons.css" rel="stylesheet" type="text/css" />
+    <!-- Sidebar CSS-->
+    <link href="~/assets/css/sidebar-menu.css" rel="stylesheet" />
+    <!-- Custom Style-->
+    <link href="~/assets/css/app-style.css" rel="stylesheet" />
+    <link href="~/assets/plugins/bootstrap-datatable/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
+   
+    <!-- Main CSS-->
+    <link rel="stylesheet" type="text/css" href="~/css/main.css">
+    <link rel="stylesheet" type="text/css" href="~/css/style.css">
+   
+
+    <!-- Essential javascripts for Css to work st-->
+    @*<script src="~/js/jquery-3.2.1.min.js"></script>*@
+    @*<script src="~/js/counter.js"></script>*@
+    @*<script src="~/js/jquery.js"></script>*@
+    @*<script src="~/scripts/jquery-ui-1.10.0.js"></script>
+    <script src="~/js/popper.min.js"></script>*@
+    @*<script src="~/js/jquery-confirm.min.js"></script>*@
+    <!-- Essential javascripts for Css to work end-->
+    
+    <!-- Essential javascripts for application to work-->
+
+</head>
+<body>
+    <div id="sidebar-wrapper" data-simplebar="" data-simplebar-auto-hide="true">
+        <div class="brand-logo">
+            <a>
+                <img src="~/assets/images/LOGO2.png" class="logo-icon" alt="ESI Odisha">
+            </a>
+        </div>
+        <ul class="sidebar-menu do-nicescrol">
+            @*<li>
+                    <a href="dashboard.php" class="waves-effect">
+                        <i class="icon-home"></i> <span>Dashboard</span>
+                    </a>
+                </li>*@
+            @*<li class="active"><a href="#"><i class="fa fa-dashboard"></i><span>Dashboard</span></a></li>*@
+            @if (Session["role"].ToString() == "ADMINISTRATOR")
+            {
+                <li class="active"><a href="/User/Dashboard"><i class="fa fa-dashboard"></i><span>Dashboard</span></a></li>
+
+
+
+                <li>
+                    <a href="javaScript:void();" class="waves-effect">
+                        <i class="fa fa-dashboard"></i>
+                        <span>Master</span> <i class="fa fa-angle-left pull-right"></i>
+                    </a>
+                    <ul class="sidebar-submenu">
+                        <li><a href="/User/CreateUser"><i class="fa fa-circle-o"></i>Manage User </a></li>
+                        <li><a href="/Admin/Role"><i class="fa fa-circle-o"></i>Role</a></li>
+                        <li><a href="/Admin/Department"><i class="fa fa-circle-o"></i>Department</a></li>
+                        <li><a href="/Admin/Designation"><i class="fa fa-circle-o"></i>Designation</a></li>
+                        <li><a href="/Admin/Head"><i class="fa fa-circle-o"></i>Head</a></li>
+                        <li><a href="/Admin/SubHead"><i class="fa fa-circle-o"></i>SubHead</a></li>
+                        <li><a href="/Admin/Divison"><i class="fa fa-circle-o"></i>Divison</a></li>
+                        <li><a href="/Admin/Zone"><i class="fa fa-circle-o"></i>Zone</a></li>
+                        <li><a href="/Admin/Country"><i class="fa fa-circle-o"></i>Country</a></li>
+                        <li><a href="/Admin/CreateState"><i class="fa fa-circle-o"></i>State</a></li>
+                        <li><a href="/Admin/CreateDistrict"><i class="fa fa-circle-o"></i>District</a></li>
+                        <li><a href="/Admin/CreateCircle"><i class="fa fa-circle-o"></i>Circle</a></li>
+                        <li><a href="/Admin/CreateAssignCircleDivision"><i class="fa fa-circle-o"></i>AssignCircleDivision</a></li>
+                        <li><a href="/Admin/CreateAssignUserApprove"><i class="fa fa-circle-o"></i>AssignUserApprove</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="javaScript:void();" class="waves-effect">
+                        <i class="fa fa-money"></i>
+                        <span>Bank</span> <i class="fa fa-angle-left pull-right"></i>
+                    </a>
+                    <ul class="sidebar-submenu">
+                        <li><a href="/Finance/BankDetails"><i class="fa fa-circle-o"></i>Bank Details </a></li>
+                        <li><a href="/Admin/CreateFinancialYear"><i class="fa fa-circle-o"></i>Financial_Year</a></li>
+                        <li><a href="/Admin/CreateAssignUnitToBank"><i class="fa fa-circle-o"></i>Assign Unit_To_Bank</a></li>
+                    </ul>
+                </li>
+            }
+            @if (Session["role"].ToString() == "UNIT")
+            {
+
+                <li class="active"><a href="/Unit/Dashboard"><i class="fa fa-dashboard"></i><span>Dashboard</span></a></li>
+                <li>
+                    <a href="javaScript:void();" class="waves-effect">
+                        <i class="fa fa-dashboard"></i>
+                        <span>Revenue and Expenses</span> <i class="fa fa-angle-left pull-right"></i>
+                    </a>
+                    <ul class="sidebar-submenu">
+                        <li><a href="/Finance/RevenueProposalByUnit"><i class="fa fa-circle-o"></i>Create Budget Proposal </a></li>
+                        <li><a href="/Admin/Role"><i class="fa fa-circle-o"></i>Final Budget approve</a></li>
+                        <li><a href="/Admin/Department"><i class="fa fa-circle-o"></i>Additional Allotment</a></li>
+                        <li><a href="/Finance/Sec_Lvl_RevenueProposalByUnit"><i class="fa fa-circle-o"></i>Final Revenue Budget proposal</a></li>
+
+                    </ul>
+                </li>
+                <li>
+                    <a href="javaScript:void();" class="waves-effect">
+                        <i class="fa fa-money"></i>
+                        <span>Furniture Fixture etc</span> <i class="fa fa-angle-left pull-right"></i>
+                    </a>
+                    <ul class="sidebar-submenu">
+                        <li><a href="/Finance/BankDetails"><i class="fa fa-circle-o"></i>Capital T & P proposal unit </a></li>
+
+                    </ul>
+                </li>
+                <li>
+                    <a href="javaScript:void();" class="waves-effect">
+                        <i class="fa fa-money"></i>
+                        <span>Capital Works</span> <i class="fa fa-angle-left pull-right"></i>
+                    </a>
+                    <ul class="sidebar-submenu">
+                        <li><a href="/Finance/BankDetails"><i class="fa fa-circle-o"></i>CapitalWorks Proposal By Unit </a></li>
+                        <li><a href="/Admin/CreateFinancialYear"><i class="fa fa-circle-o"></i>Additional AllotMent Works</a></li>
+
+                    </ul>
+                </li>
+                <li>
+                    <a href="javaScript:void();" class="waves-effect">
+                        <i class="fa fa-money"></i>
+                        <span>Requisition</span> <i class="fa fa-angle-left pull-right"></i>
+                    </a>
+                    <ul class="sidebar-submenu">
+                        <li><a href="/Finance/BankDetails"><i class="fa fa-circle-o"></i>Cash Requision </a></li>
+                        <li><a href="/Admin/CreateFinancialYear"><i class="fa fa-circle-o"></i>Approve cash Requision</a></li>
+                        <li><a href="/Admin/CreateAssignUnitToBank"><i class="fa fa-circle-o"></i>Cash Requision T & P</a></li>
+
+                        <li><a href="/Admin/CreateAssignUnitToBank"><i class="fa fa-circle-o"></i> Approve Cash Requision T & P</a></li>
+                        <li><a href="/Admin/CreateAssignUnitToBank"><i class="fa fa-circle-o"></i>Cash Requision Works</a></li>
+                        <li><a href="/Admin/CreateAssignUnitToBank"><i class="fa fa-circle-o"></i>Approve Cash Requision Works</a></li>
+                        <li><a href="/Admin/CreateAssignUnitToBank"><i class="fa fa-circle-o"></i>Salary Requision</a></li>
+                        <li><a href="/Admin/CreateAssignUnitToBank"><i class="fa fa-circle-o"></i> Approve Salary Requision</a></li>
+                    </ul>
+                </li>
+            }
+            @if (Session["role"].ToString() == "HO")
+            {
+
+                <li class="active"><a href="/Unit/Dashboard"><i class="fa fa-dashboard"></i><span>Dashboard</span></a></li>
+                <li>
+                    <a href="javaScript:void();" class="waves-effect">
+                        <i class="fa fa-dashboard"></i>
+                        <span>Revenue and Expenses</span> <i class="fa fa-angle-left pull-right"></i>
+                    </a>
+                    <ul class="sidebar-submenu">
+
+                        <li><a href="/Final_Lvl_Rev_Bgt_Approval/FinalLevelViewRequestedBudgetToApprove"><i class="fa fa-circle-o"></i>Final Budget approve</a></li>
+                        <li><a href="/Admin/Department"><i class="fa fa-circle-o"></i>Additional Allotment</a></li>
+                        <li><a href="/Admin/Department"><i class="fa fa-circle-o"></i> Approve Additional Allotment</a></li>
+                        <li><a href="/Fst_Lvl_Rev_Bgt_Approval/ViewRequestedBudgetToApprove"><i class="fa fa-circle-o"></i>First Level Budget Approve</a></li>
+                        <li><a href="/Sec_Lvl_Rev_Bgt_Approval/SecondLevelViewRequestedBudgetToApprove"><i class="fa fa-circle-o"></i>Second Level Budget Approve</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="javaScript:void();" class="waves-effect">
+                        <i class="fa fa-money"></i>
+                        <span>Furniture Fixture etc</span> <i class="fa fa-angle-left pull-right"></i>
+                    </a>
+                    <ul class="sidebar-submenu">
+                        <li><a href="/Finance/BankDetails"><i class="fa fa-circle-o"></i>Capital T & P proposal unit </a></li>
+                        <li><a href="/Finance/BankDetails"><i class="fa fa-circle-o"></i> Approve Capital T & P proposal  </a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="javaScript:void();" class="waves-effect">
+                        <i class="fa fa-money"></i>
+                        <span>Capital Works</span> <i class="fa fa-angle-left pull-right"></i>
+                    </a>
+                    <ul class="sidebar-submenu">
+                        <li><a href="/Finance/BankDetails"><i class="fa fa-circle-o"></i>Create Capital Works </a></li>
+                        <li><a href="/Finance/BankDetails"><i class="fa fa-circle-o"></i>CapitalWorks Proposal By Unit </a></li>
+                        <li><a href="/Finance/BankDetails"><i class="fa fa-circle-o"></i>Approve CapitalWorks Proposal  </a></li>
+                        <li><a href="/Admin/CreateFinancialYear"><i class="fa fa-circle-o"></i> Approve Additional Works</a></li>
+
+                    </ul>
+                </li>
+                <li>
+                    <a href="javaScript:void();" class="waves-effect">
+                        <i class="fa fa-money"></i>
+                        <span>Requisition</span> <i class="fa fa-angle-left pull-right"></i>
+                    </a>
+                    <ul class="sidebar-submenu">
+                        <li><a href="/Finance/BankDetails"><i class="fa fa-circle-o"></i>Cash Requision </a></li>
+                        <li><a href="/Admin/CreateFinancialYear"><i class="fa fa-circle-o"></i>Approve cash Requision</a></li>
+
+
+                        <li><a href="/Admin/CreateAssignUnitToBank"><i class="fa fa-circle-o"></i> Approve Cash Requision T & P</a></li>
+
+                        <li><a href="/Admin/CreateAssignUnitToBank"><i class="fa fa-circle-o"></i>Approve Cash Requision Work</a></li>
+
+                        <li><a href="/Admin/CreateAssignUnitToBank"><i class="fa fa-circle-o"></i> Approve Salary Requision</a></li>
+                    </ul>
+                </li>
+            }
+        </ul>
+
+
+
+
+    </div>
+    <!--End sidebar-wrapper-->
+    <!--Start topbar header-->
+    <header class="topbar-nav">
+        <nav class="navbar navbar-expand fixed-top bg-blue">
+            <ul class="navbar-nav mr-auto align-items-center">
+                <li class="nav-item">
+                    <a class="nav-link toggle-menu" href="javascript:void();">
+                        <i class="icon-menu menu-icon"></i>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <form class="search-bar">
+                        <input type="text" class="form-control" placeholder="Search">
+                        <a href="javascript:void();"><i class="icon-magnifier"></i></a>
+                    </form>
+                </li>
+            </ul>
+
+            <ul class="navbar-nav align-items-center right-nav-link">
+
+                <li class="nav-item">
+                    <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" data-toggle="dropdown" href="#">
+                        <span class="user-profile"><img src="~/assets/images/avatars/avatar.png" class="img-circle" alt="user avatar"></span>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-right animated fadeIn">
+                        <li class="dropdown-item user-details">
+                            <a href="javaScript:void();">
+                                <div class="media">
+                                    <div class="avatar"><img class="align-self-start mr-3" src="~/assets/images/avatars/avatar.png" alt="user esi odisha"></div>
+                                    <div class="media-body">
+                                        <h6 class="mt-2 user-title">@Session["Usr_Nm"]</h6>
+                                        @*<p class="user-subtitle">admin@email.com</p>*@
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="dropdown-divider"></li>
+                        <li class="dropdown-divider"></li>
+                        <li class="dropdown-item"><i class="icon-wallet mr-2"></i> Account</li>
+                        <li class="dropdown-divider"></li>
+                        <li class="dropdown-item"><i class="icon-settings mr-2"></i> Setting</li>
+                        <li class="dropdown-divider"></li>
+                        <a href="/Login/LogOff"><li class="dropdown-item"><i class="icon-power mr-2"></i> Logout</li></a>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <!--End topbar header-->
+    <div>
+        @RenderBody()
+    </div>
+    <script src="~/assets/js/jquery.min.js"></script>
+    <script src="~/assets/js/popper.min.js"></script>
+    <script src="~/assets/js/bootstrap.min.js"></script>
+    
+    <!-- simplebar js -->
+    <script src="~/assets/plugins/simplebar/js/simplebar.js"></script>
+    <!-- waves effect js -->
+    <script src="~/assets/js/waves.js"></script>
+    <!-- sidebar-menu js -->
+    <script src="~/assets/js/sidebar-menu.js"></script>
+
+    <!-- Custom scripts -->
+    <script src="~/assets/js/app-script.js"></script>
+
+    <!-- Vector map JavaScript -->
+    <script src="~/assets/plugins/vectormap/jquery-jvectormap-2.0.2.min.js"></script>
+    <script src="~/assets/plugins/vectormap/jquery-jvectormap-world-mill-en.js"></script>
+    <!-- Sparkline JS -->
+    <script src="~/assets/plugins/sparkline-charts/jquery.sparkline.min.js"></script>
+    <!-- Chart js -->
+    <script src="~/assets/plugins/Chart.js/Chart.min.js"></script>
+
+    <!-- Index js -->
+    <!-- <script src="assets/js/index3.js"></script> -->
+    <script src="~/assets/plugins/jquery-validation/js/jquery.validate.min.js"></script>
+
+
+    <!-- Bootstrap core JavaScript-->
+    <!-- simplebar js -->
+    <!-- waves effect js -->
+    <!-- sidebar-menu js -->
+    <!-- Custom scripts -->
+    <!--Data Tables js-->
+    <script src="~/assets/plugins/bootstrap-datatable/js/jquery.dataTables.min.js"></script>
+    <script src="~/assets/plugins/bootstrap-datatable/js/dataTables.bootstrap4.min.js"></script>
+    <script src="~/assets/plugins/bootstrap-datatable/js/dataTables.buttons.min.js"></script>
+    <script src="~/assets/plugins/bootstrap-datatable/js/buttons.bootstrap4.min.js"></script>
+    <script src="~/assets/plugins/bootstrap-datatable/js/jszip.min.js"></script>
+    <script src="~/assets/plugins/bootstrap-datatable/js/pdfmake.min.js"></script>
+    <script src="~/assets/plugins/bootstrap-datatable/js/vfs_fonts.js"></script>
+    <script src="~/assets/plugins/bootstrap-datatable/js/buttons.html5.min.js"></script>
+    <script src="~/assets/plugins/bootstrap-datatable/js/buttons.print.min.js"></script>
+    <script src="~/assets/plugins/bootstrap-datatable/js/buttons.colVis.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            //Default data table
+            $('#default-datatable').DataTable();
+
+
+            var table = $('#example').DataTable({
+                lengthChange: false,
+                buttons: ['copy', 'excel', 'pdf', 'print', 'colvis']
+            });
+
+            table.buttons().container()
+                .appendTo('#example_wrapper .col-md-6:eq(0)');
+
+        });
+
+    </script>
+
+
+
+
+
+
+</body>
+
+</html>

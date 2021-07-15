@@ -1,0 +1,102 @@
+﻿@model BMS.Models.UserModel
+    <div class="modal-dialog">
+        @using (Html.BeginForm("CreateUser", "User", FormMethod.Post, new { enctype = "multipart/form-data", data_ajax = "false", role = "form" }))
+        {
+            @Html.AntiForgeryToken()
+            string confirmMessage = Convert.ToString(TempData["Message"]);
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    @if (!string.IsNullOrEmpty(confirmMessage))
+                    {
+                        <div class="alert alert-success alert-dismissable" id="divSuccessMessage">
+                            @confirmMessage
+                            @*<button type="button" class="close" data-dismiss="modal">&times;</button>*@
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                        </div>
+                    }
+
+                </div>
+                <div class="modal-body">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <label>Role:</label>
+                                @Html.HiddenFor(x => x.User.Usr_Id);
+                                @{
+                                    var RoleList = new SelectList(Model.lstRole, "RoleID", "RoleDesc").ToList();
+                                    RoleList.Insert(0, new SelectListItem() { Value = "0", Text = "-- Select One --" });
+                                }
+                                @Html.DropDownListFor(x => x.User.RoleID, RoleList, new { @required = "true", @class = "form-control", @id = "role" })
+                            </div>
+                            <div class="col-md-4">
+                                <label> Unit:</label>
+                                @{
+                                    var unit = new SelectList(Model.Unit, "Unit_Id", "Unit_Name").ToList();
+                                    unit.Insert(0, new SelectListItem() { Value = "0", Text = "-- Select One --" });
+                                }
+                                @Html.DropDownListFor(x => x.User.Unit_Id, unit, new { @required = "true", @class = "form-control", @id = "unit" })
+                            </div>
+                            <div class="col-md-4">
+                                <label>Department:</label>
+                                @{
+                                    var dept = new SelectList(Model.department, "Dept_ID", "Dept_Name").ToList();
+                                    dept.Insert(0, new SelectListItem() { Value = "0", Text = "-- Select One --" });
+                                }
+                                @Html.DropDownListFor(x => x.User.Dept_ID, dept, new { @required = "true", @class = "form-control", @id = "department", @onchange = "Binddesignation()" })
+                            </div>
+                        </div>
+                        <div class="row mt-2">
+                            <div class="col-md-4">
+                                <label>Designation:</label>
+
+                                @{
+                                    var Deg = new SelectList(Model.designation, "Desg_ID", "Designation_Name").ToList();
+                                    Deg.Insert(0, new SelectListItem() { Value = "0", Text = "-- Select One --" });
+                                }
+                                @Html.DropDownListFor(x => x.User.Desg_ID, Deg, new { @required = "true", @class = "form-control", @id = "designation", })
+
+                            </div>
+                            <div class="col-md-4">
+                                <label>Name:</label>
+
+                                @Html.TextBoxFor(m => m.User.Name, new { @id = "name", @class = "form-control", @placeholder = "Name", @autocomplete = "off" })
+
+                            </div>
+                            <div class="col-md-4">
+                                <label>EmpCode:</label>
+
+                                @Html.TextBoxFor(m => m.User.EmpCode, new { @id = "code", @class = "form-control", @placeholder = "Last Name", @autocomplete = "off" })
+                            </div>
+                        </div>
+                        <div class="row mt-2">
+                            <div class="col-md-4">
+                                <label>Email:</label>
+
+                                @Html.TextBoxFor(m => m.User.Email, new { @id = "email", @class = "form-control", @placeholder = "Email-Id", @autocomplete = "off" })
+
+                            </div>
+                            <div class="col-md-4">
+                                <label>Phone No:</label>
+
+                                @Html.TextBoxFor(m => m.User.Phone, new { @id = "phn", @class = "form-control", @placeholder = "Phone Number", @autocomplete = "off" })
+
+                            </div>
+                            <div class="col-md-4">
+                                <label>UserName:</label>
+
+                                @Html.TextBoxFor(m => m.User.Usr_Nm, new { @id = "usrname", @class = "form-control", @placeholder = "Name", @autocomplete = "off" })
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-danger" id="Submit">Update</button>
+                    <button type="button" class="btn btn-danger" onclick="location.reload()" data-dismiss="modal">Cancel</button>
+                </div>
+            </div>
+        }
+    </div>
+

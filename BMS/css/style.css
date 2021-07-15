@@ -1,0 +1,315 @@
+/*-- dashboard style --*/
+#myModal .modal-dialog {
+    right: auto;
+    left: 0;
+    width: 600px;
+    padding-top: 30px;
+    padding-bottom: 30px
+}
+
+.ppaddng {
+    padding: 0 18px;
+}
+
+.Profile-content {
+    padding: 20px;
+}
+
+.profileimageicon {
+    height: 30px !important;
+    width: 30px !important;
+    border-radius: 50%;
+}
+
+.profile-heading-title {
+    background: #bde9ff;
+    padding: 10px;
+    text-align: center;
+    margin-bottom: 0px;
+}
+
+.linegp {
+    height: 2px;
+    background: #bde9ff;
+}
+
+.profileimg {
+    width: 185px !important;
+    height: 185px !important;
+    position: relative;
+    top: -70px;
+    margin-bottom: -60px;
+    border-radius: 50% !important;
+}
+
+.profilemttop {
+    height: auto;
+    width: 90%;
+    margin: auto;
+    top: 87px;
+}
+
+.ui-datepicker {
+    background: #fff !important;
+}
+
+    .ui-datepicker a {
+        color: #222 !important;
+    }
+
+.delmsg {
+    color: #222 !important;
+}
+
+#alertcnt_Demogrid div {
+    color: #222;
+}
+
+.app-header {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    width: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    background: linear-gradient(to bottom, #3ca6f1 0%,#3ca6f1 40%,#05abe0 100%);
+    box-shadow: 1px 1px 6px #1b19196b;
+    z-index: 1030;
+    padding-right: 15px;
+}
+
+.mb-btm {
+    margin-bottom: 15px;
+}
+
+.odd {
+    padding: 10px 0px;
+    background: rgba(204, 204, 204, 0.17);
+}
+
+.even {
+    padding: 10px 0px;
+    background: #fff;
+}
+
+footer {
+    bottom: 0;
+    position: fixed;
+    width: 100%;
+    background: linear-gradient(to bottom, #3ca6f1 0%,#3ca6f1 40%,#05abe0 100%);
+    box-shadow: 1px 1px 6px #1b19196b;
+    z-index: 111;
+}
+
+    footer p {
+        text-align: right;
+        margin-right: 10px;
+        margin-top: 10px;
+        color: #fff;
+    }
+
+    footer img {
+        width: 75px;
+    }
+
+.app-header__logo {
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 auto;
+    flex: 0 0 auto;
+    display: block;
+    width: 230px;
+    background: transparent;
+}
+
+.app-menu__item.active, .app-menu__item:hover, .app-menu__item:focus {
+    background: linear-gradient(to bottom, #87e0fd 0%,#53cbf1 40%,#05abe0 100%);
+    border-left-color: #05abe0;
+    text-decoration: none;
+    color: #fff;
+}
+
+.treeview.is-expanded [data-toggle='treeview'] {
+    border-left-color: #05abe0;
+    background: linear-gradient(to bottom, #87e0fd 0%,#53cbf1 40%,#05abe0 100%);
+}
+
+.box {
+    border-radius: 13px;
+    background: #fff;
+    padding-top: 9px;
+    padding-bottom: 20px;
+    margin-top: 50px;
+}
+
+    .box h6 {
+        font-size: 29px;
+        font-weight: 500;
+        text-decoration: underline;
+        margin-bottom: 20px;
+    }
+
+    .box span {
+        line-height: 20px !important;
+    }
+
+.headertxt {
+    background: url(../Images/gh.png) left bottom repeat-x;
+    margin: 0 0 10px 0;
+    padding: 10px 0;
+    width: 100%;
+}
+
+.formbox {
+    border: 1px solid #cccccc29;
+    padding: 17px 15px 22px;
+    margin-bottom: 17px;
+    margin-top: 17px;
+    box-shadow: 0px 0px 10px -2px rgba(113, 128, 134, 0.43);
+    background: #fff;
+}
+
+.txtwd {
+    width: 48% !important;
+    margin-bottom: 11px;
+    padding: 1px;
+    /* right: 10px; */
+    margin-left: 6px;
+}
+
+.ks {
+    max-width: 100% !important;
+    width: 100% !important;
+    padding: 5px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+input[type=button] {
+    background-color: #0aab8b;
+    color: white;
+    padding: 6px 9px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+    font-weight: 600;
+}
+
+.btnsbmt {
+    background: #3a66b3 !important
+}
+
+.bx-shdw {
+    box-shadow: 0px 0px 4px 2px rgba(243, 237, 237, 0.7294117647058823);
+    /* border-bottom-right-radius: 46px; */
+    border: 1px ridge rgba(222, 171, 63, 0.2901960784313726);
+    border-radius: 5px;
+}
+/*@media (min-width:767px) {
+     input[type=button] {
+        background-color: #0aab8b    !important;
+        color: white;
+        padding: 6px 9px;
+        margin: 8px 0;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        width:100%;
+    }
+}*/
+
+input[type=submit]:hover {
+    background-color: #45a049;
+}
+/*.hd_title
+    {box-shadow: -4px -2px 0px 1px #0aaa8b;
+    margin-bottom: 20px;
+    border: 1px solid #e6dbdb;
+    padding: 10px 20px 0px;
+    background: #f9f0f0;}*/
+.hd_titl {
+    border-left: 4px solid #0aaa8b;
+    margin-bottom: 14px;
+    padding-left: 20px;
+    background: #f9f0f0;
+    height: auto;
+    padding-top: 0px;
+}
+
+    .hd_titl::before {
+        content: '';
+        display: table;
+    }
+
+    .hd_titl span {
+        margin-top: 10px;
+        line-height: 37px !important;
+    }
+
+@media only screen and (max-width:767px) {
+    .hd_titl {
+        border-left: 4px solid #0aaa8b;
+        margin-bottom: 14px;
+        padding-left: 0px;
+        background: #f9f0f0;
+        height: auto;
+        padding-top: 10px;
+    }
+
+        .hd_titl::before {
+            content: '';
+            display: inline-block;
+        }
+
+        .hd_titl span {
+            margin-top: 0px;
+            line-height: 20px !important;
+        }
+}
+
+@media only screen and (max-width:991px) and (min-width:768px) {
+    .hd_titl {
+        border-left: 4px solid #0aaa8b;
+        margin-bottom: 14px;
+        padding-left: 0px;
+        background: #f9f0f0;
+        height: auto;
+        padding-top: 10px;
+    }
+
+        .hd_titl::before {
+            content: '';
+            display: inline-block;
+            h
+        }
+
+        .hd_titl span {
+            margin-top: 0px;
+            line-height: 20px !important;
+        }
+}
+
+.spnks {
+    color: deeppink;
+}
+
+    .spnks::before {
+        content: ' :- ';
+        color: black;
+    }
+
+.rescroll {
+    width: 100%;
+    overflow: hidden
+}
+
+    .rescroll:hover {
+        width: 100%;
+        overflow: auto
+    }

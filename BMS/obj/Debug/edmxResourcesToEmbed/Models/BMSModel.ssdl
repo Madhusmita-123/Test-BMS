@@ -1,0 +1,1443 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="BMSModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="BudgetType">
+    <Key>
+      <PropertyRef Name="BugtTyp_Id" />
+    </Key>
+    <Property Name="BugtTyp_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BgtTypNm" Type="varchar" MaxLength="50" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="IsDelete" Type="bit" />
+  </EntityType>
+  <EntityType Name="Files">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FileID" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="FileName" Type="varchar" MaxLength="50" />
+    <Property Name="Data" Type="varbinary(max)" />
+    <Property Name="path" Type="varchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="Financial_Year">
+    <Key>
+      <PropertyRef Name="Fin_Id" />
+    </Key>
+    <Property Name="Fin_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Fin_Yr" Type="varchar" MaxLength="50" />
+    <Property Name="AddBy" Type="int" />
+    <Property Name="AddOn" Type="datetime" />
+    <Property Name="ModBy" Type="int" />
+    <Property Name="ModOn" Type="datetime" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="IsDelete" Type="bit" />
+  </EntityType>
+  <EntityType Name="Head_Master">
+    <Key>
+      <PropertyRef Name="Head_Id" />
+    </Key>
+    <Property Name="Head_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="hdnm" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="hdcode" Type="varchar" MaxLength="50" />
+    <Property Name="BugtTyp_Id" Type="int" />
+    <Property Name="addon" Type="datetime" />
+    <Property Name="addby" Type="int" />
+    <Property Name="modon" Type="datetime" />
+    <Property Name="modby" Type="int" />
+    <Property Name="isdelete" Type="bit" Nullable="false" />
+    <Property Name="IsActive" Type="bit" />
+  </EntityType>
+  <EntityType Name="Mst_ApproveType">
+    <Key>
+      <PropertyRef Name="Aprov_Type_ID" />
+    </Key>
+    <Property Name="Aprov_Type_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Description" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Mst_Assign_Designation">
+    <Key>
+      <PropertyRef Name="AssDeg_ID" />
+    </Key>
+    <Property Name="AssDeg_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Desg_ID" Type="int" />
+    <Property Name="Dept_ID" Type="int" />
+    <Property Name="Addon" Type="datetime" />
+    <Property Name="Addby" Type="int" />
+    <Property Name="Modon" Type="datetime" />
+    <Property Name="Modby" Type="int" />
+    <Property Name="isActive" Type="bit" />
+    <Property Name="isDelete" Type="bit" />
+  </EntityType>
+  <EntityType Name="Mst_AssignCircleDivison">
+    <Key>
+      <PropertyRef Name="AssignCircleDivisonid" />
+    </Key>
+    <Property Name="AssignCircleDivisonid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="circleid" Type="int" />
+    <Property Name="divisonid" Type="int" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="IsDelete" Type="bit" />
+    <Property Name="AddBy" Type="int" />
+    <Property Name="AddOn" Type="datetime" />
+    <Property Name="ModBy" Type="int" />
+    <Property Name="ModOn" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Mst_AssignUnitToBank">
+    <Key>
+      <PropertyRef Name="Assg_unitbnkid" />
+    </Key>
+    <Property Name="Assg_unitbnkid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Unit_Id" Type="int" />
+    <Property Name="bnkid" Type="int" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="IsDelete" Type="bit" />
+    <Property Name="AddBy" Type="int" />
+    <Property Name="AddOn" Type="datetime" />
+    <Property Name="ModBy" Type="int" />
+    <Property Name="ModOn" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Mst_AssignZoneCircle">
+    <Key>
+      <PropertyRef Name="AssignZoneCircleid" />
+    </Key>
+    <Property Name="AssignZoneCircleid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="circleid" Type="int" />
+    <Property Name="zoneid" Type="int" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="IsDelete" Type="bit" />
+    <Property Name="AddBy" Type="int" />
+    <Property Name="AddOn" Type="datetime" />
+    <Property Name="ModBy" Type="int" />
+    <Property Name="ModOn" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Mst_Bank">
+    <Key>
+      <PropertyRef Name="bnkid" />
+    </Key>
+    <Property Name="bnkid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Bank_Name" Type="varchar" MaxLength="50" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="IsDelete" Type="bit" />
+    <Property Name="AddBy" Type="int" />
+    <Property Name="AddOn" Type="datetime" />
+    <Property Name="ModBy" Type="int" />
+    <Property Name="ModOn" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Mst_BnkDtls">
+    <Key>
+      <PropertyRef Name="Bnk_DtlsId" />
+    </Key>
+    <Property Name="Bnk_DtlsId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="bnkid" Type="int" />
+    <Property Name="Branch" Type="varchar" MaxLength="50" />
+    <Property Name="Acnt_holderName" Type="varchar" MaxLength="50" />
+    <Property Name="IFSC_Code" Type="varchar" MaxLength="100" />
+    <Property Name="AccountType" Type="varchar" MaxLength="50" />
+    <Property Name="Account_Number" Type="varchar" MaxLength="50" />
+    <Property Name="Address" Type="varchar" MaxLength="500" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="IsDelete" Type="bit" />
+    <Property Name="AddBy" Type="int" />
+    <Property Name="AddOn" Type="datetime" />
+    <Property Name="ModBy" Type="int" />
+    <Property Name="ModOn" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Mst_Capital_Works_Detail">
+    <Key>
+      <PropertyRef Name="Cap_Wok_Head_Id" />
+    </Key>
+    <Property Name="Cap_Wok_Head_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Proj_Name" Type="varchar(max)" />
+    <Property Name="Proj_Code" Type="varchar" MaxLength="50" />
+    <Property Name="Aprov_No" Type="varchar" MaxLength="50" />
+    <Property Name="Aprov_Date" Type="datetime" />
+    <Property Name="Aprov_Cost" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Cont_Value" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="IsDelete" Type="bit" />
+    <Property Name="Addon" Type="datetime" />
+    <Property Name="Addby" Type="int" />
+    <Property Name="Modon" Type="datetime" />
+    <Property Name="Modby" Type="int" />
+  </EntityType>
+  <EntityType Name="Mst_Circle">
+    <Key>
+      <PropertyRef Name="circleid" />
+    </Key>
+    <Property Name="circleid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="circlename" Type="varchar" MaxLength="50" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="IsDelete" Type="bit" />
+    <Property Name="AddBy" Type="int" />
+    <Property Name="AddOn" Type="datetime" />
+    <Property Name="ModBy" Type="int" />
+    <Property Name="ModOn" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Mst_Country">
+    <Key>
+      <PropertyRef Name="Con_Id" />
+    </Key>
+    <Property Name="Con_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Con_Nm" Type="varchar" MaxLength="50" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="IsDelete" Type="bit" />
+    <Property Name="AddBy" Type="int" />
+    <Property Name="AddOn" Type="datetime" />
+    <Property Name="ModBy" Type="int" />
+    <Property Name="ModOn" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Mst_Department">
+    <Key>
+      <PropertyRef Name="Dept_ID" />
+    </Key>
+    <Property Name="Dept_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Dept_Code" Type="varchar" MaxLength="50" />
+    <Property Name="Dept_Name" Type="varchar" MaxLength="50" />
+    <Property Name="isactive" Type="bit" />
+    <Property Name="isdelete" Type="bit" />
+    <Property Name="addon" Type="datetime" />
+    <Property Name="addby" Type="int" />
+    <Property Name="modon" Type="datetime" />
+    <Property Name="modby" Type="int" />
+  </EntityType>
+  <EntityType Name="Mst_Designation">
+    <Key>
+      <PropertyRef Name="Desg_ID" />
+    </Key>
+    <Property Name="Desg_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Designation_Name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Desg_Code" Type="varchar" MaxLength="50" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="IsDelete" Type="bit" />
+    <Property Name="addon" Type="datetime" />
+    <Property Name="addby" Type="int" />
+    <Property Name="modon" Type="datetime" />
+    <Property Name="modby" Type="int" />
+    <Property Name="Dept_ID" Type="int" />
+  </EntityType>
+  <EntityType Name="Mst_District">
+    <Key>
+      <PropertyRef Name="Dst_Id" />
+    </Key>
+    <Property Name="Dst_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="St_Id" Type="int" Nullable="false" />
+    <Property Name="Dst_Nm" Type="varchar" MaxLength="50" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="IsDelete" Type="bit" />
+    <Property Name="AddOn" Type="datetime" />
+    <Property Name="AddBy" Type="int" />
+    <Property Name="ModOn" Type="datetime" />
+    <Property Name="ModBy" Type="int" />
+    <Property Name="Con_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Mst_Divison">
+    <Key>
+      <PropertyRef Name="divisonid" />
+    </Key>
+    <Property Name="divisonid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="divisonname" Type="varchar" MaxLength="50" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="IsDelete" Type="bit" />
+    <Property Name="AddBy" Type="int" />
+    <Property Name="AddOn" Type="datetime" />
+    <Property Name="ModBy" Type="int" />
+    <Property Name="ModOn" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Mst_InnerSubHead">
+    <Key>
+      <PropertyRef Name="InnerSubHead_ID" />
+    </Key>
+    <Property Name="InnerSubHead_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SubHead_Id" Type="int" />
+    <Property Name="InnerSubHead_Code" Type="varchar" MaxLength="50" />
+    <Property Name="InnerSubHead_Name" Type="varchar" MaxLength="50" />
+    <Property Name="addon" Type="datetime" />
+    <Property Name="addby" Type="int" />
+    <Property Name="modon" Type="datetime" />
+    <Property Name="modby" Type="int" />
+    <Property Name="isactive" Type="bit" />
+    <Property Name="isdelete" Type="bit" />
+  </EntityType>
+  <EntityType Name="Mst_month">
+    <Key>
+      <PropertyRef Name="monthid" />
+    </Key>
+    <Property Name="monthid" Type="int" Nullable="false" />
+    <Property Name="monthnm" Type="varchar" MaxLength="50" />
+    <Property Name="addon" Type="datetime" />
+    <Property Name="addby" Type="int" />
+    <Property Name="modon" Type="datetime" />
+    <Property Name="modby" Type="int" />
+    <Property Name="isdelete" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Mst_SalaryHeads">
+    <Key>
+      <PropertyRef Name="SalHead_Id" />
+    </Key>
+    <Property Name="SalHead_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Salhdnm" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Salhdcode" Type="varchar" MaxLength="50" />
+    <Property Name="addon" Type="datetime" />
+    <Property Name="addby" Type="int" />
+    <Property Name="modon" Type="datetime" />
+    <Property Name="modby" Type="int" />
+    <Property Name="isdelete" Type="bit" Nullable="false" />
+    <Property Name="IsActive" Type="bit" />
+  </EntityType>
+  <EntityType Name="Mst_State">
+    <Key>
+      <PropertyRef Name="St_Id" />
+    </Key>
+    <Property Name="St_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="St_Nm" Type="varchar" MaxLength="50" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="IsDelete" Type="bit" />
+    <Property Name="AddBy" Type="int" />
+    <Property Name="AddOn" Type="datetime" />
+    <Property Name="ModBy" Type="int" />
+    <Property Name="ModOn" Type="datetime" />
+    <Property Name="Con_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Mst_SubHead">
+    <Key>
+      <PropertyRef Name="SubHead_Id" />
+    </Key>
+    <Property Name="SubHead_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BugtTyp_Id" Type="int" />
+    <Property Name="Head_Id" Type="int" />
+    <Property Name="SubHead_Name" Type="varchar(max)" />
+    <Property Name="SubHead_Code" Type="varchar" MaxLength="50" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="IsDelete" Type="bit" />
+    <Property Name="AddOn" Type="datetime" />
+    <Property Name="AddBy" Type="int" />
+    <Property Name="ModOn" Type="datetime" />
+    <Property Name="ModBy" Type="int" />
+  </EntityType>
+  <EntityType Name="Mst_Unit">
+    <Key>
+      <PropertyRef Name="Unit_Id" />
+    </Key>
+    <Property Name="Unit_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Con_Id" Type="int" />
+    <Property Name="St_Id" Type="int" />
+    <Property Name="Dst_Id" Type="int" />
+    <Property Name="zoneid" Type="int" />
+    <Property Name="circleid" Type="int" />
+    <Property Name="divisonid" Type="int" />
+    <Property Name="bnkid" Type="int" />
+    <Property Name="Bnk_DtlsId" Type="int" />
+    <Property Name="Office_Type" Type="varchar" MaxLength="50" />
+    <Property Name="Unit_Name" Type="varchar" MaxLength="50" />
+    <Property Name="Unit_Code" Type="varchar" MaxLength="50" />
+    <Property Name="Plot_No" Type="varchar" MaxLength="50" />
+    <Property Name="AT" Type="varchar" MaxLength="50" />
+    <Property Name="PO" Type="varchar" MaxLength="50" />
+    <Property Name="PS" Type="varchar" MaxLength="50" />
+    <Property Name="Land_Mark" Type="varchar" MaxLength="50" />
+    <Property Name="Area" Type="varchar" MaxLength="50" />
+    <Property Name="Pin" Type="varchar" MaxLength="10" />
+    <Property Name="Contact_No" Type="varchar" MaxLength="50" />
+    <Property Name="CP_Name" Type="varchar" MaxLength="50" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="IsDelete" Type="bit" />
+    <Property Name="AddOn" Type="datetime" />
+    <Property Name="AddBy" Type="int" />
+    <Property Name="ModOn" Type="datetime" />
+    <Property Name="ModBy" Type="int" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'BMS.dbo.Mst_User' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Mst_User">
+    <Key>
+      <PropertyRef Name="userid" />
+      <PropertyRef Name="roleid" />
+      <PropertyRef Name="unm" />
+      <PropertyRef Name="pwd" />
+      <PropertyRef Name="isactive" />
+      <PropertyRef Name="isdelete" />
+    </Key>
+    <Property Name="userid" Type="int" Nullable="false" />
+    <Property Name="unid" Type="int" />
+    <Property Name="utyp" Type="smallint" />
+    <Property Name="roleid" Type="int" Nullable="false" />
+    <Property Name="empnm" Type="varchar" MaxLength="100" />
+    <Property Name="unm" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="pwd" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="mail" Type="varchar" MaxLength="50" />
+    <Property Name="phn" Type="varchar" MaxLength="15" />
+    <Property Name="isactive" Type="bit" Nullable="false" />
+    <Property Name="isdelete" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Mst_Zone">
+    <Key>
+      <PropertyRef Name="zoneid" />
+    </Key>
+    <Property Name="zoneid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="zonename" Type="varchar" MaxLength="50" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="IsDelete" Type="bit" />
+    <Property Name="AddBy" Type="int" />
+    <Property Name="AddOn" Type="datetime" />
+    <Property Name="ModBy" Type="int" />
+    <Property Name="ModOn" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Pages">
+    <Key>
+      <PropertyRef Name="pageid" />
+    </Key>
+    <Property Name="pageid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="distext" Type="varchar" MaxLength="50" />
+    <Property Name="tooltip" Type="varchar" MaxLength="50" />
+    <Property Name="targeturl" Type="varchar" MaxLength="200" />
+    <Property Name="parentid" Type="int" />
+    <Property Name="orderby" Type="int" />
+    <Property Name="addby" Type="int" />
+    <Property Name="addon" Type="datetime" />
+    <Property Name="modby" Type="int" />
+    <Property Name="modon" Type="datetime" />
+    <Property Name="isactive" Type="bit" Nullable="false" />
+    <Property Name="isdelete" Type="bit" />
+  </EntityType>
+  <EntityType Name="Permission">
+    <Key>
+      <PropertyRef Name="permid" />
+    </Key>
+    <Property Name="permid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="roleid" Type="int" Nullable="false" />
+    <Property Name="pageid" Type="int" Nullable="false" />
+    <Property Name="canview" Type="bit" />
+    <Property Name="canadd" Type="bit" />
+    <Property Name="canedit" Type="bit" />
+    <Property Name="candelete" Type="bit" />
+    <Property Name="adddby" Type="int" />
+    <Property Name="addon" Type="datetime" />
+    <Property Name="modby" Type="int" />
+    <Property Name="modon" Type="datetime" />
+    <Property Name="isactive" Type="bit" Nullable="false" />
+    <Property Name="isdelete" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Roles">
+    <Key>
+      <PropertyRef Name="RoleID" />
+    </Key>
+    <Property Name="RoleID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RoleDesc" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="IsDelete" Type="bit" />
+    <Property Name="addon" Type="datetime" />
+    <Property Name="addby" Type="int" />
+    <Property Name="modon" Type="datetime" />
+    <Property Name="modby" Type="int" />
+  </EntityType>
+  <EntityType Name="Tarn_Add_Budget">
+    <Key>
+      <PropertyRef Name="Bgt_Id" />
+    </Key>
+    <Property Name="Bgt_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Head_Id" Type="int" />
+    <Property Name="SubHead_Id" Type="int" />
+    <Property Name="InnerSubHead_ID" Type="int" />
+    <Property Name="Fin_Id" Type="int" />
+    <Property Name="Unit_Id" Type="int" />
+    <Property Name="Bit_Approved" Type="bit" />
+    <Property Name="Proposed_Re_For_Current" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Prop_Amnt" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Remarks" Type="varchar(max)" />
+    <Property Name="First_Lvl_Re_For_Current" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="fst_Aprov_Bdgt_Amnt" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="fst_Arop_Remarks" Type="varchar(max)" />
+    <Property Name="fst_Arop_BIT" Type="bit" />
+    <Property Name="Sec_Lvl_Re_For_Current" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Sec_Aprov_Bdgt_Amnt" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Sec_Arop_Remarks" Type="varchar(max)" />
+    <Property Name="Sec_Arop_BIT" Type="bit" />
+    <Property Name="Bdgt_Amnt" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Ho_Remarks" Type="varchar(max)" />
+    <Property Name="Sanc_Amnt" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Avlb_Amnt" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Rqst_Adtn_Alt_Amnt" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Aprv_Adtn_Alt_Amnt" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Intrm_Bug_Amnt" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Re_For_Current" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="IsDelete" Type="bit" />
+    <Property Name="AddOn" Type="datetime" />
+    <Property Name="AddBy" Type="int" />
+    <Property Name="ModBy" Type="int" />
+    <Property Name="ModOn" Type="datetime" />
+    <Property Name="Mod_Bug_Amnt" Type="nvarchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="Tran_Cap_TP_Budget">
+    <Key>
+      <PropertyRef Name="Cap_TPbgt_Id" />
+    </Key>
+    <Property Name="Cap_TPbgt_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Head_Id" Type="int" />
+    <Property Name="SubHead_Id" Type="int" />
+    <Property Name="Fin_Id" Type="int" />
+    <Property Name="Unit_Id" Type="int" />
+    <Property Name="Proposed_Re_For_Current" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Prop_Amnt" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Bdgt_Amnt" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="First_Lvl_Re_For_Current" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="fst_Aprov_Bdgt_Amnt" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="fst_Arop_Remarks" Type="varchar(max)" />
+    <Property Name="fst_Arop_BIT" Type="bit" />
+    <Property Name="Sec_Lvl_Re_For_Current" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Sec_Aprov_Bdgt_Amnt" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Sec_Arop_Remarks" Type="varchar(max)" />
+    <Property Name="Sec_Arop_BIT" Type="bit" />
+    <Property Name="Avlb_Amnt" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Rqst_Adtn_Alt_Amnt" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Aprv_Adtn_Alt_Amnt" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Intrm_Bug_Amnt" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Re_For_Current" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Ho_Remarks" Type="varchar" MaxLength="50" />
+    <Property Name="Remarks" Type="varchar" MaxLength="50" />
+    <Property Name="Bit_Approved" Type="bit" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="IsDelete" Type="bit" />
+    <Property Name="AddOn" Type="datetime" />
+    <Property Name="AddBy" Type="int" />
+    <Property Name="ModOn" Type="datetime" />
+    <Property Name="ModBy" Type="int" />
+  </EntityType>
+  <EntityType Name="Tran_CWRequistionNumber">
+    <Key>
+      <PropertyRef Name="CWReq_NumberId" />
+    </Key>
+    <Property Name="CWReq_NumberId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Unit_Id" Type="int" />
+    <Property Name="Req_Num" Type="varchar" MaxLength="50" />
+    <Property Name="AddOn" Type="date" />
+    <Property Name="AddBy" Type="int" />
+    <Property Name="ModOn" Type="date" />
+    <Property Name="ModBy" Type="date" />
+  </EntityType>
+  <EntityType Name="Tran_User_Creation">
+    <Key>
+      <PropertyRef Name="Usr_Id" />
+    </Key>
+    <Property Name="Usr_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RoleID" Type="int" />
+    <Property Name="Dept_ID" Type="int" />
+    <Property Name="Desg_ID" Type="int" />
+    <Property Name="Unit_Id" Type="int" />
+    <Property Name="Name" Type="varchar" MaxLength="100" />
+    <Property Name="Email" Type="varchar" MaxLength="50" />
+    <Property Name="Phone" Type="varchar" MaxLength="15" />
+    <Property Name="Usr_Nm" Type="varchar" MaxLength="100" />
+    <Property Name="Pwd" Type="varchar" MaxLength="50" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="IsDelete" Type="bit" />
+    <Property Name="AddOn" Type="datetime" />
+    <Property Name="AddBy" Type="int" />
+    <Property Name="ModOn" Type="datetime" />
+    <Property Name="ModBy" Type="int" />
+    <Property Name="EmpCode" Type="varchar" MaxLength="50" />
+    <Property Name="Active" Type="bit" />
+    <Property Name="Regine" Type="varchar" MaxLength="50" />
+    <Property Name="circleid" Type="int" />
+    <Property Name="divisonid" Type="int" />
+    <Property Name="zoneid" Type="int" />
+    <Property Name="ProfileName" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="Trans_Additional_Allotment">
+    <Key>
+      <PropertyRef Name="AddAlt_Id" />
+    </Key>
+    <Property Name="AddAlt_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Head_Id" Type="int" />
+    <Property Name="SubHead_Id" Type="int" />
+    <Property Name="Unit_Id" Type="int" />
+    <Property Name="Bgt_Id" Type="int" />
+    <Property Name="Cap_TPbgt_Id" Type="int" />
+    <Property Name="Fin_Id" Type="int" />
+    <Property Name="Exist_Altmnt" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Adtnal_Altmnt" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Lst_Yr_Expnd" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Cur_Yr_Expnd" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Aprov_Allotment" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Reasons" Type="varchar(max)" />
+    <Property Name="Ho_Reasons" Type="varchar(max)" />
+    <Property Name="BgtTyp_Id" Type="int" />
+    <Property Name="Bit_Aprove" Type="bit" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="IsDelete" Type="bit" />
+    <Property Name="AddBy" Type="int" />
+    <Property Name="AddOn" Type="datetime" />
+    <Property Name="ModOn" Type="datetime" />
+    <Property Name="ModBy" Type="int" />
+  </EntityType>
+  <EntityType Name="Trans_Additional_allotment_Work">
+    <Key>
+      <PropertyRef Name="AddAltWork_Id" />
+    </Key>
+    <Property Name="AddAltWork_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Cap_Wok_Head_Id" Type="int" />
+    <Property Name="Unit_Id" Type="int" />
+    <Property Name="Cap_Work_Bgt_Id" Type="int" />
+    <Property Name="Fin_Id" Type="int" />
+    <Property Name="Exist_Altmnt" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Adtnal_Altmnt" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Lst_Yr_Expnd" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Cur_Yr_Expnd" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Aprov_Allotment" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Reasons" Type="varchar(max)" />
+    <Property Name="Ho_Reasons" Type="varchar(max)" />
+    <Property Name="Bit_Aprove" Type="bit" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="IsDelete" Type="bit" />
+    <Property Name="AddBy" Type="int" />
+    <Property Name="AddOn" Type="datetime" />
+    <Property Name="ModOn" Type="datetime" />
+    <Property Name="ModBy" Type="int" />
+  </EntityType>
+  <EntityType Name="Trans_Assign_User_ToApprov">
+    <Key>
+      <PropertyRef Name="Asgn_usr_Aprv_ID" />
+    </Key>
+    <Property Name="Asgn_usr_Aprv_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Unit_Id" Type="int" />
+    <Property Name="Usr_Id" Type="int" />
+    <Property Name="Aprov_Type_ID" Type="int" />
+    <Property Name="FromDt" Type="datetime" />
+    <Property Name="ToDate" Type="datetime" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="IsDelete" Type="bit" />
+    <Property Name="Addon" Type="datetime" />
+    <Property Name="Addby" Type="int" />
+    <Property Name="Modon" Type="datetime" />
+    <Property Name="Modby" Type="int" />
+  </EntityType>
+  <EntityType Name="Trans_Cap_Work_Bgt_Requsion_Unit">
+    <Key>
+      <PropertyRef Name="Cap_Work_Bgt_Req_Id" />
+    </Key>
+    <Property Name="Cap_Work_Bgt_Req_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Cap_Wok_Head_Id" Type="int" />
+    <Property Name="Fin_Id" Type="int" />
+    <Property Name="Unit_Id" Type="int" />
+    <Property Name="Cap_Work_Bgt_Id" Type="int" />
+    <Property Name="Lst_Cum_Exp" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Curnt_Actul_Exp" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Probl_Exp" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Total_Exp" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Aprov_Bgt" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Prop_Re_Curnt" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Re_For_Current" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Ho_Remarks" Type="varchar(max)" />
+    <Property Name="Bit_Aprove" Type="bit" />
+    <Property Name="Prop_BE_NxtFy" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Remarks" Type="varchar(max)" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="IsDelete" Type="bit" />
+    <Property Name="Addon" Type="datetime" />
+    <Property Name="Addby" Type="int" />
+    <Property Name="Modon" Type="datetime" />
+    <Property Name="Modby" Type="int" />
+  </EntityType>
+  <EntityType Name="Trans_Cap_Work_Budget">
+    <Key>
+      <PropertyRef Name="Cap_Work_Bgt_Id" />
+    </Key>
+    <Property Name="Cap_Work_Bgt_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Cap_Wok_Head_Id" Type="int" />
+    <Property Name="Fin_Id" Type="int" />
+    <Property Name="Unit_Id" Type="int" />
+    <Property Name="Prop_Amnt" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Bdgt_Amnt" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Avlb_Amnt" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Rqst_Adtn_Alt_Amnt" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Aprv_Adtn_Alt_Amnt" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Mod_Bug_Amnt" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Re_For_Current" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Remarks" Type="varchar(max)" />
+    <Property Name="Cry_Nxt_Fy" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="IsDelete" Type="bit" />
+    <Property Name="AddOn" Type="datetime" />
+    <Property Name="AddBy" Type="int" />
+    <Property Name="ModOn" Type="datetime" />
+    <Property Name="ModBy" Type="int" />
+    <Property Name="FileID" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Trans_Cap_Wrk_CashRequistionInvoice">
+    <Key>
+      <PropertyRef Name="Cptl_Wrk_CashReq_Id" />
+    </Key>
+    <Property Name="Cptl_Wrk_CashReq_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Unit_Id" Type="int" />
+    <Property Name="Fin_Id" Type="int" />
+    <Property Name="Cap_Work_Bgt_Id" Type="int" />
+    <Property Name="Req_Date" Type="datetime" />
+    <Property Name="Req_Num" Type="varchar" MaxLength="50" />
+    <Property Name="Cur_bnk_Balance" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="Cur_csh_Balance" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="ReasonCash_Maintain" Type="varchar" MaxLength="50" />
+    <Property Name="bnkid" Type="int" />
+    <Property Name="Bnk_DtlsId" Type="int" />
+    <Property Name="Created_By" Type="varchar" MaxLength="50" />
+    <Property Name="Checked_By" Type="varchar" MaxLength="50" />
+    <Property Name="Authorized_By" Type="varchar" MaxLength="50" />
+    <Property Name="Invoice_Type" Type="varchar" MaxLength="50" />
+    <Property Name="Invoice_Catagory" Type="varchar" MaxLength="50" />
+    <Property Name="Cap_Wok_Head_Id" Type="int" />
+    <Property Name="SupplierName" Type="varchar" MaxLength="50" />
+    <Property Name="Purchased_MaterialDesc" Type="varchar" MaxLength="50" />
+    <Property Name="wopoNo" Type="varchar" MaxLength="50" />
+    <Property Name="InvoiceNo" Type="varchar" MaxLength="50" />
+    <Property Name="InvoiceDt" Type="datetime" />
+    <Property Name="InvoiceAmt" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="It_Tds" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="Igst_Td" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="Cgst_Tds" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="Sgst_Tds" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="Obroc_Tds" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="Royality_Tds" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="DeductedTds" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="Other_Deduction" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="Retain_Amt" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="NetPay" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="DivisonOfficer_Comment" Type="varchar" MaxLength="50" />
+    <Property Name="Ho_Initator" Type="varchar" MaxLength="50" />
+    <Property Name="Ho_AprovedLevel1" Type="varchar" MaxLength="50" />
+    <Property Name="Final_approver" Type="varchar" MaxLength="50" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="IsDelete" Type="bit" />
+    <Property Name="AddBy" Type="int" />
+    <Property Name="AddOn" Type="datetime" />
+    <Property Name="ModBy" Type="int" />
+    <Property Name="ModOn" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Trans_Capital_TPBgt_Prop_By_Unit">
+    <Key>
+      <PropertyRef Name="TP_Bgt_Unit_Id" />
+    </Key>
+    <Property Name="TP_Bgt_Unit_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Head_Id" Type="int" />
+    <Property Name="SubHead_Id" Type="int" />
+    <Property Name="Fin_Id" Type="int" />
+    <Property Name="Unit_Id" Type="int" />
+    <Property Name="Cap_TPbgt_Id" Type="int" />
+    <Property Name="Aprov_No" Type="varchar" MaxLength="50" />
+    <Property Name="Aprov_Dt" Type="datetime" />
+    <Property Name="Aprov_Est_Cost" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Lst_Cum_Exp" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Curnt_Actul_Exp" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Probl_Exp" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Total_Exp" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Fst_Bdgt_Nxt_Fy" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Fst_remarks" Type="varchar(max)" />
+    <Property Name="Fst_Prop_Re_Curnt" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="fst_Arop_BIT" Type="bit" />
+    <Property Name="Sec_Arop_BIT" Type="bit" />
+    <Property Name="Prop_Re_Curnt" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="bit_Second_Aprov" Type="bit" />
+    <Property Name="Re_For_Current" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Prop_BE_NxtFy" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Aprov_Bgt" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Remarks" Type="varchar(max)" />
+    <Property Name="Ho_Remarks" Type="varchar(max)" />
+    <Property Name="bit_Aproved" Type="bit" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="IsDelete" Type="bit" />
+    <Property Name="Addon" Type="datetime" />
+    <Property Name="Addby" Type="int" />
+    <Property Name="Modon" Type="datetime" />
+    <Property Name="Modby" Type="int" />
+  </EntityType>
+  <EntityType Name="Trans_CashRequistionInvoice">
+    <Key>
+      <PropertyRef Name="CashReq_Id" />
+    </Key>
+    <Property Name="CashReq_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Unit_Id" Type="int" />
+    <Property Name="Fin_Id" Type="int" />
+    <Property Name="Bgt_Id" Type="int" />
+    <Property Name="Cap_TPbgt_Id" Type="int" />
+    <Property Name="Req_Date" Type="datetime" />
+    <Property Name="Req_Num" Type="varchar" MaxLength="50" />
+    <Property Name="Cur_bnk_Balance" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="Cur_csh_Balance" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="ReasonCash_Maintain" Type="varchar" MaxLength="50" />
+    <Property Name="bnkid" Type="int" />
+    <Property Name="Bnk_DtlsId" Type="int" />
+    <Property Name="Created_By" Type="varchar" MaxLength="50" />
+    <Property Name="Checked_By" Type="varchar" MaxLength="50" />
+    <Property Name="Authorized_By" Type="varchar" MaxLength="50" />
+    <Property Name="Invoice_Type" Type="varchar" MaxLength="50" />
+    <Property Name="Invoice_Catagory" Type="varchar" MaxLength="50" />
+    <Property Name="BugtTyp_Id" Type="int" />
+    <Property Name="Head_Id" Type="int" />
+    <Property Name="SubHead_Id" Type="int" />
+    <Property Name="SubHeadCode" Type="varchar" MaxLength="50" />
+    <Property Name="SupplierName" Type="varchar" MaxLength="50" />
+    <Property Name="Purchased_MaterialDesc" Type="varchar" MaxLength="50" />
+    <Property Name="wopoNo" Type="varchar" MaxLength="50" />
+    <Property Name="InvoiceNo" Type="varchar" MaxLength="50" />
+    <Property Name="InvoiceDt" Type="datetime" />
+    <Property Name="InvoiceAmt" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="It_Tds" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="Igst_Td" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="Cgst_Tds" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="Sgst_Tds" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="Obroc_Tds" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="Royality_Tds" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="DeductedTds" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="Other_Deduction" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="Retain_Amt" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="NetPay" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="DivisonOfficer_Comment" Type="varchar" MaxLength="50" />
+    <Property Name="Ho_Initator" Type="varchar" MaxLength="50" />
+    <Property Name="Ho_AprovedLevel1" Type="varchar" MaxLength="50" />
+    <Property Name="Final_approver" Type="varchar" MaxLength="50" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="IsDelete" Type="bit" />
+    <Property Name="AddBy" Type="int" />
+    <Property Name="AddOn" Type="datetime" />
+    <Property Name="ModBy" Type="int" />
+    <Property Name="ModOn" Type="datetime" />
+    <Property Name="FileID" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Trans_CashRequstionNonInvoice">
+    <Key>
+      <PropertyRef Name="CashReq_NonInvoiceId" />
+    </Key>
+    <Property Name="CashReq_NonInvoiceId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NonInvoiceNumber" Type="varchar" MaxLength="11" StoreGeneratedPattern="Computed" />
+    <Property Name="Unit_Id" Type="int" />
+    <Property Name="Fin_Id" Type="int" />
+    <Property Name="Bgt_Id" Type="int" />
+    <Property Name="Cap_TPbgt_Id" Type="int" />
+    <Property Name="Req_Date" Type="datetime" />
+    <Property Name="Req_Num" Type="varchar" MaxLength="50" />
+    <Property Name="Cur_bnk_Balance" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="Cur_csh_Balance" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="ReasonCash_Maintain" Type="varchar" MaxLength="50" />
+    <Property Name="bnkid" Type="int" />
+    <Property Name="Bnk_DtlsId" Type="int" />
+    <Property Name="Created_By" Type="varchar" MaxLength="50" />
+    <Property Name="Checked_By" Type="varchar" MaxLength="50" />
+    <Property Name="Authorized_By" Type="varchar" MaxLength="50" />
+    <Property Name="Invoice_Type" Type="varchar" MaxLength="50" />
+    <Property Name="Invoice_Catagory" Type="varchar" MaxLength="50" />
+    <Property Name="BugtTyp_Id" Type="int" />
+    <Property Name="Head_Id" Type="int" />
+    <Property Name="SubHead_Id" Type="int" />
+    <Property Name="SubHeadCode" Type="varchar" MaxLength="50" />
+    <Property Name="Dues" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="Requeted_Amt" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="Budget_Amt" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Approved_Amt" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="DivisonOfficer_Comment" Type="varchar" MaxLength="50" />
+    <Property Name="Ho_Initator" Type="varchar" MaxLength="50" />
+    <Property Name="Ho_AprovedLevel1" Type="varchar" MaxLength="50" />
+    <Property Name="Final_approver" Type="varchar" MaxLength="50" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="IsDelete" Type="bit" />
+    <Property Name="AddBy" Type="int" />
+    <Property Name="AddOn" Type="datetime" />
+    <Property Name="ModBy" Type="int" />
+    <Property Name="ModOn" Type="datetime" />
+    <Property Name="FileID" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Trans_Cptl_wrk_CashRequstionNonInvoice">
+    <Key>
+      <PropertyRef Name="Cap_wrk_CashReq_NonInvoiceId" />
+    </Key>
+    <Property Name="Cap_wrk_CashReq_NonInvoiceId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NonInvoiceNumber" Type="varchar" MaxLength="11" StoreGeneratedPattern="Computed" />
+    <Property Name="Unit_Id" Type="int" />
+    <Property Name="Fin_Id" Type="int" />
+    <Property Name="Cap_Work_Bgt_Id" Type="int" />
+    <Property Name="Req_Date" Type="datetime" />
+    <Property Name="Req_Num" Type="varchar" MaxLength="50" />
+    <Property Name="Cur_bnk_Balance" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="Cur_csh_Balance" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="ReasonCash_Maintain" Type="varchar" MaxLength="50" />
+    <Property Name="bnkid" Type="int" />
+    <Property Name="Bnk_DtlsId" Type="int" />
+    <Property Name="Created_By" Type="varchar" MaxLength="50" />
+    <Property Name="Checked_By" Type="varchar" MaxLength="50" />
+    <Property Name="Authorized_By" Type="varchar" MaxLength="50" />
+    <Property Name="Invoice_Type" Type="varchar" MaxLength="50" />
+    <Property Name="Invoice_Catagory" Type="varchar" MaxLength="50" />
+    <Property Name="Cap_Wok_Head_Id" Type="int" />
+    <Property Name="Dues" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="Requeted_Amt" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="Budget_Amt" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Approved_Amt" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="DivisonOfficer_Comment" Type="varchar" MaxLength="50" />
+    <Property Name="Ho_Initator" Type="varchar" MaxLength="50" />
+    <Property Name="Ho_AprovedLevel1" Type="varchar" MaxLength="50" />
+    <Property Name="Final_approver" Type="varchar" MaxLength="50" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="IsDelete" Type="bit" />
+    <Property Name="AddBy" Type="int" />
+    <Property Name="AddOn" Type="datetime" />
+    <Property Name="ModBy" Type="int" />
+    <Property Name="ModOn" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Trans_LeveL_ApprovalInvoice">
+    <Key>
+      <PropertyRef Name="CashReqAprv_levelId" />
+    </Key>
+    <Property Name="CashReqAprv_levelId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CashReq_Id" Type="int" />
+    <Property Name="Unit_Id" Type="int" />
+    <Property Name="Fin_Id" Type="int" />
+    <Property Name="Bgt_Id" Type="int" />
+    <Property Name="Cap_TPbgt_Id" Type="int" />
+    <Property Name="BugtTyp_Id" Type="int" />
+    <Property Name="InvoiceNo" Type="varchar" MaxLength="50" />
+    <Property Name="Req_Num" Type="varchar" MaxLength="100" />
+    <Property Name="Level_Approver1" Type="int" />
+    <Property Name="Approv_Quantity1" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Bit_Approv1" Type="bit" />
+    <Property Name="Approvr1_remarks" Type="varchar" MaxLength="50" />
+    <Property Name="Level_Approver2" Type="int" />
+    <Property Name="Approv_Quantity2" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Bit_Approv2" Type="bit" />
+    <Property Name="Approvr2_remarks" Type="varchar" MaxLength="50" />
+    <Property Name="Level_Approver3" Type="int" />
+    <Property Name="Approv_Quantity13" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Bit_Approv3" Type="bit" />
+    <Property Name="Approvr3_remarks" Type="varchar" MaxLength="50" />
+    <Property Name="Level_Approver4" Type="int" />
+    <Property Name="Approv_Quantity4" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Bit_Approv4" Type="bit" />
+    <Property Name="Approvr4_remarks" Type="varchar" MaxLength="50" />
+    <Property Name="Level_Approver5" Type="int" />
+    <Property Name="Approv_Quantity5" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Bit_Approv5" Type="bit" />
+    <Property Name="Approvr5_remarks" Type="varchar" MaxLength="50" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="IsDelete" Type="bit" />
+    <Property Name="AddBy" Type="int" />
+    <Property Name="AddOn" Type="datetime" />
+    <Property Name="ModBy" Type="int" />
+    <Property Name="ModOn" Type="datetime" />
+    <Property Name="FileID" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Trans_LeveL_ApprovalNonInvoice">
+    <Key>
+      <PropertyRef Name="CashReqAprv_levelNonInvoiceId" />
+    </Key>
+    <Property Name="CashReqAprv_levelNonInvoiceId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CashReq_NonInvoiceId" Type="int" />
+    <Property Name="Unit_Id" Type="int" />
+    <Property Name="BugtTyp_Id" Type="int" />
+    <Property Name="Fin_Id" Type="int" />
+    <Property Name="Bgt_Id" Type="int" />
+    <Property Name="Cap_TPbgt_Id" Type="int" />
+    <Property Name="Req_Num" Type="varchar" MaxLength="100" />
+    <Property Name="NonInvoiceNumber" Type="varchar" MaxLength="50" />
+    <Property Name="Level_Approver1" Type="int" />
+    <Property Name="Approv_Quantity1" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Bit_Approv1" Type="bit" />
+    <Property Name="Approvr1_remarks" Type="varchar" MaxLength="50" />
+    <Property Name="Level_Approver2" Type="int" />
+    <Property Name="Approv_Quantity2" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Bit_Approv2" Type="bit" />
+    <Property Name="Approvr2_remarks" Type="varchar" MaxLength="50" />
+    <Property Name="Level_Approver3" Type="int" />
+    <Property Name="Approv_Quantity13" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Bit_Approv3" Type="bit" />
+    <Property Name="Approvr3_remarks" Type="varchar" MaxLength="50" />
+    <Property Name="Level_Approver4" Type="int" />
+    <Property Name="Approv_Quantity4" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Bit_Approv4" Type="bit" />
+    <Property Name="Approvr4_remarks" Type="varchar" MaxLength="50" />
+    <Property Name="Level_Approver5" Type="int" />
+    <Property Name="Approv_Quantity5" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Bit_Approv5" Type="bit" />
+    <Property Name="Approvr5_remarks" Type="varchar" MaxLength="50" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="IsDelete" Type="bit" />
+    <Property Name="AddBy" Type="int" />
+    <Property Name="AddOn" Type="datetime" />
+    <Property Name="ModBy" Type="int" />
+    <Property Name="ModOn" Type="datetime" />
+    <Property Name="FileID" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Trans_RequsitionNumber">
+    <Key>
+      <PropertyRef Name="Req_NumberId" />
+    </Key>
+    <Property Name="Req_NumberId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Unit_Id" Type="int" />
+    <Property Name="Req_Num" Type="varchar" MaxLength="50" />
+    <Property Name="AddOn" Type="date" />
+    <Property Name="AddBy" Type="int" />
+    <Property Name="ModOn" Type="date" />
+    <Property Name="ModBy" Type="date" />
+  </EntityType>
+  <EntityType Name="Trans_Revnu_Expenditure_By_Unit">
+    <Key>
+      <PropertyRef Name="Unit_RevExp_Id" />
+    </Key>
+    <Property Name="Unit_RevExp_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Unit_Id" Type="int" />
+    <Property Name="Fin_Id" Type="int" />
+    <Property Name="Head_Id" Type="int" />
+    <Property Name="Subhead_Id" Type="int" />
+    <Property Name="Lt_Fy_Exp" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Bgt_Id" Type="int" />
+    <Property Name="Lb_Pr_Paid" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Current_expdr" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Total_Pmt" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Prob_Exp" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Total_Prop_Exp" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Fst_Bdgt_Nxt_Fy" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Fst_remarks" Type="varchar(max)" />
+    <Property Name="Fst_Prop_Re_Curnt" Type="varchar(max)" />
+    <Property Name="fst_Arop_BIT" Type="bit" />
+    <Property Name="Sec_Arop_BIT" Type="bit" />
+    <Property Name="Prop_Re_Curnt" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Bdgt_Nxt_Fy" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Remarks" Type="varchar(max)" />
+    <Property Name="bit_Second_Aprov" Type="bit" />
+    <Property Name="Re_For_Current" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Bdgt_Amnt" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Ho_Remarks" Type="varchar(max)" />
+    <Property Name="FileID" Type="varchar" MaxLength="50" />
+    <Property Name="bit_Aproved" Type="bit" />
+    <Property Name="Addby" Type="int" />
+    <Property Name="Addon" Type="datetime" />
+    <Property Name="Modby" Type="int" />
+    <Property Name="Modon" Type="datetime" />
+    <Property Name="IsDelete" Type="bit" />
+    <Property Name="IsActive" Type="bit" />
+  </EntityType>
+  <EntityType Name="Trans_Salary">
+    <Key>
+      <PropertyRef Name="Salary_Id" />
+    </Key>
+    <Property Name="Salary_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SubHead_Id" Type="int" />
+    <Property Name="monthid" Type="int" />
+    <Property Name="Bgt_Id" Type="int" />
+    <Property Name="Unit_Id" Type="int" />
+    <Property Name="Fin_Id" Type="int" />
+    <Property Name="Req_Amount" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="Pf" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="Gsli" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="Others" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="ReductionRtainByHo" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="DeductionRealsedtoUnit" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="bit_Approve" Type="bit" />
+    <Property Name="ApproveAmountByHo" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="Remarks" Type="varchar" MaxLength="50" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="IsDelete" Type="bit" />
+    <Property Name="AddBy" Type="int" />
+    <Property Name="AddOn" Type="datetime" />
+    <Property Name="ModBy" Type="int" />
+    <Property Name="ModOn" Type="datetime" />
+  </EntityType>
+  <EntityType Name="TransCap_Wrk__LeveL_ApprovalInvoice">
+    <Key>
+      <PropertyRef Name="Cap_wrk_CashReqAprv_levelId" />
+    </Key>
+    <Property Name="Cap_wrk_CashReqAprv_levelId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Cptl_Wrk_CashReq_Id" Type="int" />
+    <Property Name="Unit_Id" Type="int" />
+    <Property Name="Fin_Id" Type="int" />
+    <Property Name="Cap_Work_Bgt_Id" Type="int" />
+    <Property Name="InvoiceNo" Type="varchar" MaxLength="50" />
+    <Property Name="Req_Num" Type="varchar" MaxLength="100" />
+    <Property Name="Level_Approver1" Type="int" />
+    <Property Name="Approv_Quantity1" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Bit_Approv1" Type="bit" />
+    <Property Name="Approvr1_remarks" Type="varchar" MaxLength="50" />
+    <Property Name="Level_Approver2" Type="int" />
+    <Property Name="Approv_Quantity2" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Bit_Approv2" Type="bit" />
+    <Property Name="Approvr2_remarks" Type="varchar" MaxLength="50" />
+    <Property Name="Level_Approver3" Type="int" />
+    <Property Name="Approv_Quantity13" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Bit_Approv3" Type="bit" />
+    <Property Name="Approvr3_remarks" Type="varchar" MaxLength="50" />
+    <Property Name="Level_Approver4" Type="int" />
+    <Property Name="Approv_Quantity4" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Bit_Approv4" Type="bit" />
+    <Property Name="Approvr4_remarks" Type="varchar" MaxLength="50" />
+    <Property Name="Level_Approver5" Type="int" />
+    <Property Name="Approv_Quantity5" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Bit_Approv5" Type="bit" />
+    <Property Name="Approvr5_remarks" Type="varchar" MaxLength="50" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="IsDelete" Type="bit" />
+    <Property Name="AddBy" Type="int" />
+    <Property Name="AddOn" Type="datetime" />
+    <Property Name="ModBy" Type="int" />
+    <Property Name="ModOn" Type="datetime" />
+  </EntityType>
+  <EntityType Name="TransCap_Wrk__LeveL_ApprovalNonInvoice">
+    <Key>
+      <PropertyRef Name="Cap_wrk_CashReqAprv_levelIdNoninvoice" />
+    </Key>
+    <Property Name="Cap_wrk_CashReqAprv_levelIdNoninvoice" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Cap_wrk_CashReq_NonInvoiceId" Type="int" />
+    <Property Name="Fin_Id" Type="int" />
+    <Property Name="Unit_Id" Type="int" />
+    <Property Name="Cap_Work_Bgt_Id" Type="int" />
+    <Property Name="Req_Num" Type="varchar" MaxLength="100" />
+    <Property Name="NonInvoiceNumber" Type="varchar" MaxLength="50" />
+    <Property Name="Level_Approver1" Type="int" />
+    <Property Name="Approv_Quantity1" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Bit_Approv1" Type="bit" />
+    <Property Name="Approvr1_remarks" Type="varchar" MaxLength="50" />
+    <Property Name="Level_Approver2" Type="int" />
+    <Property Name="Approv_Quantity2" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Bit_Approv2" Type="bit" />
+    <Property Name="Approvr2_remarks" Type="varchar" MaxLength="50" />
+    <Property Name="Level_Approver3" Type="int" />
+    <Property Name="Approv_Quantity13" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Bit_Approv3" Type="bit" />
+    <Property Name="Approvr3_remarks" Type="varchar" MaxLength="50" />
+    <Property Name="Level_Approver4" Type="int" />
+    <Property Name="Approv_Quantity4" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Bit_Approv4" Type="bit" />
+    <Property Name="Approvr4_remarks" Type="varchar" MaxLength="50" />
+    <Property Name="Level_Approver5" Type="int" />
+    <Property Name="Approv_Quantity5" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Bit_Approv5" Type="bit" />
+    <Property Name="Approvr5_remarks" Type="varchar" MaxLength="50" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="IsDelete" Type="bit" />
+    <Property Name="AddBy" Type="int" />
+    <Property Name="AddOn" Type="datetime" />
+    <Property Name="ModBy" Type="int" />
+    <Property Name="ModOn" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Trns_Chng_Pwd_Log">
+    <Key>
+      <PropertyRef Name="Cp_Id" />
+    </Key>
+    <Property Name="Cp_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Usr_Id" Type="int" />
+    <Property Name="OTP" Type="varchar" MaxLength="50" />
+    <Property Name="Modby" Type="int" />
+    <Property Name="Modon" Type="datetime" />
+  </EntityType>
+  <Association Name="FK_Mst_AssignUnitToBank_Mst_Bank">
+    <End Role="Mst_Bank" Type="Self.Mst_Bank" Multiplicity="0..1" />
+    <End Role="Mst_AssignUnitToBank" Type="Self.Mst_AssignUnitToBank" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Mst_Bank">
+        <PropertyRef Name="bnkid" />
+      </Principal>
+      <Dependent Role="Mst_AssignUnitToBank">
+        <PropertyRef Name="bnkid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Mst_AssignUnitToBank_Mst_Unit">
+    <End Role="Mst_Unit" Type="Self.Mst_Unit" Multiplicity="0..1" />
+    <End Role="Mst_AssignUnitToBank" Type="Self.Mst_AssignUnitToBank" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Mst_Unit">
+        <PropertyRef Name="Unit_Id" />
+      </Principal>
+      <Dependent Role="Mst_AssignUnitToBank">
+        <PropertyRef Name="Unit_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Trans_Additional_Allotment_BudgetType">
+    <End Role="Tran_Cap_TP_Budget" Type="Self.Tran_Cap_TP_Budget" Multiplicity="0..1" />
+    <End Role="Trans_Additional_Allotment" Type="Self.Trans_Additional_Allotment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tran_Cap_TP_Budget">
+        <PropertyRef Name="Cap_TPbgt_Id" />
+      </Principal>
+      <Dependent Role="Trans_Additional_Allotment">
+        <PropertyRef Name="Cap_TPbgt_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Trans_CashRequstionNonInvoice_Tran_Cap_TP_Budget">
+    <End Role="Tran_Cap_TP_Budget" Type="Self.Tran_Cap_TP_Budget" Multiplicity="0..1" />
+    <End Role="Trans_CashRequstionNonInvoice" Type="Self.Trans_CashRequstionNonInvoice" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tran_Cap_TP_Budget">
+        <PropertyRef Name="Cap_TPbgt_Id" />
+      </Principal>
+      <Dependent Role="Trans_CashRequstionNonInvoice">
+        <PropertyRef Name="Cap_TPbgt_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Trans_LeveL_ApprovalInvoice_Tran_Cap_TP_Budget">
+    <End Role="Tran_Cap_TP_Budget" Type="Self.Tran_Cap_TP_Budget" Multiplicity="0..1" />
+    <End Role="Trans_LeveL_ApprovalInvoice" Type="Self.Trans_LeveL_ApprovalInvoice" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tran_Cap_TP_Budget">
+        <PropertyRef Name="Cap_TPbgt_Id" />
+      </Principal>
+      <Dependent Role="Trans_LeveL_ApprovalInvoice">
+        <PropertyRef Name="Cap_TPbgt_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Trans_LeveL_ApprovalNonInvoice_Tran_Cap_TP_Budget">
+    <End Role="Tran_Cap_TP_Budget" Type="Self.Tran_Cap_TP_Budget" Multiplicity="0..1" />
+    <End Role="Trans_LeveL_ApprovalNonInvoice" Type="Self.Trans_LeveL_ApprovalNonInvoice" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tran_Cap_TP_Budget">
+        <PropertyRef Name="Cap_TPbgt_Id" />
+      </Principal>
+      <Dependent Role="Trans_LeveL_ApprovalNonInvoice">
+        <PropertyRef Name="Cap_TPbgt_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Trans_RequsitionNumber_Mst_Unit">
+    <End Role="Mst_Unit" Type="Self.Mst_Unit" Multiplicity="0..1" />
+    <End Role="Trans_RequsitionNumber" Type="Self.Trans_RequsitionNumber" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Mst_Unit">
+        <PropertyRef Name="Unit_Id" />
+      </Principal>
+      <Dependent Role="Trans_RequsitionNumber">
+        <PropertyRef Name="Unit_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Trans_Salary_Financial_Year">
+    <End Role="Financial_Year" Type="Self.Financial_Year" Multiplicity="0..1" />
+    <End Role="Trans_Salary" Type="Self.Trans_Salary" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Financial_Year">
+        <PropertyRef Name="Fin_Id" />
+      </Principal>
+      <Dependent Role="Trans_Salary">
+        <PropertyRef Name="Fin_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Trans_Salary_Mst_month">
+    <End Role="Mst_month" Type="Self.Mst_month" Multiplicity="0..1" />
+    <End Role="Trans_Salary" Type="Self.Trans_Salary" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Mst_month">
+        <PropertyRef Name="monthid" />
+      </Principal>
+      <Dependent Role="Trans_Salary">
+        <PropertyRef Name="monthid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Trans_Salary_Mst_Unit">
+    <End Role="Mst_Unit" Type="Self.Mst_Unit" Multiplicity="0..1" />
+    <End Role="Trans_Salary" Type="Self.Trans_Salary" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Mst_Unit">
+        <PropertyRef Name="Unit_Id" />
+      </Principal>
+      <Dependent Role="Trans_Salary">
+        <PropertyRef Name="Unit_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Trans_Salary_Tarn_Add_Budget">
+    <End Role="Tarn_Add_Budget" Type="Self.Tarn_Add_Budget" Multiplicity="0..1" />
+    <End Role="Trans_Salary" Type="Self.Trans_Salary" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tarn_Add_Budget">
+        <PropertyRef Name="Bgt_Id" />
+      </Principal>
+      <Dependent Role="Trans_Salary">
+        <PropertyRef Name="Bgt_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="AssignCircleDivisonAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="AssigneToUser_SelectAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="AssignUnitBankAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="BankDetails_SelectAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="BudgetSelectAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="DistrictSelectAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="ExpenditureSelectAllByUnit" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Fin_Id" Type="int" Mode="In" />
+    <Parameter Name="Unit_Id" Type="int" Mode="In" />
+    <Parameter Name="Head_Id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="ExpenditureSelectAllByUnitForFinal" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Fin_Id" Type="int" Mode="In" />
+    <Parameter Name="Unit_Id" Type="int" Mode="In" />
+    <Parameter Name="Head_Id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="ExpendSelectAllForHoApprove" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Fin_Id" Type="int" Mode="In" />
+    <Parameter Name="Unit_Id" Type="int" Mode="In" />
+    <Parameter Name="Head_Id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="GetAllRevenueHeadForFstLvl" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Fin_Id" Type="int" Mode="In" />
+    <Parameter Name="Unit_Id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="GetAllRevenueHeadForSecLvl" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Fin_Id" Type="int" Mode="In" />
+    <Parameter Name="Unit_Id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="GetRevenueHeadforProposalByUnit" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Fin_Id" Type="int" Mode="In" />
+    <Parameter Name="Unit_Id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Head_MasterSelectAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="RevenueBudgetSelectAllHead" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Fin_Id" Type="int" Mode="In" />
+    <Parameter Name="Unit_Id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SelectAllByUnitAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Fin_Id" Type="int" Mode="In" />
+    <Parameter Name="Unit_Id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SelectAllByUnitAllbyId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Fin_Id" Type="int" Mode="In" />
+    <Parameter Name="Unit_Id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SelectAllByUnitAllbyIdd" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Fin_Id" Type="int" Mode="In" />
+    <Parameter Name="Unit_Id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="StateSelectAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="SubHeadMasterAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="Update_BudgetexpByUnit" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="PXMLTABLEEARNING" Type="xml" Mode="In" />
+    <Parameter Name="AddBy" Type="int" Mode="In" />
+    <Parameter Name="rv" Type="int" Mode="In" />
+    <Parameter Name="ReturnValue" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="Update_CapitalTPBudgetByUnit" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="PXMLTABLEEARNING" Type="xml" Mode="In" />
+    <Parameter Name="AddBy" Type="int" Mode="In" />
+    <Parameter Name="rv" Type="int" Mode="In" />
+    <Parameter Name="ReturnValue" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="UpdateBudgetexpByUnit" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="PXMLTABLEEARNING" Type="xml" Mode="In" />
+    <Parameter Name="AddBy" Type="int" Mode="In" />
+    <Parameter Name="rv" Type="int" Mode="In" />
+    <Parameter Name="ReturnValue" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="User_Create_Details" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="User_SelectById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Usr_Id" Type="int" Mode="In" />
+  </Function>
+  <EntityContainer Name="BMSModelStoreContainer">
+    <EntitySet Name="BudgetType" EntityType="Self.BudgetType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Files" EntityType="Self.Files" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Financial_Year" EntityType="Self.Financial_Year" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Head_Master" EntityType="Self.Head_Master" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Mst_ApproveType" EntityType="Self.Mst_ApproveType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Mst_Assign_Designation" EntityType="Self.Mst_Assign_Designation" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Mst_AssignCircleDivison" EntityType="Self.Mst_AssignCircleDivison" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Mst_AssignUnitToBank" EntityType="Self.Mst_AssignUnitToBank" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Mst_AssignZoneCircle" EntityType="Self.Mst_AssignZoneCircle" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Mst_Bank" EntityType="Self.Mst_Bank" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Mst_BnkDtls" EntityType="Self.Mst_BnkDtls" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Mst_Capital_Works_Detail" EntityType="Self.Mst_Capital_Works_Detail" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Mst_Circle" EntityType="Self.Mst_Circle" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Mst_Country" EntityType="Self.Mst_Country" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Mst_Department" EntityType="Self.Mst_Department" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Mst_Designation" EntityType="Self.Mst_Designation" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Mst_District" EntityType="Self.Mst_District" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Mst_Divison" EntityType="Self.Mst_Divison" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Mst_InnerSubHead" EntityType="Self.Mst_InnerSubHead" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Mst_month" EntityType="Self.Mst_month" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Mst_SalaryHeads" EntityType="Self.Mst_SalaryHeads" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Mst_State" EntityType="Self.Mst_State" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Mst_SubHead" EntityType="Self.Mst_SubHead" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Mst_Unit" EntityType="Self.Mst_Unit" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Mst_Zone" EntityType="Self.Mst_Zone" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Pages" EntityType="Self.Pages" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Permission" EntityType="Self.Permission" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tarn_Add_Budget" EntityType="Self.Tarn_Add_Budget" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tran_Cap_TP_Budget" EntityType="Self.Tran_Cap_TP_Budget" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tran_CWRequistionNumber" EntityType="Self.Tran_CWRequistionNumber" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tran_User_Creation" EntityType="Self.Tran_User_Creation" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Trans_Additional_Allotment" EntityType="Self.Trans_Additional_Allotment" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Trans_Additional_allotment_Work" EntityType="Self.Trans_Additional_allotment_Work" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Trans_Assign_User_ToApprov" EntityType="Self.Trans_Assign_User_ToApprov" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Trans_Cap_Work_Bgt_Requsion_Unit" EntityType="Self.Trans_Cap_Work_Bgt_Requsion_Unit" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Trans_Cap_Work_Budget" EntityType="Self.Trans_Cap_Work_Budget" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Trans_Cap_Wrk_CashRequistionInvoice" EntityType="Self.Trans_Cap_Wrk_CashRequistionInvoice" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Trans_Capital_TPBgt_Prop_By_Unit" EntityType="Self.Trans_Capital_TPBgt_Prop_By_Unit" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Trans_CashRequistionInvoice" EntityType="Self.Trans_CashRequistionInvoice" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Trans_CashRequstionNonInvoice" EntityType="Self.Trans_CashRequstionNonInvoice" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Trans_Cptl_wrk_CashRequstionNonInvoice" EntityType="Self.Trans_Cptl_wrk_CashRequstionNonInvoice" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Trans_LeveL_ApprovalInvoice" EntityType="Self.Trans_LeveL_ApprovalInvoice" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Trans_LeveL_ApprovalNonInvoice" EntityType="Self.Trans_LeveL_ApprovalNonInvoice" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Trans_RequsitionNumber" EntityType="Self.Trans_RequsitionNumber" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Trans_Revnu_Expenditure_By_Unit" EntityType="Self.Trans_Revnu_Expenditure_By_Unit" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Trans_Salary" EntityType="Self.Trans_Salary" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TransCap_Wrk__LeveL_ApprovalInvoice" EntityType="Self.TransCap_Wrk__LeveL_ApprovalInvoice" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TransCap_Wrk__LeveL_ApprovalNonInvoice" EntityType="Self.TransCap_Wrk__LeveL_ApprovalNonInvoice" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Trns_Chng_Pwd_Log" EntityType="Self.Trns_Chng_Pwd_Log" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Mst_User" EntityType="Self.Mst_User" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Mst_User].[userid] AS [userid], 
+    [Mst_User].[unid] AS [unid], 
+    [Mst_User].[utyp] AS [utyp], 
+    [Mst_User].[roleid] AS [roleid], 
+    [Mst_User].[empnm] AS [empnm], 
+    [Mst_User].[unm] AS [unm], 
+    [Mst_User].[pwd] AS [pwd], 
+    [Mst_User].[mail] AS [mail], 
+    [Mst_User].[phn] AS [phn], 
+    [Mst_User].[isactive] AS [isactive], 
+    [Mst_User].[isdelete] AS [isdelete]
+    FROM [dbo].[Mst_User] AS [Mst_User]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_Mst_AssignUnitToBank_Mst_Bank" Association="Self.FK_Mst_AssignUnitToBank_Mst_Bank">
+      <End Role="Mst_Bank" EntitySet="Mst_Bank" />
+      <End Role="Mst_AssignUnitToBank" EntitySet="Mst_AssignUnitToBank" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Mst_AssignUnitToBank_Mst_Unit" Association="Self.FK_Mst_AssignUnitToBank_Mst_Unit">
+      <End Role="Mst_Unit" EntitySet="Mst_Unit" />
+      <End Role="Mst_AssignUnitToBank" EntitySet="Mst_AssignUnitToBank" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Trans_Additional_Allotment_BudgetType" Association="Self.FK_Trans_Additional_Allotment_BudgetType">
+      <End Role="Tran_Cap_TP_Budget" EntitySet="Tran_Cap_TP_Budget" />
+      <End Role="Trans_Additional_Allotment" EntitySet="Trans_Additional_Allotment" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Trans_CashRequstionNonInvoice_Tran_Cap_TP_Budget" Association="Self.FK_Trans_CashRequstionNonInvoice_Tran_Cap_TP_Budget">
+      <End Role="Tran_Cap_TP_Budget" EntitySet="Tran_Cap_TP_Budget" />
+      <End Role="Trans_CashRequstionNonInvoice" EntitySet="Trans_CashRequstionNonInvoice" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Trans_LeveL_ApprovalInvoice_Tran_Cap_TP_Budget" Association="Self.FK_Trans_LeveL_ApprovalInvoice_Tran_Cap_TP_Budget">
+      <End Role="Tran_Cap_TP_Budget" EntitySet="Tran_Cap_TP_Budget" />
+      <End Role="Trans_LeveL_ApprovalInvoice" EntitySet="Trans_LeveL_ApprovalInvoice" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Trans_LeveL_ApprovalNonInvoice_Tran_Cap_TP_Budget" Association="Self.FK_Trans_LeveL_ApprovalNonInvoice_Tran_Cap_TP_Budget">
+      <End Role="Tran_Cap_TP_Budget" EntitySet="Tran_Cap_TP_Budget" />
+      <End Role="Trans_LeveL_ApprovalNonInvoice" EntitySet="Trans_LeveL_ApprovalNonInvoice" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Trans_RequsitionNumber_Mst_Unit" Association="Self.FK_Trans_RequsitionNumber_Mst_Unit">
+      <End Role="Mst_Unit" EntitySet="Mst_Unit" />
+      <End Role="Trans_RequsitionNumber" EntitySet="Trans_RequsitionNumber" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Trans_Salary_Financial_Year" Association="Self.FK_Trans_Salary_Financial_Year">
+      <End Role="Financial_Year" EntitySet="Financial_Year" />
+      <End Role="Trans_Salary" EntitySet="Trans_Salary" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Trans_Salary_Mst_month" Association="Self.FK_Trans_Salary_Mst_month">
+      <End Role="Mst_month" EntitySet="Mst_month" />
+      <End Role="Trans_Salary" EntitySet="Trans_Salary" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Trans_Salary_Mst_Unit" Association="Self.FK_Trans_Salary_Mst_Unit">
+      <End Role="Mst_Unit" EntitySet="Mst_Unit" />
+      <End Role="Trans_Salary" EntitySet="Trans_Salary" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Trans_Salary_Tarn_Add_Budget" Association="Self.FK_Trans_Salary_Tarn_Add_Budget">
+      <End Role="Tarn_Add_Budget" EntitySet="Tarn_Add_Budget" />
+      <End Role="Trans_Salary" EntitySet="Trans_Salary" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

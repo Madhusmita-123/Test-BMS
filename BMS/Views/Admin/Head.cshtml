@@ -1,0 +1,248 @@
+﻿@model BMS.Models.HeadModel
+@{
+    ViewBag.Title = "Head";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<style>
+    .form-control1 {
+        border: 1px solid #f11111 !important;
+    }
+</style>
+<div class="clearfix"></div>
+
+
+
+@{string confirmMessage = Convert.ToString(TempData["Message"]); }
+<div class="content-wrapper">
+    <div class="container-fluid">
+        <div class="modal fade" id="myModal" role="dialog">
+            <div class="modal-dialog">
+                @using (Html.BeginForm("Head", "Admin", FormMethod.Post, new { enctype = "multipart/form-data", data_ajax = "false", role = "form" }))
+                {
+                    @Html.AntiForgeryToken()
+
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="container">
+                                <div class="row">
+
+                                    <div class="col-md-4">
+                                        <label>HeadName:</label>
+                                        @Html.HiddenFor(x => x.Head.Head_Id, new { @id = "headid" })
+                                        @Html.TextBoxFor(m => m.Head.hdnm, new { @required = "true", @id = "headname", @class = "form-control", @placeholder = "Name", @autocomplete = "off" })
+                                        @*@Html.ValidationMessageFor(m => m.Role.RoleDesc, "", new { @class = "error" })*@
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label>HeadCode:</label>
+                                        @Html.TextBoxFor(m => m.Head.hdcode, new { @required = "true", @id = "headcode", @class = "form-control", @placeholder = "Name", @autocomplete = "off" })
+                                        @*@Html.ValidationMessageFor(m => m.Role.RoleDesc, "", new { @class = "error" })*@
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label>Budget Type:</label>
+                                        
+                                        @{
+                                            var BudgetList = new SelectList(Model.lstBudget, "BugtTyp_Id", "BgtTypNm").ToList();
+                                            BudgetList.Insert(0, new SelectListItem() { Value = "0", Text = "-- Select One --" });
+                                        }
+                                        @Html.DropDownListFor(x => x.Head.BugtTyp_Id, BudgetList, new { @required = "true", @class = "form-control", @id = "budgt" })
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-danger" id="Submit">Submit</button>
+                            <button type="button" class="btn btn-danger" onclick="location.reload()" style="float:right">Cancel</button>
+                        </div>
+                    </div>
+                }
+
+            </div>
+
+        </div>
+        @*<div class="modal fade" id="myModal1" role="dialog">
+            hgfdff
+            </div>*@
+        <!-- Breadcrumb-->
+        <!-- End Breadcrumb-->
+        <div class="row pt-4 pb-3">
+            <div class="col-lg-12">
+                @{confirmMessage = Convert.ToString(TempData["Message"]);}
+                @if (!string.IsNullOrEmpty(confirmMessage))
+                {
+                    <div class="alert alert-success alert-dismissable" id="divSuccessMessage">
+                        @confirmMessage
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                    </div>
+                }
+                <div class="card">
+                    <div class="card-header">
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <i class="fa fa-table"></i> Head List
+                            </div>
+                            <div class="col-md-6 text-md-right">
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal"><i class="fa fa-plus"></i>  Add</button>
+                                @*<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>*@
+
+                                <!-- Modal -->
+
+
+                            </div>
+                        </div>
+
+                    </div>
+                    @if (ViewBag.GridData == null)
+                    {
+                        <div class="box-body">
+                            <div id="FormOne">
+                                <div class="row">
+                                    <div class="col-md-12">No Application found.</div>
+                                    @Html.ValidationSummary()
+                                </div>
+                            </div>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <div id="default-datatable_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4">
+
+                                    <div class="row">
+                                        <div class="table-responsive">
+                                            <table id="default-datatable" class="table table-bordered">
+                                                <thead>
+                                                    <tr>
+
+                                                        <th>Head Name</th>
+                                                        <th>Head Code</th>
+                                                        <th>Budget Type</th>
+                                                        <td>@*<button class="btn btn-primary"><i class="fa fa-edit"></i></button>*@ Edit</td>
+                                                        <td>@*<button class="btn btn-danger"> <i class="fa fa-trash"></i></button>*@ Delete</td>
+
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    @foreach (var d in ViewBag.GridData)
+                                                    {
+                                                    <tr>
+
+                                                        <td>@d.hdnm</td>
+                                                        <td>@d.hdcode</td>
+                                                        <td>@d.BgtTypNm</td>
+                                                        <td>
+                                                            <a href="#" data-toggle="modal" data-target="#myModal" class='btn btn-primary' style='cursor:pointer;' onclick="EditHead(@d.Head_Id)">
+                                                                <i class='fa fa-edit'></i>
+                                                            </a>
+                                                        </td>
+                                                        <td>
+                                                            <a href="#" class='btn btn-danger' style='cursor:pointer;' onclick="DeleteHead(@d.Head_Id)">
+                                                                <i class='fa fa-trash'></i>
+                                                            </a>
+                                                        </td>
+                                                        @*<td><button class="btn btn-primary" onclick="EditRole(@d.RoleID)" ><i class="fa fa-edit"></i></button></td>
+        <td><button class="btn btn-danger" onclick="DeleteRole(@d.RoleID)" > <i class="fa fa-trash"></i></button></td>*@
+                                                    </tr>
+                                                    }
+                                                </tbody>
+                                            </table>
+
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+                    }
+                </div>
+            </div>
+        </div><!-- End Row-->
+
+
+
+
+    </div>
+    <!-- End container-fluid-->
+
+</div><!--End content-wrapper-->
+}
+
+<script src="~/assets/js/jquery.min.js"></script>
+<script>
+
+    $("#Submit").click(function (e) {
+        debugger;
+        var pcount = 0;
+
+       
+
+        if ($("#headname").val() == "") { $("#headname").addClass('form-control1'); pcount = 1; }
+        if ($("#headcode").val() == "") { $("#headcode").addClass('form-control1'); pcount = 1; }
+        if ($("#budgt").val() == "0") { $("#budgt").addClass('form-control1'); pcount = 1; }
+
+        if (pcount != 0) {
+            e.preventDefault();
+            return false;
+        }
+
+    });
+    function EditHead(id) {
+        debugger;
+        $.ajax({
+            type: 'POST',
+            url: "/Admin/BindHead",
+            data: { id: id },
+            dataType: "json",
+            success: function (resultData) {
+                debugger;
+                //$("#myModal").html(resultData);
+                //$("#myModal").addClass('show');
+                //$("#myModal").css("display","block");
+                $("#headid").val(resultData.Head_Id);
+             
+                $("#headname").val(resultData.hdnm);
+                $("#headcode").val(resultData.hdcode);
+                $("#budgt").val(resultData.BugtTyp_Id);
+                $("#Submit").text("Update");
+            }
+        })
+    }
+    function DeleteHead(id) {
+        debugger;
+        if (confirm("Are You sure to delete this record..?")) {
+            $.ajax({
+                type: 'POST',
+                url: "/Admin/DeleteHead",
+                data: { id: id },
+                dataType: "json",
+                success: function (resultData) {
+                    if (resultData == true) {
+
+                        alert("Data Deleted successfully..");
+                        location.href = "/Admin/Head";
+                        //window.location.reload();
+
+                    }
+                }
+
+            })
+        }
+    }
+
+
+
+
+
+</script>
+
+
